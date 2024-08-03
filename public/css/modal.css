@@ -1,0 +1,177 @@
+
+
+.main-modal {
+    display: none;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    bottom: 1px;
+    height: 90%; /* Установите фиксированную высоту */
+    overflow-y: auto; /* Добавьте вертикальную прокрутку */
+    background: #fff;
+    box-shadow: 12px 12px 40px 0px rgba(0, 0, 0, 0.16);
+    z-index: 1000;
+}
+
+.main-modal.active {
+    display: block;
+    animation: slideUp 0.5s ease-out;  /* Добавляем анимацию */
+    position: fixed;
+}
+
+.modal-content {
+    padding: 20px;
+    width: 100%;
+    position: fixed;
+    transform: translateY(100%);  /* Начальное положение для анимации */
+}
+
+@keyframes slideUp {
+    from {
+        transform: translate(-50%, 100%); /* Начальная точка анимации */
+    }
+    to {
+        transform: translate(-50%, 0); /* Конечная точка анимации */
+    }
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Блокировка прокрутки основного содержимого */
+.fixed-body {
+    overflow: hidden;
+    margin-right: 15px;
+
+
+
+}
+
+.modal-head {
+    max-height: 40px;
+    color: #000;
+    font-size: 16px;
+}
+
+
+.modal-head span {
+    font-size: 12px;
+}
+
+.modal-head  a {
+    color: #000;
+    max-width: 800px;
+}
+
+.modal-head button {
+    border: none;
+    background-color: #fff;
+}
+
+.modal-news-content .news-date {
+    color: black;
+}
+
+.modal-news-title h2 {
+    font-weight: 600;
+}
+
+.modal-news-image img {
+    height: 460px;
+}
+
+.image-info {
+    color: #6C6C6C;
+    font-size: 14px;
+}
+
+.modal-news-text img {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+.modal-news-text p {
+    margin-bottom: 16px;
+}
+
+.modal-news-text p {
+    font-size: 16px;
+    margin-bottom: 24px !important;
+}
+
+.quote {
+    background-color: #F6F6F6;
+    padding: 40px 48px;
+}
+
+.modal-news-text {
+    border-bottom: 2px solid #F6F6F6;
+}
+
+.tags a {
+    margin-right: 12px;
+    background-color: #F6F6F6;
+    padding: 4px 12px;
+    color: black;
+}
+
+.tags a:hover {
+    color: #07A267;
+}
+
+
+.share-buttons a {
+    margin-right: 12px;
+    background-color: #F6F6F6;
+    color: black;
+}
+
+.share-buttons a:hover {
+    background-color: #07A267;
+
+}
+
+.see-also .filtered-news-item {
+    max-width: 32% !important;
+}
+
+.modal-gallery img {
+    max-width: 17%;
+    margin-right: 25px;
+    margin-bottom: 10px;
+    height: 100px;
+}
+
+.modal-gallery img:hover {
+    box-shadow: #000;
+}
+
+.quote img {
+    width: 28px;
+        height: 24px;
+}
+
+.city-logo {
+    min-width: 180px;
+    height: 217px;
+}
+
+.city-logo img {
+    width: 100%;
+    height: 100%;
+}
+
+.next-icon {
+    width: 8px;
+    margin-top: 7px;
+}
+
+.image-author {
+    font-size: 12px;
+}

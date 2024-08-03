@@ -1,57 +1,133 @@
-import { Fragment } from 'react';
-import { Dialog, Transition } from '@headlessui/react';
+import "../../../public/css/modal.css";
+import React from "react";
+export default function Modal({ active, onClose, title, image, content, category, date }) {
 
-export default function Modal({ children, show = false, maxWidth = '2xl', closeable = true, onClose = () => {} }) {
-    const close = () => {
-        if (closeable) {
-            onClose();
-        }
-    };
+    const baseUrl = import.meta.env.VITE_APP_URL;
 
-    const maxWidthClass = {
-        sm: 'sm:max-w-sm',
-        md: 'sm:max-w-md',
-        lg: 'sm:max-w-lg',
-        xl: 'sm:max-w-xl',
-        '2xl': 'sm:max-w-2xl',
-    }[maxWidth];
+
 
     return (
-        <Transition show={show} as={Fragment} leave="duration-200">
-            <Dialog
-                as="div"
-                id="modal"
-                className="fixed inset-0 flex overflow-y-auto px-4 py-6 sm:px-0 items-center z-50 transform transition-all"
-                onClose={close}
-            >
-                <Transition.Child
-                    as={Fragment}
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0"
-                    enterTo="opacity-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100"
-                    leaveTo="opacity-0"
-                >
-                    <div className="absolute inset-0 bg-gray-500/75" />
-                </Transition.Child>
+        <div>
+            <div className={`d-flex justify-content-center modal-section`}>
+                <div className={`main-modal col-7 p-32 ${active ? 'active' : ''}`} id="mainModal">
+                    <div className="modal-head w-100 d-flex aligh-items-center justify-content-between">
+                        <p className="d-flex aligh-items-center">
+                            <a href="">Главная </a>
+                            <span className="ml-12"><img className={'next-icon'} src="../../img/icons/no.svg"
+                                                         alt=""/></span>
+                            <a className="ml-12" href="">Новости </a>
+                            <span className="ml-12"><img className={'next-icon'} src="../../img/icons/no.svg"
+                                                         alt=""/></span>
+                            <a className="ml-12" href="">{title}</a>
+                        </p>
+                        <div>
+                            <button className="mr-12"><img src="img/icons/Print.png" alt=""/></button>
+                            <button onClick={onClose}><img src="img/icons/Close.png" alt=""/></button>
+                        </div>
+                    </div>
 
-                <Transition.Child
-                    as={Fragment}
-                    enter="ease-out duration-300"
-                    enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                    enterTo="opacity-100 translate-y-0 sm:scale-100"
-                    leave="ease-in duration-200"
-                    leaveFrom="opacity-100 translate-y-0 sm:scale-100"
-                    leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                >
-                    <Dialog.Panel
-                        className={`mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full sm:mx-auto ${maxWidthClass}`}
-                    >
-                        {children}
-                    </Dialog.Panel>
-                </Transition.Child>
-            </Dialog>
-        </Transition>
-    );
+                    <div className="modal-news-content mt-40 mb-24">
+                        <div className="modal-news-date">
+                            <p className="news-date text-black mb-4">{date}<span
+                                className="news-category">{category}</span></p>
+                        </div>
+
+                        <div className="modal-news-title">
+                            <h2>{title}</h2>
+                        </div>
+
+                        <div className="modal-news-image d-flex flex-column">
+                            <img className="w-100" src={`${baseUrl}/storage/${image}`} alt=""/>
+                            <div className="image-info d-flex aligh-items-center justify-content-between mt-2">
+                                <p className="image-author">Фото: Beslan Shamaev</p>
+                                <p className="image-desc">План нового спортивного комплекса в Гамурзиево</p>
+                            </div>
+                        </div>
+
+                        <div className="modal-news-text mt-32" dangerouslySetInnerHTML={{__html: content}}>
+
+                        </div>
+
+
+                    </div>
+
+                    <div className="modal-gallery d-flex flex-wrap mb-24">
+                        <img src="img/8.png" className="mr-2" alt=""/>
+                        <img src="img/9.png" className="mr-2" alt=""/>
+                        <img src="img/10.png" className="mr-2" alt=""/>
+                        <img src="img/11.png" className="mr-2" alt=""/>
+                        <img src="img/12.png" alt=""/>
+                        <img src="img/13.png" alt=""/>
+                        <img src="img/111.png" alt=""/>
+                        <img src="img/123.png" alt=""/>
+                        <img src="img/121.png" alt=""/>
+                    </div>
+
+                    <div className="modal-tags d-flex flex-column mb-24">
+                        <div className="tags d-flex aligh-items-center mb-24">
+                            <span className="mr-12">Теги:</span>
+                            <a href="" type="button">Спорт</a>
+                            <a href="" type="button">Новые проекты</a>
+                            <a href="" type="button">Калиматов</a>
+                            <a href="" type="button">Гамурзиево</a>
+                        </div>
+                        <div className="share-buttons d-flex aligh-items-center">
+                            <span className="mr-12">Поделиться:</span>
+                            <a href="" type="button"><img src="img/icons/social/telegram (1).png" alt=""/></a>
+                            <a href="" type="button"><img src="img/icons/social/VK.png" alt=""/></a>
+                            <a href="" type="button"><img src="img/icons/social/ok.png" alt=""/></a>
+                            <a href="" type="button"><img src="img/icons/social/Whatsapp.png" alt=""/></a>
+                            <a href="" type="button"><img src="img/icons/social/Link.png" alt=""/></a>
+
+                        </div>
+                    </div>
+
+                    <div className="see-also d-flex flex-column">
+                        <h3 className="mb-24">Смотрите также</h3>
+                        <div className="d-flex justify-content-between aligh-items-center">
+                            <div className="filtered-news-item">
+                                <div className="news-image">
+                                    <img className="w-100" src="img/14.png" alt=""/>
+                                </div>
+
+                                <div className="news-text p-25 mt-4">
+                                    <a href="">
+                                        <h4>Для туристов в республике запустят специальную программу</h4>
+                                    </a>
+                                    <p className="news-date">27 июня <span className="news-category ml-4">Проекты</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="filtered-news-item ">
+                                <div className="news-image">
+                                    <img className="w-100" src="img/15.png" alt=""/>
+                                </div>
+
+                                <div className="news-text p-25 mt-4">
+                                    <a href="">
+                                        <h4>Для туристов в республике запустят специальную программу</h4>
+                                    </a>
+                                    <p className="news-date">27 июня <span className="news-category ml-4">Проекты</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="filtered-news-item">
+                                <div className="news-image">
+                                    <img className="w-100" src="img/16.png" alt=""/>
+                                </div>
+
+                                <div className="news-text p-25 mt-4">
+                                    <a href="">
+                                        <h4>Для туристов в республике запустят специальную программу</h4>
+                                    </a>
+                                    <p className="news-date">27 июня <span className="news-category ml-4">Проекты</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
 }

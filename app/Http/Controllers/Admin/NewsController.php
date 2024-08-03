@@ -3,12 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Category\UpdateRequest;
+use App\Http\Requests\Admin\News\UpdateRequest;
 use App\Http\Requests\Admin\News\StoreRequest;
+use App\Models\Agency;
 use App\Models\Category;
 use App\Models\News;
 use App\Models\User;
+use Binafy\LaravelUserMonitoring\Models\VisitMonitoring;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 
@@ -23,9 +26,8 @@ class NewsController extends Controller
 
 
         $news = News::with('user', 'category')->orderBy('id', 'desc')->paginate(10);
-        return Inertia::render('Admin/News/Index', [
-            'news' => $news
-        ]);
+
+        return view('admin.news.index', compact('news', ));
     }
 
     /**
@@ -34,13 +36,12 @@ class NewsController extends Controller
     public function create()
     {
 
+
         $categories = Category::all();
         $authors = User::query()->where('role', 10)->get();
 
-        return Inertia::render('Admin/News/Create', [
-            'authors' => $authors,
-            'categories' => $categories
-        ]);
+
+        return view('admin.news.create', compact('authors', 'categories'));
     }
 
     /**
@@ -50,13 +51,15 @@ class NewsController extends Controller
     {
         $data = $request->validated();
 
-        if ($request->hasFile('image_main')) {
-            $image = $request->file('image_main');
-
-            $imagePath = $image->store('images'); // Сохранить изображение в storage/app/public/images
-
-            $data['image_main'] = $imagePath;
+        if (isset($data['image_main'])) {
+            $path = Storage::put('images', $data['image_main']);
         }
+
+        // Сохранение пути к изображению в базе данных
+        $data['image_main'] = $path ?? null;
+
+        // Обработка значения чекбокса
+        $data['main_material'] = $request->has('main_material') ? 1 : 0;
 
 
         $news = News::create($data);
@@ -81,11 +84,7 @@ class NewsController extends Controller
         $categories = Category::all();
         $authors = User::query()->where('role', 10)->get();
 
-        return Inertia::render('Admin/News/Edit', [
-            'authors' => $authors,
-            'news' => $news,
-            'categories' => $categories
-        ]);
+        return view('admin.news.edit', compact('news', 'categories', 'authors'));
     }
 
     /**
@@ -94,7 +93,6 @@ class NewsController extends Controller
     public function update(UpdateRequest $request, News $news)
     {
         $data = $request->validated();
-
         $news->update($data);
 
         return redirect()->route('admin.news.index')->with('success', 'News updated successfully');

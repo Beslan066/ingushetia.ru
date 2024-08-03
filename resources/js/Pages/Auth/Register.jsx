@@ -30,9 +30,9 @@ export default function Register() {
         <GuestLayout>
             <Head title="Register" />
 
-            <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="name" value="Name" />
+            <form onSubmit={submit} className={'p-40'}>
+                <div className={'w-50'}>
+                    <InputLabel htmlFor="name" value="Фио" />
 
                     <TextInput
                         id="name"
@@ -48,7 +48,7 @@ export default function Register() {
                     <InputError message={errors.name} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4 w-50">
                     <InputLabel htmlFor="email" value="Email" />
 
                     <TextInput
@@ -65,8 +65,8 @@ export default function Register() {
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="password" value="Password" />
+                <div className="mt-4 w-50">
+                    <InputLabel htmlFor="password" value="Пароль" />
 
                     <TextInput
                         id="password"
@@ -82,8 +82,8 @@ export default function Register() {
                     <InputError message={errors.password} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
+                <div className="mt-4 w-50">
+                    <InputLabel htmlFor="password_confirmation" value="Подтвердите пароль" />
 
                     <TextInput
                         id="password_confirmation"
@@ -99,16 +99,16 @@ export default function Register() {
                     <InputError message={errors.password_confirmation} className="mt-2" />
                 </div>
 
-                <div className="flex items-center justify-end mt-4">
+                <div className="flex items-center justify-end mt-4 w-50">
                     <Link
                         href={route('login')}
                         className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
-                        Already registered?
+                         Уже зарегистрированы?
                     </Link>
 
                     <PrimaryButton className="ms-4" disabled={processing}>
-                        Register
+                        Зарегистрироваться
                     </PrimaryButton>
                 </div>
             </form>

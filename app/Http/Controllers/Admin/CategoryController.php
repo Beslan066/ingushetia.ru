@@ -19,10 +19,9 @@ class CategoryController extends Controller
     public function index()
     {
 
+        $categories = Category::orderBy('id', 'desc')->paginate(10);
 
-        return Inertia::render('Admin/Category/Index', [
-            'categories' => Category::orderBy('id', 'desc')->paginate(10)
-        ]);
+        return view('admin.category.index', compact('categories'));
     }
 
     /**
@@ -32,9 +31,8 @@ class CategoryController extends Controller
     {
 
         $authors = User::query()->where('role', 10)->get();
-        return Inertia::render('Admin/Category/Create', [
-            'authors' => $authors
-        ]);
+        return view('admin.category.create', compact('authors'));
+
     }
 
     /**
@@ -65,9 +63,7 @@ class CategoryController extends Controller
      */
     public function edit(Category  $category)
     {
-        return Inertia::render('Admin/Category/Edit', [
-            'category' => $category
-        ]);
+       return view('admin.category.edit', compact('category'));
     }
 
     /**

@@ -22,13 +22,25 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => 'required',
-            'lead' => 'required',
-            'content' => 'required',
-            'image_main' => 'nullable|image|mimes:jpg,jpeg,webp,png',
-            'category_id' => 'nullable',
-            'news_ing' => 'nullable',
-            'user_id' => 'required',
+            'title' => 'required|string',
+            'year' => 'required|integer',
+            'population' => 'required|integer',
+            'square' => 'required|integer',
+            'type' => 'required',
+            'major_id' => 'required',
+            'image_main' => 'required|image|mimes:jpg,jpeg,webp,png',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Заголовок обязателен для заполнения.',
+            'title.string' => 'Заголовок должен быть строкой.',
+            'image_main.required' => 'Необходимо выбрать изображение.',
+            'image_main.image' => 'Файл должен быть изображением.',
+            'image_main.mimes' => 'Изображение должно быть в формате: jpg, jpeg, webp, png.',
+
         ];
     }
 }

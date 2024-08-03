@@ -26,4 +26,13 @@ class StoreRequest extends FormRequest
             'user_id' => 'required|integer'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Заголовок обязателен для заполнения',
+            'title.max' => 'Длина заголовка не должна превышать 255 символов',
+            'user_id.required' => 'Ошибка при определении пользователя',
+        ];
+    }
 }

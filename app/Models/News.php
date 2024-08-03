@@ -19,7 +19,11 @@ class News extends Model
         'image_main',
         'news_id',
         'category_id',
-        'user_id'
+        'user_id',
+        'published_at',
+        'main_material',
+        'agency_id',
+        'views'
     ];
 
     public function translate()
@@ -32,7 +36,21 @@ class News extends Model
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
 
+
     public  function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function agency()
+    {
+        return $this->belongsTo(Agency::class, 'agency_id', 'id');
+    }
+
+    public function incrementViews()
+    {
+        $this->increment('views');
+    }
+
+
+
 }
