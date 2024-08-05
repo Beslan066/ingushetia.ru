@@ -66,7 +66,7 @@ export default function Municipality() {
                                     </div>
                                     <img src="../../img/icons/arrow grey.svg" alt=""/>
                                 </li>
-                                <li>
+                                <li>setPhotoGalleryModal
                                     <div>
                                         <h4>Малгобек</h4>
                                         <span>79 200 чел.</span>

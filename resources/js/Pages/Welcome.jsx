@@ -10,6 +10,7 @@ import Slider from "@/Components/Home/Slider.jsx";
 import MailIcon from "@/Components/Home/MailIcon.jsx";
 import VideoPlayer from "@/Components/Home/VideoPlayer.jsx";
 import Municipality from "@/Components/Home/Municipality.jsx";
+import PhotoReportageItem from "@/Components/Home/PhotoReportageItem.jsx";
 export default function Welcome() {
 
 
@@ -424,28 +425,15 @@ export default function Welcome() {
                         <h3 className={'mb-24'}>Фото и видеорепортажи</h3>
                         <div className="d-flex justify-content-between flex-wrap">
                             {photoReportages.map((reportage) => (
-                                    <div className="filtered-news-item col-4">
-                                        <div
-                                            className="news-image position-relative d-flex flex-column align-items-center">
-                                            <img src={`${baseUrl}/storage/${reportage.image_main}`} alt={reportage.title}
-                                                 className="w-100 h-100" style={{objectFit: 'cover'}}/>
-                                            <div className={'position-absolute gallery-icon'}>
-                                                <img src="img/icons/gallery.svg" alt=""/>
-                                            </div>
-                                        </div>
+                                <PhotoReportageItem className={'d-flex'}
+                                                    baseUrl={baseUrl}
+                                                    reportage={reportage}
+                                                    formatDate={formatDate(reportage.published_at)}
 
-                                        <div className="news-text pl-20 d-flex flex-column justify-content-between">
-                                            <div>
-                                                <Link href="">
-                                                    <h4>{reportage.title}</h4>
-                                                </Link>
-                                            </div>
-                                            <p className="news-date">{formatDate(reportage.published_at)}
-                                            </p>
-                                        </div>
-                                    </div>
+                                />
                             ))
                             }
+
                             {videos.map((video) => (
                                 <VideoPlayer
                                     key={video.id}

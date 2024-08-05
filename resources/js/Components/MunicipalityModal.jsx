@@ -33,7 +33,7 @@ export default function MunicipalityModal({ active, onClose, selectedMunicipalit
                         </div>
                         <div className="d-flex aligh-items-center mb-40 w-100">
                             <div className="city-logo">
-                                <img src="../../img/image 19.png" alt="Герб города Магас" />
+                                <img src={`${baseUrl}/storage/${selectedMunicipality.arms}`} alt="Герб города Магас" />
                             </div>
 
                                 <div className="city-bio pl-32"
@@ -86,13 +86,34 @@ export default function MunicipalityModal({ active, onClose, selectedMunicipalit
                         <img src="../../img/content/magas4.jpg" alt=""/>
                     </div>
 
-                    <div className="city-contacts">
-                        <h4>Контакты администрации</h4>
-                        <p>Телефон: <a href="">8 (8732) 49 38 39</a></p>
-                        <p>Факс: <a href="">8 (8732) 37 48 94</a></p>
-                        <p>Эл. почта: <a href="">magas@ingushtia.ru</a></p>
-                        <p>Адрес: г. Магас, ул. Зязикова, 14 </p>
-                    </div>
+
+                    {selectedMunicipality &&
+                        <div className="city-contacts">
+                            <h4>Контакты администрации</h4>
+                            {selectedMunicipality.phone_number &&
+                                <p>Телефон: <a
+                                    href={`tel:${selectedMunicipality.phone_number}`}>{selectedMunicipality.phone_number}</a>
+                                </p>
+                            }
+
+                            {selectedMunicipality.fax_number &&
+                                <p>Факс: <a
+                                    href={`tel:${selectedMunicipality.fax_number}`}>{selectedMunicipality.fax_number}</a>
+                                </p>
+                            }
+
+                            {selectedMunicipality.email &&
+                                <p>Эл. почта: <a
+                                    href={`mailto:${selectedMunicipality.email}`}>{selectedMunicipality.email}</a></p>
+                            }
+
+                            {selectedMunicipality.address &&
+                                <p>Адрес: {selectedMunicipality.address}</p>
+                            }
+                        </div>
+
+                    }
+
                 </div>
             </div>
         </div>

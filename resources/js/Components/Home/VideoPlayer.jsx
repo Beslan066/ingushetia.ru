@@ -77,9 +77,7 @@ export default function VideoPlayer({ video, baseUrl, date }) {
             </div>
             <div className="news-text pl-20 d-flex flex-column justify-content-between">
                 <div>
-                    <a href="">
-                        <h4>{video.title}</h4>
-                    </a>
+                    <h4>{video.title}</h4>
                 </div>
                 <p className="news-date">{date}</p>
             </div>

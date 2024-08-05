@@ -67,6 +67,7 @@
 .modal-head  a {
     color: #000;
     max-width: 800px;
+    font-size: 13px;
 }
 
 .modal-head button {
@@ -80,6 +81,7 @@
 
 .modal-news-title h2 {
     font-weight: 600;
+    font-size: 32px;
 }
 
 .modal-news-image img {
@@ -98,6 +100,9 @@
 
 .modal-news-text p {
     margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    text-align: left;
 }
 
 .modal-news-text p {
@@ -164,7 +169,6 @@
 
 .city-logo img {
     width: 100%;
-    height: 100%;
 }
 
 .next-icon {
@@ -174,4 +178,17 @@
 
 .image-author {
     font-size: 12px;
+}
+
+.slide_image {
+    max-width: 240px;
+    height: 162px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.slide_image img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: auto;
 }

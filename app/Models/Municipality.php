@@ -33,6 +33,10 @@ class Municipality extends Model
         'type',
         'content',
         'supervisor_id',
+        'phone_number',
+        'fax_number',
+        'email',
+        'address',
 
     ];
     public  function user() {

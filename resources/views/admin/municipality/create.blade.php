@@ -113,6 +113,41 @@
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
 
+                        <div class="form-group w-50">
+                            <h3>Контакты</h3>
+                            <label for="phone_number">Телефон:</label>
+                            <input type="text" class="form-control @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" required
+                                   pattern="8-\d{3}-\d{3}-\d{2}-\d{2}" title="Введите номер в формате: 8-928-090-48-33">
+                        </div>
+                        @error('phone_number')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                        <div class="form-group w-50">
+                            <label for="fax_number">Факс:</label>
+                            <input type="text" class="form-control" id="fax_number" name="fax_number" required
+                                   pattern="^8 \(\d{4}\) \d{2} \d{2} \d{2}$" title="Введите номер факса в формате: 8 (8732) 37 48 94">
+                        </div>
+                        @error('fax_number')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group w-50">
+                            <label for="email">Эл. почта:</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+
+                        @error('email')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+
+                        <div class="form-group w-50">
+                            <label for="address">Адрес:</label>
+                            <input type="text" class="form-control" id="address" name="address" required>
+                        </div>
+
+                        @error('address')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
 
 
                         <div class="btn-group">

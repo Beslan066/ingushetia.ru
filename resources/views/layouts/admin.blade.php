@@ -440,6 +440,24 @@
         xhr.send(formData);
     });
 
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+        var phoneInput = document.getElementById('phone_number');
+        var faxInput = document.getElementById('fax_number');
+
+        var phonePattern = /^(8 \(\d{3}\) \d{2} \d{2} \d{2}|^\+7\(\d{3}\)|8-\d{3}-\d{3}-\d{2}-\d{2})$/;
+        var faxPattern = /^8 \(\d{4}\) \d{2} \d{2} \d{2}$/;
+
+        if (!phonePattern.test(phoneInput.value)) {
+            alert('Введите номер в формате: 8 (928) 49 38 39, +7(928) или 8-928-090-48-33');
+            event.preventDefault();
+        }
+
+        if (!faxPattern.test(faxInput.value)) {
+            alert('Введите номер факса в формате: 8 (8732) 37 48 94');
+            event.preventDefault();
+        }
+    });
+
 </script>
 
 </body>

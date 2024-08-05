@@ -32,6 +32,16 @@ class UpdateRequest extends FormRequest
             'supervisor_id' => 'required',
             'image_main' => 'required|image|mimes:jpg,jpeg,webp,png',
             'arms' => 'required|image|mimes:jpg,jpeg,webp,png',
+            'phone_number' => [
+                'required',
+                'regex:/^8-\d{3}-\d{3}-\d{2}-\d{2}$/'
+            ],
+            'fax_number' => [
+                'required',
+                'regex:/^8 \(\d{4}\) \d{2} \d{2} \d{2}$/'
+            ],
+            'email' => 'required|email',
+            'address' => 'required|string|max:255',
         ];
     }
 
