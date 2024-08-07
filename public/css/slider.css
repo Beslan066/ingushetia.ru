@@ -30,7 +30,6 @@
     color: white;
     width: 52px;
     height: 52px;
-    background-color:#484848;
     border: none;
     cursor: pointer;
     border-radius: 100px;
@@ -58,7 +57,8 @@
 
 .slider-buttons button {
     border: none;
-    background-color: #f6f6f6;
+    background-color: transparent;
+    border: 1px solid #fff;
     width: 12px;
     height: 12px;
     margin: 0 4px;
@@ -70,4 +70,5 @@
 }
 .slider-buttons button.active {
     background-color: white;
+    border: #07A267;
 }

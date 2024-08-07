@@ -23,7 +23,9 @@ class News extends Model
         'published_at',
         'main_material',
         'agency_id',
-        'views'
+        'views',
+        'reportage_id',
+        'video_id',
     ];
 
     public function translate()
@@ -51,6 +53,14 @@ class News extends Model
         $this->increment('views');
     }
 
+    public function video()
+    {
+        return $this->belongsTo(Video::class, 'video_id', 'id');
+    }
 
+    public function reportage()
+    {
+        return $this->belongsTo(PhotoReportage::class, 'reportage_id');
+    }
 
 }

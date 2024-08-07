@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\MilitarySupport;
 use App\Models\Municipality;
+use App\Models\NationalProject;
 use App\Models\News;
 use App\Models\PhotoReportage;
 use App\Models\Resource;
@@ -34,10 +36,10 @@ class HomeController extends Controller
             ->get();
 
         $posts = News::query()
-            ->with('category')
+            ->with('category', 'video', 'reportage')
             ->where('main_material', 0)
             ->take(6)
-            ->orderBy('id', 'desc')
+            ->orderBy('published_at', 'desc')
             ->get();
 
         return Inertia::render('Welcome', [
@@ -49,6 +51,25 @@ class HomeController extends Controller
             'videos' => $videos,
             'cities' => $cities,
             'districts' => $districts
+        ]);
+    }
+
+    public function nationalProjects()
+    {
+
+        $natProjects = NationalProject::all();
+        return Inertia::render('Home/NatProjects', [
+            'natProjects' => $natProjects
+        ]);
+    }
+
+    public function svoSupport()
+    {
+
+        $supports = MilitarySupport::all();
+
+        return Inertia::render('Home/SVOSupport', [
+            'supports' => $supports
         ]);
     }
 }

@@ -1,4 +1,4 @@
-import {Link, Head, usePage} from '@inertiajs/react';
+import {Link, Head, usePage, router} from '@inertiajs/react';
 import Guest from "@/Layouts/GuestLayout.jsx";
 import Modal from "@/Components/Modal.jsx";
 import React from 'react'
@@ -14,7 +14,7 @@ import PhotoReportageItem from "@/Components/Home/PhotoReportageItem.jsx";
 export default function Welcome() {
 
 
-    let {posts, categories, mainPosts, resources, photoReportages, videos, cities, districts} = usePage().props;
+    let {posts, categories, mainPosts, resources, photoReportages, videos, cities, districts, search, setSearch} = usePage().props;
 
 // Состояние для выбранной категории
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -44,13 +44,14 @@ export default function Welcome() {
         return format(date, 'HH:mm, d MMMM', { locale: ru });
     };
 
+
     const baseUrl = import.meta.env.VITE_APP_URL;
     return (
 
 
         <Guest>
             <div>
-                <main className="mt-40">
+                <main className={`${!search ? 'mt-40' : ''}`}>
                     <div className="container d-flex w-full  col-xxl-12">
                         <div className="main-left col-xxl-9 ">
                             <div className="main-materials ">
@@ -119,6 +120,8 @@ export default function Welcome() {
                                         <HomeNewsSidebar
                                             key={post.id}
                                             title={post.title}
+                                            video={post.video}
+                                            reportages={post.reportage}
                                             image={post.image_main}
                                             lead={post.lead}
                                             content={post.content}
@@ -144,10 +147,10 @@ export default function Welcome() {
                                 </div>
                                 <ul>
                                     <li>
-                                        <Link href="">Нац. проекты</Link>
+                                        <Link href={route('natProjects')} >Нац. проекты</Link>
                                     </li>
                                     <li>
-                                        <Link href="">Поддержка семей участников СВО</Link>
+                                        <Link href={route('svoSupport')}>Поддержка семей участников СВО</Link>
                                     </li>
                                     <li>
                                         <Link href="">Инвестиции</Link>

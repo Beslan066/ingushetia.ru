@@ -6,7 +6,7 @@ import {usePage} from "@inertiajs/react";
 import { format, parseISO } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
-export default function HomeNewsSidebar({key, title, lead, content, image, user, category, onClick, stateValue, agency, published}) {
+export default function HomeNewsSidebar({key, title, lead, content, image, user, category, onClick, stateValue, agency, published, video, reportages}) {
 
     const [modal,setModal] = React.useState(false);
     const formattedDate = format(parseISO(published), 'HH:mm, d MMMM', { locale: ru });
@@ -20,7 +20,20 @@ export default function HomeNewsSidebar({key, title, lead, content, image, user,
     })
 
 
+    // Функция для очистки строки от HTML-сущностей и лишних символов
+    const decodeHtmlEntities = (str) => {
+        const txt = document.createElement("textarea");
+        txt.innerHTML = str;
+        return txt.value;
+    };
 
+    // Проверка наличия и обработка строки slides
+    const cleanSlidesString = reportages?.slides
+        ? decodeHtmlEntities(reportages.slides)
+            .replace(/^\[\"|\"\]$/g, '') // Убираем квадратные скобки и кавычки вокруг строки
+            .replace(/\\\"/g, '"') // Заменяем экранированные кавычки на обычные
+            .split('","') // Разделяем строки по разделителю между путями
+        : [];
 
     return (
 
@@ -31,13 +44,16 @@ export default function HomeNewsSidebar({key, title, lead, content, image, user,
                     {formattedDate} <span
                     className="news-category">{category}</span>
                 </div>
-                <img src="img/icons/video-icon.svg" alt=""/>
+                {video &&
+                    <img src="img/icons/video-icon.svg" alt=""/>
+                }
             </div>
-            <h2 onClick={() => setModal(true)}>{title}</h2>
+        <h2 onClick={() => setModal(true)}>{title}</h2>
 
 
             <Modal
                 title={title}
+                    reportages={cleanSlidesString}
                 date={formattedDate}
                 category={category}
                 image={image}

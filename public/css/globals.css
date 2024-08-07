@@ -132,7 +132,6 @@ header {
   align-items: center;
   justify-content: space-between;
   background-color: #F6F6F6;
-  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
 }
 
 .logo a{
@@ -779,3 +778,80 @@ section.municipalities.mb-32 {
   border: 1px solid #07A267;
   color: #07A267;
 }
+
+.search-form {
+    display: none;
+}
+
+.search-form.active {
+    display: block;
+    box-shadow: rgba(0, 0, 0, 0.176) 0px 1rem 3rem !important;
+    -webkit-transition: 0.5s ease-in-out;
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+}
+
+
+.search-form input{
+    background-color: #F6F6F6;
+    height: 56px;
+    outline: none;
+    width: calc(100% - 100px);
+    border: none;
+}
+
+.search-form button {
+    background-color: #07A267;
+    color: #fff;
+    height: 56px;
+    padding: 0 24px 0 24px;
+}
+
+.nat-projects-text p {
+    font-size: 16px;
+    max-width: 692px;
+    margin-bottom: 20px !important;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.nat-projects-text p a {
+    color: #07A267;
+    text-decoration: underline !important;
+}
+
+.svo-support-text p{
+    font-size: 16px;
+    max-width: 692px;
+    margin-bottom: 20px !important;
+    line-height: 24px;
+    font-weight: 400;
+}
+
+.svo-support-text ul {
+    margin-top: 24px !important;
+    margin-bottom: 24px !important;
+}
+
+.svo-support-text ul li {
+    list-style: disc !important;
+}
+
+.svo-support-text p a {
+    color: #07A267;
+    text-decoration: underline !important;
+}
+
+.support-item {
+    background-color: #F6F6F6;
+    width: 100%;
+    height: 72px;
+    padding: 12px 20px ;
+    margin-bottom: 10px;
+}
+
+.support-item p {
+    font-weight: 600;
+}
+

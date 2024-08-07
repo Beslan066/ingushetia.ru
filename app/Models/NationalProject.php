@@ -5,32 +5,28 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PhotoReportage extends Model
+class NationalProject extends Model
 {
     use HasFactory;
+
     protected $fillable = [
+        'id',
         'title',
+        'lead',
         'content',
         'image_main',
-        'slides',
         'user_id',
-        'news_id',
         'published_at',
-        'agency_id'
+        'reportage_id',
     ];
+
 
     public  function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function agency()
+    public function reportage()
     {
-        return $this->belongsTo(Agency::class, 'agency_id', 'id');
+        return $this->belongsTo(PhotoReportage::class, 'reportage_id');
     }
-
-    public function news()
-    {
-        return $this->hasOne(News::class, 'reportage_id');
-    }
-
 }

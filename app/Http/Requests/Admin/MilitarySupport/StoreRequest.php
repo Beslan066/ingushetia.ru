@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\News;
+namespace App\Http\Requests\Admin\MilitarySupport;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class StoreRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -19,18 +19,16 @@ class UpdateRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+
+
+
     public function rules(): array
     {
         return [
             'title' => 'required|string',
-            'year' => 'required|integer',
-            'population' => 'required|integer',
-            'square' => 'required|integer',
-            'type' => 'required',
-            'major_id' => 'required',
-            'image_main' => 'required|image|mimes:jpg,jpeg,webp,png',
-            'video_id' => 'nullable',
-            'reportage_id' => 'nullable',
+            'content' => 'required',
+            'image_main' => 'nullable|image|mimes:jpg,jpeg,webp,png',
+            'user_id' => 'required',
         ];
     }
 
@@ -39,10 +37,11 @@ class UpdateRequest extends FormRequest
         return [
             'title.required' => 'Заголовок обязателен для заполнения.',
             'title.string' => 'Заголовок должен быть строкой.',
+            'content.required' => 'Заполните содержимое новости.',
             'image_main.required' => 'Необходимо выбрать изображение.',
             'image_main.image' => 'Файл должен быть изображением.',
             'image_main.mimes' => 'Изображение должно быть в формате: jpg, jpeg, webp, png.',
-
+            'user_id.required' => 'Ошибка при определении пользователя.',
         ];
     }
 }

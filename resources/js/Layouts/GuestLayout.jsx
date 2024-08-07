@@ -3,9 +3,18 @@ import { Link } from '@inertiajs/react';
 import 'bootstrap/dist/css/bootstrap.css';
 import "../../../public/css/globals.css";
 import "../../../public/css/region.css";
+import Search from "@/Components/Home/Search.jsx";
+import React from "react";
 
 
 export default function Guest({ children }) {
+
+    const [search,setSearch] = React.useState(false);
+
+    const handleSearchClick = () => {
+        setSearch(prevSearch => !prevSearch);
+    };
+
     return (
         <div>
             <header>
@@ -35,8 +44,8 @@ export default function Guest({ children }) {
                             <li><Link href="">Документы</Link></li>
                             <li><Link href="">Контакты</Link></li>
                             <div className="d-flex">
-                                <li className="menu-icons">
-                                    <img src="img/icons/search.svg" alt="Ingushetia search"/>
+                                <li className="menu-icons" onClick={handleSearchClick}>
+                                    <img src={`img/icons/${search ? 'Close' : 'search'}.svg`} alt="Close"/>
                                 </li>
                                 <li className="menu-icons">
                                     <button style={{border: 'none'}}>
@@ -54,6 +63,7 @@ export default function Guest({ children }) {
                     </nav>
                 </div>
             </header>
+            <Search search={search}/>
             {children}
             <footer>
                 <div className="container p-32">

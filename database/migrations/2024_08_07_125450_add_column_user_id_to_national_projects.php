@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('photo_reportages', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('image_main');
-            $table->text('content');
-            $table->timestamps();
+        Schema::table('national_projects', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('photo_reportages');
+        Schema::table('national_projects', function (Blueprint $table) {
+            Schema::dropColumn('user_id');
+        });
     }
 };

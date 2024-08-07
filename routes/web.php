@@ -8,6 +8,8 @@ use Inertia\Inertia;
 
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/national-projects', [HomeController::class, 'nationalProjects'])->name('natProjects');
+Route::get('/support-svo', [HomeController::class, 'svoSupport'])->name('svoSupport');
 
 Route::get('/region', function () {
     return Inertia::render('Region/Region');
@@ -111,6 +113,25 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
 
     });
 
+    Route::group(['namespace' => 'NationalProject', 'prefix' => 'admin'], function () {
+        Route::get('/national-projects', [App\Http\Controllers\Admin\NationalProjectController::class, 'index'])->name('admin.natProjects.index');
+        Route::get('/national-projects/create', [App\Http\Controllers\Admin\NationalProjectController::class, 'create'])->name('admin.natProjects.create');
+        Route::post('/national-projects/store', [App\Http\Controllers\Admin\NationalProjectController::class, 'store'])->name('admin.natProjects.store');
+        Route::get('/national-projects/{nationalProject}/edit', [App\Http\Controllers\Admin\NationalProjectController::class, 'edit'])->name('admin.natProjects.edit');
+        Route::patch('/national-projects/{nationalProject}', [App\Http\Controllers\Admin\NationalProjectController::class, 'update'])->name('admin.natProjects.update');
+        Route::delete('/national-projects/{nationalProject}', [App\Http\Controllers\Admin\NationalProjectController::class, 'destroy'])->name('admin.natProjects.delete');
+
+    });
+
+    Route::group(['namespace' => 'MilitarySupport', 'prefix' => 'admin'], function () {
+        Route::get('/military-support', [App\Http\Controllers\Admin\MilitarySupportController::class, 'index'])->name('admin.militarySupport.index');
+        Route::get('/military-support/create', [App\Http\Controllers\Admin\MilitarySupportController::class, 'create'])->name('admin.militarySupport.create');
+        Route::post('/military-support/store', [App\Http\Controllers\Admin\MilitarySupportController::class, 'store'])->name('admin.militarySupport.store');
+        Route::get('/military-support/{militarySupport}/edit', [App\Http\Controllers\Admin\MilitarySupportController::class, 'edit'])->name('admin.militarySupport.edit');
+        Route::patch('/military-support/{militarySupport}', [App\Http\Controllers\Admin\MilitarySupportController::class, 'update'])->name('admin.militarySupport.update');
+        Route::delete('/military-support/{militarySupport}', [App\Http\Controllers\Admin\MilitarySupportController::class, 'destroy'])->name('admin.militarySupport.delete');
+
+    });
 
     Route::group(['namespace' => 'Resource', 'prefix' => 'admin'], function () {
         Route::get('/resources', [App\Http\Controllers\Admin\ResourceController::class, 'index'])->name('admin.resources.index');

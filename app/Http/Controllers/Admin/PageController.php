@@ -48,6 +48,8 @@ class PageController extends Controller
         // Обработка значения чекбокса
         $data['important'] = $request->has('important') ? 1 : 0;
 
+        dd($data);
+
         $page = Page::create($data);
 
         return redirect()->route('admin.page.index');

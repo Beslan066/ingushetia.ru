@@ -77,13 +77,14 @@ export default function Slider({ mainPosts, baseUrl }) {
                     );
                 })}
             </div>
-            <button className="prev" onClick={prevSlide}>
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M16 4L8 12L16 20" stroke="white" strokeWidth={2} />
+            <button className="prev" onClick={prevSlide} style={{transform: "rotate(180deg)"}}
+            >
+                <svg width="32" height="32" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L9 9L1 17" stroke="white" strokeWidth="2"/>
                 </svg>
             </button>
             <button className="next" onClick={nextSlide}>
-                <svg width="11" height="18" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg width="32" height="32" viewBox="0 0 11 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M1 1L9 9L1 17" stroke="white" strokeWidth="2" />
                 </svg>
             </button>

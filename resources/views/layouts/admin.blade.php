@@ -261,6 +261,8 @@
                     <li><a href="{{route('admin.categories.index')}}" class=" waves-effect"><i class="bx bx-tag"></i><span>Категории</span></a></li>
                     <li><a href="{{route('admin.supervisors.index')}}" class=" waves-effect"><i class="bx bxs-user-badge"></i><span>Руководители</span></a></li>
                     <li><a href="{{route('admin.municipalities.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Муниципальные образования</span></a></li>
+                    <li><a href="{{route('admin.militarySupport.index')}}" class=" waves-effect"><i class="bx--error-circle"></i><span>Поддержка СВО</span></a></li>
+                    <li><a href="{{route('admin.natProjects.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Национальные проекты</span></a></li>
                     <li><a href="{{route('admin.resources.index')}}" class=" waves-effect"><i class="bx bx-link"></i><span>Полезные ресурсы</span></a></li>
                     <li><a href="{{route('admin.agencies.index')}}" class=" waves-effect"><i class="bx bx-buildings"></i><span>Министерства</span></a></li>
                     <li><a href="calendar.html" class=" waves-effect"><i class="bx bxs-map"></i><span>Регион</span></a></li>
@@ -375,7 +377,7 @@
                 tooltip: 'Insert Quote',
                 click: function () {
                     // Invoke insertText method with 'quote' on editor module.
-                    context.invoke('editor.insertText', '<blockquote>Вставьте сюда цитату</blockquote>');
+                    context.invoke('editor.insertText', '<quote>Вставьте сюда цитату</quote>');
                 }
             });
 
@@ -383,7 +385,7 @@
         }
 
         // Initialize Summernote
-        $('#summernote').summernote({
+        $('.summernote').summernote({
             height: 300,
             toolbar: [
                 ['style', ['style']],
@@ -394,7 +396,8 @@
                 ['height', ['height']],
                 ['insert', ['link', 'picture', 'video']],
                 ['view', ['fullscreen', 'codeview', 'help']],
-                ['mybutton', ['quote']] // Custom button group
+                ['mybutton', ['quote']]  // Custom button group
+
             ],
             buttons: {
                 quote: QuoteButton

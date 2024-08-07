@@ -18,12 +18,14 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
+    background-color: #F6F6F6;
+
 }
 
 .drawer-content {
     padding: 20px;
-    background-color: #F6F6F6;
     padding-bottom: 24px;
+    border-bottom: 1px solid #DFDFDF;
 }
 
 .accordion-header {
@@ -46,6 +48,15 @@
 
 .drawer-content {
     padding-bottom: 24px;
+    margin-bottom: 20px;
+}
+
+.drawer-second-content {
+    padding: 20px;
+}
+
+.drawer-second-content p {
+    margin-bottom: 24px !important;
 }
 
 .drawer-content p {
@@ -54,7 +65,13 @@
     margin-bottom: 24px !important;
 }
 
-/* Region page list */
+.drawer ul li {
+    list-style: disc;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+    /* Region page list */
 
 .region-pager {
     padding: unset !important;

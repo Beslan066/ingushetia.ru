@@ -6,7 +6,7 @@
         <div class="col-12">
             <div class="card">
 
-                <form action="{{route('admin.news.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.natProjects.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('post')
                     <div class="card-body">
@@ -18,18 +18,16 @@
                             @error('title')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
-
                             <div class="form-group w-50">
-                                <label for="exampleFormControlTextarea1">Лид новости</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 101px;"
-                                          placeholder="Введите лид" name="lead"></textarea>
+                                <textarea id="summernote" class="summernote" placeholder="Проекты включенные в федеральную программу" name="lead"></textarea>
                             </div>
                             @error('lead')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
 
+
                             <div class="form-group w-50">
-                                <textarea id="summernote" placeholder="Введите что-нибудь" name="content"></textarea>
+                                <textarea id="summernote" class="summernote" placeholder="Реализуются в ингушетии" name="content"></textarea>
                             </div>
                             @error('content')
                             <div class="text-danger">{{ $message }}</div>
@@ -52,45 +50,6 @@
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
-
-                        <div class="form-group w-50">
-                            <label for="exampleFormControlSelect1">Категория</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="category_id">
-                                <option value="">Выберите категорию</option>
-                                @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{$category->title}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-                        @error('category_id')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-
-                        <div class="form-group w-50 mt-2">
-                            <select class="form-control" id="exampleFormControlSelect1" name="news_ing">
-
-                                <option value="">Выберите перевод</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
-                        </div>
-                        @error('news_ing')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-
-
-                        <div class="form-group w-50">
-                            <label for="exampleFormControlSelect1">Видеорепортаж</label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="video_id">
-                                <option value="">Выберите видео</option>
-                                @foreach($videos as $video)
-                                    <option value="{{$video->id}}">{{$video->title}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
                         <div class="form-group w-50">
                             <label for="exampleFormControlSelect1">Фоторепортаж</label>
                             <select class="form-control" id="exampleFormControlSelect1" name="reportage_id">
@@ -100,7 +59,6 @@
                                 @endforeach
                             </select>
                         </div>
-
 
                         <div class="form-group w-50">
                             <input type="datetime-local" class="datetime_input" name="published_at" style="color: #495057; width: 250px; border: 1px solid #ced4da; padding: 5px !important; ">
@@ -118,24 +76,6 @@
                         @error('user_id')
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
-
-                        <div class="form-group w-50 mt-2">
-
-                            <select class="form-control" id="exampleFormControlSelect1" name="agency_id">
-                                <option value="{{auth()->user()->agency->id}}">{{auth()->user()->agency->name}}</option>
-                            </select>
-                        </div>
-
-                        @error('agency_id')
-                        <div class="text-danger">{{ $message }}</div>
-                        @enderror
-
-                        <div class="col-sm-10 mb-4">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="main_material">
-                                <label class="form-check-label">Главный материал</label>
-                            </div>
-                        </div>
 
 
                         <div class="btn-group">

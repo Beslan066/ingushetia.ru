@@ -1,9 +1,8 @@
 import "../../../public/css/modal.css";
 import React from "react";
-export default function Modal({ active, onClose, title, image, content, category, date }) {
+export default function Modal({ active, onClose, title, image, content, category, date, reportages }) {
 
     const baseUrl = import.meta.env.VITE_APP_URL;
-
 
 
     return (
@@ -51,17 +50,15 @@ export default function Modal({ active, onClose, title, image, content, category
 
                     </div>
 
-                    <div className="modal-gallery d-flex flex-wrap mb-24">
-                        <img src="img/8.png" className="mr-2" alt=""/>
-                        <img src="img/9.png" className="mr-2" alt=""/>
-                        <img src="img/10.png" className="mr-2" alt=""/>
-                        <img src="img/11.png" className="mr-2" alt=""/>
-                        <img src="img/12.png" alt=""/>
-                        <img src="img/13.png" alt=""/>
-                        <img src="img/111.png" alt=""/>
-                        <img src="img/123.png" alt=""/>
-                        <img src="img/121.png" alt=""/>
-                    </div>
+                    {reportages &&
+                        <div className="modal-gallery d-flex flex-wrap mb-24">
+                            {reportages.map((reportage, index) => (
+                                <img key={index} src={`${baseUrl}/storage/${reportage}`}
+                                     alt={`Slide ${index + 1}`}/>
+                            ))}
+                        </div>
+                    }
+
 
                     <div className="modal-tags d-flex flex-column mb-24">
                         <div className="tags d-flex aligh-items-center mb-24">
@@ -72,7 +69,7 @@ export default function Modal({ active, onClose, title, image, content, category
                             <a href="" type="button">Гамурзиево</a>
                         </div>
                         <div className="share-buttons d-flex aligh-items-center">
-                            <span className="mr-12">Поделиться:</span>
+                        <span className="mr-12">Поделиться:</span>
                             <a href="" type="button"><img src="img/icons/social/telegram (1).png" alt=""/></a>
                             <a href="" type="button"><img src="img/icons/social/VK.png" alt=""/></a>
                             <a href="" type="button"><img src="img/icons/social/ok.png" alt=""/></a>

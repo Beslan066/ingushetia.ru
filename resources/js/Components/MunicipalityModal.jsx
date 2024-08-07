@@ -2,8 +2,6 @@ import "../../../public/css/modal.css";
 import React from "react";
 
 export default function MunicipalityModal({ active, onClose, selectedMunicipality, baseUrl }) {
-
-    console.log(selectedMunicipality)
     return(
         <div>
             <div className="d-flex justify-content-center modal-section">

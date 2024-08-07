@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Admin\News;
+namespace App\Http\Requests\Admin\NationalProject;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -26,16 +26,11 @@ class StoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'lead' => 'required|string|max:255',
+            'lead' => 'required',
             'content' => 'required',
             'image_main' => 'required|image|mimes:jpg,jpeg,webp,png',
-            'category_id' => 'nullable',
-            'news_ing' => 'nullable',
-            'main_material' => 'nullable',
             'user_id' => 'required',
-            'agency_id' => 'required',
             'published_at' => 'required|date_format:Y-m-d\TH:i',
-            'video_id' => 'nullable',
             'reportage_id' => 'nullable',
         ];
     }
@@ -52,11 +47,7 @@ class StoreRequest extends FormRequest
             'image_main.required' => 'Необходимо выбрать изображение.',
             'image_main.image' => 'Файл должен быть изображением.',
             'image_main.mimes' => 'Изображение должно быть в формате: jpg, jpeg, webp, png.',
-            'category_id.nullable' => 'Выбор категории не обязателен.',
-            'news_ing.nullable' => 'Выбор перевода не обязателен.',
-            'main_material.nullable' => 'Это поле не обязательно для заполнения.',
             'user_id.required' => 'Ошибка при определении пользователя.',
-            'agency_id.required' => 'Ошибка при определении организации.',
             'published_at.required' => 'Укажите дату публикации.',
             'published_at.date_format' => 'Некорректный формат даты, используйте формат ГГГГ-ММ-ДДTЧЧ:ММ.',
         ];

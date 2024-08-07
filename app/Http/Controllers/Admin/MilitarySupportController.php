@@ -3,15 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\News\UpdateRequest;
-use App\Http\Requests\Admin\News\StoreRequest;
+use App\Http\Requests\Admin\MilitarySupport\UpdateRequest;
+use App\Http\Requests\Admin\MilitarySupport\StoreRequest;
 use App\Models\Agency;
-use App\Models\Category;
-use App\Models\News;
-use App\Models\PhotoReportage;
+use App\Models\MilitarySupport;
 use App\Models\User;
-use App\Models\Video;
-use Binafy\LaravelUserMonitoring\Models\VisitMonitoring;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +15,7 @@ use Inertia\Inertia;
 use PHPUnit\TextUI\Configuration\Php;
 
 
-class NewsController extends Controller
+class MilitarySupportController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,9 +24,9 @@ class NewsController extends Controller
     {
 
 
-        $news = News::with('user', 'category', 'video')->orderBy('id', 'desc')->paginate(10);
+        $supports = MilitarySupport::with('user')->orderBy('id', 'desc')->paginate(10);
 
-        return view('admin.news.index', compact('news' ));
+        return view('admin.military-support.index', compact('supports' ));
     }
 
     /**
@@ -39,13 +35,10 @@ class NewsController extends Controller
     public function create()
     {
 
-        $reportages = PhotoReportage::all();
-        $videos = Video::all();
-        $categories = Category::all();
         $authors = User::query()->where('role', 10)->get();
 
 
-        return view('admin.news.create', compact('authors', 'categories', 'videos', 'reportages'));
+        return view('admin.military-support.create', compact('authors'));
     }
 
     /**
@@ -61,13 +54,10 @@ class NewsController extends Controller
             $data['image_main'] = $path ?? null;
         }
 
-        // Обработка значения чекбокса
-        $data['main_material'] = $request->has('main_material') ? 1 : 0;
 
+        $supports = MilitarySupport::create($data);
 
-        $news = News::create($data);
-
-        return redirect()->route('admin.news.index');
+        return redirect()->route('admin.militarySupport.index');
     }
 
     /**
@@ -81,35 +71,33 @@ class NewsController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(News $news)
+    public function edit(MilitarySupport $militarySupport)
     {
 
-        $videos = Video::all();
 
-        $categories = Category::all();
         $authors = User::query()->where('role', 10)->get();
 
-        return view('admin.news.edit', compact('news', 'categories', 'authors', 'videos'));
+        return view('admin.military-support.edit', compact('militarySupport', 'authors'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequest $request, News $news)
+    public function update(UpdateRequest $request, MilitarySupport $militarySupport)
     {
         $data = $request->validated();
-        $news->update($data);
+        $militarySupport->update($data);
 
-        return redirect()->route('admin.news.index')->with('success', 'News updated successfully');
+        return redirect()->route('admin.militarySupport.index')->with('success', 'Support updated successfully');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(News $news)
+    public function destroy(MilitarySupport $militarySupport)
     {
-        $news->delete();
+        $militarySupport->delete();
 
-        return to_route('admin.news.index');
+        return to_route('admin.militarySupport.index');
     }
 }

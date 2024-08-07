@@ -1,7 +1,7 @@
 import "../../../../public/css/region.css";
 import React, { useRef, useEffect } from 'react';
 
-export default function Accordion({ title, content, id, isOpen, onClick }) {
+export default function Accordion({ title, lead, image, id, isOpen, onClick, baseUrl, content }) {
     const drawerRef = useRef(null);
 
     useEffect(() => {
@@ -14,6 +14,7 @@ export default function Accordion({ title, content, id, isOpen, onClick }) {
         }
     }, [isOpen]);
 
+
     return (
         <div>
             <div className="accordion-header" onClick={() => onClick(id)}>
@@ -25,8 +26,14 @@ export default function Accordion({ title, content, id, isOpen, onClick }) {
                 />
             </div>
             <div className="drawer" id={id} ref={drawerRef}>
-                <div className="drawer-content">
-                    {content}
+                <div className="drawer-content d-flex mb-20">
+                    <img src={`${baseUrl}/storage/${image}`} alt=""/>
+                    <div dangerouslySetInnerHTML={{__html: lead}}>
+
+                    </div>
+                </div>
+                <div className={'p-20 drawer-second-content'} dangerouslySetInnerHTML={{__html: content}}>
+
                 </div>
             </div>
         </div>
