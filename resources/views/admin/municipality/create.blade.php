@@ -42,7 +42,7 @@
 
                             <div class="form-group w-50">
                                 <label for="summernote">Контент</label>
-                                <textarea id="summernote" placeholder="Введите что-нибудь" name="content"></textarea>
+                                <textarea class="summernote" id="summernote" placeholder="Введите что-нибудь" name="content"></textarea>
                             </div>
                             @error('content')
                             <div class="text-danger">{{ $message }}</div>

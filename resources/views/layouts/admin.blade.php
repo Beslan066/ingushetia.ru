@@ -269,6 +269,7 @@
 
                     <li>
                         <a href="{{route('admin.page.index')}}" class="has-arrow waves-effect"><i class="bx bx-file"></i><span>Страницы</span></a>
+                        <a href="{{route('admin.contacts.index')}}" class="has-arrow waves-effect"><i class="bx bxs-file-find"></i><span>Контакты</span></a>
                         <ul class="sub-menu" aria-expanded="false">
                             <li><a href="pages-invoice.html">Invoice</a></li>
                             <li><a href="pages-starter.html">Starter Page</a></li>

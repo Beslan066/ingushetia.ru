@@ -6,53 +6,28 @@
         <div class="col-12">
             <div class="card">
 
-                <form action="{{route('admin.supervisors.store')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.contacts.update', $contact->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('post')
+                    @method('patch')
                     <div class="card-body">
                         <div>
                             <div class="form-group w-50">
                                 <label for="">Заголовок</label>
-                                <input class="form-control form-control-lg mb-3" type="text" placeholder="ФИО" name="name">
+                                <input class="form-control form-control-lg mb-3" type="text" placeholder="Введите заголовок" name="title" value="{{$contact->title}}">
                             </div>
                             @error('title')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
 
-
                             <div class="form-group w-50">
-                                <label for="">Должность</label>
-                                <input class="form-control form-control-lg mb-3" type="text" name="position">
-                            </div>
-                            @error('position')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
-
-                            <div class="form-group w-50">
-                                <textarea class="summernote" placeholder="Введите немного биографии" name="bio"></textarea>
+                                <textarea class="summernote" placeholder="Введите что-нибудь" name="content">
+                                    {{$contact->content}}
+                                </textarea>
                             </div>
                             @error('content')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
-
-                            <div class="row w-50">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-
-                                            <h4 class="card-title">Изображение</h4>
-                                            <input type="file" class="dropify" data-height="300" name="image_main" multiple/>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @error('image_main')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
                         </div>
-
 
                         <div class="form-group w-50">
                             <label for="exampleFormControlSelect1">Автор</label>
@@ -64,6 +39,16 @@
                         <div class="text-danger">{{ $message }}</div>
                         @enderror
 
+                        <div class="form-group w-50 mt-2">
+
+                            <select class="form-control" id="exampleFormControlSelect1" name="agency_id">
+                                <option value="{{auth()->user()->agency->id}}">{{auth()->user()->agency->name}}</option>
+                            </select>
+                        </div>
+
+                        @error('agency_id')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
 
 
                         <div class="btn-group">

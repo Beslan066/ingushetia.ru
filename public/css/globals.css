@@ -6,6 +6,14 @@
 
 }
 
+
+input {
+    outline: none !important;
+    --tw-ring-color: unset !important;
+}
+
+
+
 a {
   text-decoration: none !important;
 }
@@ -329,6 +337,10 @@ ul {
   gap: 10px;
 }
 
+.filter-items button:hover {
+    color: #07A267;
+}
+
 .filter-items button:not(:last-child) {
   margin-right: 24px;
 
@@ -354,6 +366,11 @@ main .filtered-news-item {
 
 main .filtered-news-item h4 {
   font-weight: 600;
+    cursor: pointer;
+}
+
+main .filtered-news-item h4:hover {
+    color: #07A267;
 }
 
 .filtered-news-item .news-image{
@@ -366,10 +383,17 @@ main .filtered-news-item h4 {
 
 .news-image {
   height: 200px !important;
+    cursor: pointer;
 }
 
 .news-image img {
   height: 200px !important;
+}
+
+.news-image video {
+    height: 200px !important;
+    object-fit: cover
+
 }
 
 .filtered-news-item:not(:nth-child(3n)) {
@@ -388,6 +412,11 @@ main .filtered-news-item h4 {
 .news-text h4 {
   font-size: 16px;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.news-text h4:hover {
+    color: #07A267;
 }
 
 .news-text .news-date {
@@ -428,6 +457,7 @@ main .filtered-news-item h4 {
   font-size: 24px !important;
 }
 
+
 .important-title {
   font-size: 24px;
   font-weight: 800;
@@ -464,9 +494,11 @@ main .filtered-news-item h4 {
 
 .important li a {
   color: #000;
-
 }
 
+.important li a:hover {
+    color: #07A267;
+}
 
 .ingushetia-vectors .col {
   padding-left: unset;
@@ -617,8 +649,9 @@ h3 {
 }
 
 .resource-item {
-  background-color: #DFDFDF;
+  background-color: #F6F6F6;
   max-width: 23%;
+  cursor: pointer;
 }
 
 .resource-item a {
@@ -641,6 +674,7 @@ footer {
 
 footer h3 {
   font-size: 20px;
+    color: #fff;
 }
 
 footer ul {
@@ -650,6 +684,7 @@ footer ul {
 footer li {
   list-style: none;
   font-size: 16px;
+    margin-bottom: 12px;
 }
 
 footer li a {
@@ -855,3 +890,39 @@ section.municipalities.mb-32 {
     font-weight: 600;
 }
 
+.contact-items {
+    margin-top: 40px;
+}
+
+.contact-item-title h2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 24px;
+}
+
+.contact-items {
+    margin-bottom: 24px;
+    background-color: #F6F6F6;
+    padding: 20px;
+}
+
+.contact-item > h2 h3 h4 {
+    font-size: 13px;
+    color: #6C6C6C;
+    margin-bottom: 8px;
+}
+
+.contact-item p {
+    color: #000000;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+    margin-bottom: 24px !important;
+}
+
+.contact-item span {
+    color: #000000 !important;
+    font-size: 16px!important;
+    line-height: 24px !important;
+    font-weight: 400 !important;
+}

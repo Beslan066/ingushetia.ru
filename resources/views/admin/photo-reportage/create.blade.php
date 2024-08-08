@@ -20,7 +20,7 @@
 
                             <div class="form-group w-100 d-flex align-items-center">
                                 <div class="w-50">
-                                    <textarea id="summernote" placeholder="Введите что-нибудь" name="content"></textarea>
+                                    <textarea class="summernote" placeholder="Введите что-нибудь" name="content"></textarea>
                                 </div>
 
                                 <div class="w-50 d-flex flex-column align-items-center">

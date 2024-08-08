@@ -1,23 +1,13 @@
-
-import React from 'react'
-import { useEffect } from 'react';
+import {Link} from "@inertiajs/react";
+import {format, parseISO} from "date-fns";
+import {ru} from "date-fns/locale";
 import Modal from "@/Components/Modal.jsx";
-import {usePage} from "@inertiajs/react";
-import { format, parseISO } from 'date-fns';
-import { ru } from 'date-fns/locale';
+import React from "react";
 
-export default function HomeNewsSidebar({key, title, lead, content, image, user, category, onClick, stateValue, agency, published, video, reportages}) {
+export default function LimitedPosts({key, title, lead, content, image, user, category, onClick, stateValue, agency, published, video, reportages, baseUrl}) {
 
-    const [modal,setModal] = React.useState(false);
     const formattedDate = format(parseISO(published), 'HH:mm, d MMMM', { locale: ru });
-
-    useEffect(() => {
-        if (modal) {
-            document.body.classList.add('fixed-body')
-        }else {
-            document.body.classList.remove('fixed-body')
-        }
-    })
+    const [modal,setModal] = React.useState(false);
 
 
     // Функция для очистки строки от HTML-сущностей и лишних символов
@@ -36,20 +26,19 @@ export default function HomeNewsSidebar({key, title, lead, content, image, user,
         : [];
 
     return (
-
-
-    <div className="news-item">
-            <div className="news-date d-flex">
-                <div>
-                    {formattedDate} <span
-                    className="news-category">{category}</span>
-                </div>
-                {video &&
-                    <img src="img/icons/video-icon.svg" alt=""/>
-                }
+        <div key={key} className="filtered-news-item col-4">
+            <div className="news-image" onClick={() => setModal(true)}>
+                <img src={`${baseUrl}/storage/${image}`} alt=""
+                     className="w-100 h-100"/>
             </div>
-        <h2 onClick={() => setModal(true)}>{title}</h2>
 
+            <div className="news-text">
+                <p className="news-date">
+                    {formattedDate} <span
+                    className="news-category ml-4">{category}</span>
+                </p>
+                <h4 onClick={() => setModal(true)}>{title}</h4>
+            </div>
 
             <Modal
                 title={title}
@@ -60,6 +49,5 @@ export default function HomeNewsSidebar({key, title, lead, content, image, user,
                 content={content}
                 active={modal} onClose={() => setModal(false)}/>
         </div>
-
     )
 }

@@ -34,7 +34,7 @@ export default function Slider({ mainPosts, baseUrl }) {
 
     // Автоматическое переключение слайдов каждые 6 секунд
     useEffect(() => {
-        const intervalId = setInterval(nextSlide, 6000);
+        const intervalId = setInterval(nextSlide, 8000);
         return () => clearInterval(intervalId);
     }, []);
 

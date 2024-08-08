@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewsController;
+use App\Http\Controllers\Frontend\RegionController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -10,6 +11,13 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/national-projects', [HomeController::class, 'nationalProjects'])->name('natProjects');
 Route::get('/support-svo', [HomeController::class, 'svoSupport'])->name('svoSupport');
+Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
+
+
+Route::get('/region', [RegionController::class, 'index'])->name('region');
+Route::get('/economic', [RegionController::class, 'economic'])->name('economic');
+Route::get('/municipalities', [RegionController::class, 'municipality'])->name('municipality');
+Route::get('/history', [RegionController::class, 'history'])->name('history');
 
 Route::get('/region', function () {
     return Inertia::render('Region/Region');
@@ -110,6 +118,16 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
         Route::get('/pages/{page}/edit', [App\Http\Controllers\Admin\PageController::class, 'edit'])->name('admin.page.edit');
         Route::patch('/pages/{page}', [App\Http\Controllers\Admin\PageController::class, 'update'])->name('admin.page.update');
         Route::delete('/pages/{page}', [App\Http\Controllers\Admin\PageController::class, 'destroy'])->name('admin.page.delete');
+
+    });
+
+    Route::group(['namespace' => 'Contact', 'prefix' => 'admin'], function () {
+        Route::get('/contacts', [App\Http\Controllers\Admin\ContactController::class, 'index'])->name('admin.contacts.index');
+        Route::get('/contacts/create', [App\Http\Controllers\Admin\ContactController::class, 'create'])->name('admin.contacts.create');
+        Route::post('/contacts/store', [App\Http\Controllers\Admin\ContactController::class, 'store'])->name('admin.contacts.store');
+        Route::get('/contacts/{contact}/edit', [App\Http\Controllers\Admin\ContactController::class, 'edit'])->name('admin.contacts.edit');
+        Route::patch('/contacts/{contact}', [App\Http\Controllers\Admin\ContactController::class, 'update'])->name('admin.contacts.update');
+        Route::delete('/contacts/{contact}', [App\Http\Controllers\Admin\ContactController::class, 'destroy'])->name('admin.contacts.delete');
 
     });
 

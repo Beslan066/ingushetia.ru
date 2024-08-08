@@ -23,7 +23,7 @@
                             </div>
 
                             <div class="form-group w-50">
-                                <textarea id="summernote" placeholder="Введите что-нибудь" name="content"></textarea>
+                                <textarea class="summernote" placeholder="Введите что-нибудь" name="content"></textarea>
                             </div>
 
                             <div class="row w-50">

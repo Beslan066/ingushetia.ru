@@ -11,10 +11,15 @@ import MailIcon from "@/Components/Home/MailIcon.jsx";
 import VideoPlayer from "@/Components/Home/VideoPlayer.jsx";
 import Municipality from "@/Components/Home/Municipality.jsx";
 import PhotoReportageItem from "@/Components/Home/PhotoReportageItem.jsx";
+import SupportModal from "@/Components/SupportModal.jsx";
+import LimitedPosts from "@/Components/Home/LimitedPosts.jsx";
 export default function Welcome() {
 
 
     let {posts, categories, mainPosts, resources, photoReportages, videos, cities, districts, search, setSearch} = usePage().props;
+
+
+
 
 // Состояние для выбранной категории
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -83,28 +88,26 @@ export default function Welcome() {
 
                                     <div className="d-flex flex-wrap">
                                     {limitedPosts.map((post) => (
-                                            <div key={post.id} className="filtered-news-item col-4">
-                                                <div className="news-image">
-                                                    <img src={`${baseUrl}/storage/${post.image_main}`} alt=""
-                                                         className="w-100 h-100"/>
-                                                </div>
-
-                                                <div className="news-text">
-                                                    <p className="news-date">
-                                                        {formatDate(post.published_at)} <span
-                                                        className="news-category ml-4">{post.category.title}</span>
-                                                    </p>
-                                                    <Link href={post.link}>
-                                                        <h4>{post.title}</h4>
-                                                    </Link>
-                                                </div>
-                                            </div>
+                                        <LimitedPosts
+                                            key={post.id}
+                                            title={post.title}
+                                            video={post.video}
+                                            reportages={post.reportage}
+                                            image={post.image_main}
+                                            lead={post.lead}
+                                            content={post.content}
+                                            user={post.user}
+                                            agency={post.agency}
+                                            category={post.category.title}
+                                            published={post.published_at}
+                                            baseUrl={baseUrl}
+                                        />
                                         ))}
                                     </div>
 
                                     <div className="more-news">
                                         <Link href={route('news.index')} className={'d-flex'}>
-                                            <span>Больше новостей по этой теме</span>
+                                            <span>Больше новостей</span>
                                             <img src="img/icons/longarrow.svg" alt="" className={'pl-3'}/>
                                         </Link>
                                     </div>
@@ -480,7 +483,6 @@ export default function Welcome() {
                 </section>
 
             </div>
-
 
         </Guest>
     );

@@ -21,6 +21,7 @@ export default function Municipality({ cities, district, baseUrl }) {
         setSelectedMunicipality(district);
     };
 
+
     const [regionModal,setRegionModal] = React.useState(false);
 
     return (
@@ -99,11 +100,21 @@ export default function Municipality({ cities, district, baseUrl }) {
                     </div>
                 </div>
             </div>
-            <MunicipalityModal active={regionModal}
-                               onClose={() => setRegionModal(false)}
-                               selectedMunicipality={selectedMunicipality}
-                               baseUrl={baseUrl}
-            />
+            {selectedMunicipality &&
+                <MunicipalityModal active={regionModal}
+                                   onClose={() => setRegionModal(false)}
+                                   title={selectedMunicipality.title}
+                                   arms={selectedMunicipality.arms}
+                                   content={selectedMunicipality.content}
+                                   square={selectedMunicipality.square}
+                                   year={selectedMunicipality.year}
+                                   population={selectedMunicipality.population}
+                                   supervisorName={selectedMunicipality.supervisor.name}
+                                   supervisorImage={selectedMunicipality.supervisor.image_main}
+                                   supervisorBio={selectedMunicipality.supervisor.bio}
+                                   baseUrl={baseUrl}
+                />
+            }
 
         </section>
     );

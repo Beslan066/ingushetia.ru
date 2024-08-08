@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Contact;
 use App\Models\MilitarySupport;
 use App\Models\Municipality;
 use App\Models\NationalProject;
@@ -70,6 +71,15 @@ class HomeController extends Controller
 
         return Inertia::render('Home/SVOSupport', [
             'supports' => $supports
+        ]);
+    }
+
+    public function contacts()
+    {
+
+        $contacts = Contact::all();
+        return Inertia::render('Contacts', [
+            'contacts' => $contacts
         ]);
     }
 }

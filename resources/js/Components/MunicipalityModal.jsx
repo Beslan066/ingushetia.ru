@@ -1,7 +1,7 @@
 import "../../../public/css/modal.css";
 import React from "react";
 
-export default function MunicipalityModal({ active, onClose, selectedMunicipality, baseUrl }) {
+export default function MunicipalityModal({ active, onClose, title, baseUrl, content, arms, year, square, population, supervisorBio, supervisorName, supervisorImage }) {
     return(
         <div>
             <div className="d-flex justify-content-center modal-section">
@@ -24,18 +24,18 @@ export default function MunicipalityModal({ active, onClose, selectedMunicipalit
                     </div>
 
 
-                    {selectedMunicipality &&
+                    {title &&
                         <div className="city-body d-flex flex-column">
                         <div className="city-title mb-40">
-                            <h3>{selectedMunicipality.title}</h3>
+                            <h3>{title}</h3>
                         </div>
                         <div className="d-flex aligh-items-center mb-40 w-100">
                             <div className="city-logo">
-                                <img src={`${baseUrl}/storage/${selectedMunicipality.arms}`} alt="Герб города Магас" />
+                                <img src={`${baseUrl}/storage/${arms}`} alt="Герб города Магас" />
                             </div>
 
                                 <div className="city-bio pl-32"
-                                     dangerouslySetInnerHTML={{__html: selectedMunicipality.content}}>
+                                     dangerouslySetInnerHTML={{__html: content}}>
 
                                 </div>
 
@@ -44,27 +44,27 @@ export default function MunicipalityModal({ active, onClose, selectedMunicipalit
 
                         <div className="city-stat d-flex aligh-items-center justify-content-between">
                             <div className="stat-item">
-                                <p>{selectedMunicipality.square}</p>
+                                <p>{square}</p>
                                 <span>Площадь</span>
                             </div>
                             <div className="stat-item">
-                                <p>{selectedMunicipality.year} г.</p>
+                                <p>{year} г.</p>
                                 <span>Основан</span>
                             </div>
                             <div className="stat-item">
-                                <p>{selectedMunicipality.population} чел.</p>
+                                <p>{population} чел.</p>
                                 <span>Население</span>
                             </div>
                         </div>
 
                         <div className="city-head d-flex mb-32">
                             <div className="head-person-image">
-                                <img src={`${baseUrl}/storage/${selectedMunicipality.supervisor.image_main}`} alt=""/>
+                                <img src={`${baseUrl}/storage/${supervisorImage}`} alt=""/>
                             </div>
                             <div className="head-person-info d-flex flex-column">
-                                <h3>{selectedMunicipality.supervisor.name}</h3>
+                                <h3>{supervisorName}</h3>
                                 <span>Глава г.Магас</span>
-                                <div className={'head-bio'} dangerouslySetInnerHTML={{__html: selectedMunicipality.supervisor.bio}}>
+                                <div className={'head-bio'} dangerouslySetInnerHTML={{__html: supervisorBio}}>
 
                                 </div>
                             </div>
@@ -85,32 +85,7 @@ export default function MunicipalityModal({ active, onClose, selectedMunicipalit
                     </div>
 
 
-                    {selectedMunicipality &&
-                        <div className="city-contacts">
-                            <h4>Контакты администрации</h4>
-                            {selectedMunicipality.phone_number &&
-                                <p>Телефон: <a
-                                    href={`tel:${selectedMunicipality.phone_number}`}>{selectedMunicipality.phone_number}</a>
-                                </p>
-                            }
 
-                            {selectedMunicipality.fax_number &&
-                                <p>Факс: <a
-                                    href={`tel:${selectedMunicipality.fax_number}`}>{selectedMunicipality.fax_number}</a>
-                                </p>
-                            }
-
-                            {selectedMunicipality.email &&
-                                <p>Эл. почта: <a
-                                    href={`mailto:${selectedMunicipality.email}`}>{selectedMunicipality.email}</a></p>
-                            }
-
-                            {selectedMunicipality.address &&
-                                <p>Адрес: {selectedMunicipality.address}</p>
-                            }
-                        </div>
-
-                    }
 
                 </div>
             </div>
