@@ -1,13 +1,12 @@
-"use client";
+import React, { useEffect } from "react";
 import { Link } from '@inertiajs/react';
 import 'bootstrap/dist/css/bootstrap.css';
 import "../../../public/css/globals.css";
 import "../../../public/css/region.css";
 import Search from "@/Components/Home/Search.jsx";
-import React from "react";
 import SupportButton from "@/Components/SupportButton.jsx";
 import SupportModal from "@/Components/SupportModal.jsx";
-import {useEffect} from "react";
+import Rightbar from "@/Components/Rightbar.jsx";
 
 export default function Guest({ children }) {
     const [search, setSearch] = React.useState(false);
@@ -22,13 +21,15 @@ export default function Guest({ children }) {
         setRightBar(prevRightBar => !prevRightBar);
     };
 
+
     useEffect(() => {
         if (rightBar) {
             document.body.classList.add('rightbar-open');
         } else {
             document.body.classList.remove('rightbar-open');
-        }
+            setRightBar(false); }
     }, [rightBar]);
+
 
     return (
         <div className={'position-relative'}>
@@ -67,7 +68,7 @@ export default function Guest({ children }) {
 
                                 <li className="menu-icons">
                                     <button style={{border: 'none'}} onClick={handleRightBarToggle}>
-                                    <img src={`img/icons/${rightBar ? 'Close' : 'burger'}.svg`} alt="Menu"/>
+                                        <img src={`img/icons/${rightBar ? 'Close' : 'burger'}.svg`} alt="Menu"/>
                                     </button>
                                 </li>
                             </div>
@@ -76,40 +77,7 @@ export default function Guest({ children }) {
                 </div>
             </header>
 
-            <div className={`rightbar ${rightBar ? 'open' : ''}`}>
-                <div className="container d-flex justify-content-end">
-                    <div className="right-menu">
-                        <ul>
-                            <Link>
-                                <li>
-                                    Резерв управленческих кадров
-                                </li>
-                            </Link>
-                            <Link>
-                                <li>
-                                    Конкурсы в органах исполнительной власти
-                                </li>
-                            </Link>
-                            <Link>
-                                <li>
-                                    Противодействие коррупции
-                                </li>
-                            </Link>
-                            <Link>
-                                <li>
-                                    Антинаркотическая комиссия
-                                </li>
-                            </Link>
-                            <Link>
-                                <li>
-                                    Поддержка семей военнослужащих
-                                </li>
-                            </Link>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
+            <Rightbar rightBar={rightBar}/>
 
             <Search search={search}/>
             {children}
@@ -120,7 +88,7 @@ export default function Guest({ children }) {
                         {/* ваш код */}
                     </div>
 
-                    <div className="d-flex aligh-items-center justify-content-between">
+                    <div className="d-flex align-items-center justify-content-between">
                         <div className="logo d-flex align-items-center">
                             <img src="img/logo.svg" alt="" className="mr-12"/>
                             <div>
@@ -139,3 +107,4 @@ export default function Guest({ children }) {
         </div>
     );
 }
+

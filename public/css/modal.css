@@ -328,5 +328,4 @@ header .rightbar.open {
 }
 body.rightbar-open {
     overflow: hidden; /* Отключаем скроллинг на всей странице */
-    margin-right: 15px;
 }
