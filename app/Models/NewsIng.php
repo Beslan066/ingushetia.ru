@@ -20,6 +20,7 @@ class NewsIng extends Model
         'published_at',
         'user_id',
     ];
+    protected $dates = ['deleted_at'];
 
     public  function category() {
         return $this->belongsTo(Category::class, 'category_id', 'id');

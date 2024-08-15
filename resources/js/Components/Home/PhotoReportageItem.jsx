@@ -13,7 +13,7 @@ export default function PhotoReportageItem({reportage, baseUrl, formatDate}) {
                 <div
                     className="news-image position-relative d-flex flex-column align-items-center" onClick={() => setPhotoGalleryModal(true)}>
                     <img src={`${baseUrl}/storage/${reportage.image_main}`} alt={reportage.title}
-                         className="w-100 h-100" style={{objectFit: 'cover'}}/>
+                         className="w-100 h-100 clean-image" style={{objectFit: 'cover'}}/>
                     <div className={'position-absolute gallery-icon'}>
                         <img src="img/icons/gallery.svg" alt=""/>
                     </div>

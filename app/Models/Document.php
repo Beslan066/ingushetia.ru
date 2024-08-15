@@ -9,8 +9,7 @@ class Document extends Model
 {
     use HasFactory;
 
-
-
+    protected $dates = ['deleted_at'];
     public static function getTypes() {
 
         return [

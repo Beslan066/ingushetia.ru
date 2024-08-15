@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
 
         $categories = Category::query()->take(10)->get();
-        $resources = Resource::query()->take(4)->get();
+        $resources = Resource::query()->where('agency_id', 5)->take(4)->get();
         $photoReportages = PhotoReportage::query()->take(4)->orderBy('published_at', 'desc')->get();
         $videos = Video::query()->take(4)->orderBy('published_at', 'desc')->get();
 
@@ -32,6 +32,7 @@ class HomeController extends Controller
         $mainPosts = News::query()
             ->with('category')
             ->where('main_material', 1)
+            ->where('agency_id', 5)
             ->orderBy('published_at', 'desc')
             ->take(10)
             ->get();
@@ -39,6 +40,7 @@ class HomeController extends Controller
         $posts = News::query()
             ->with('category', 'video', 'reportage')
             ->where('main_material', 0)
+            ->where('agency_id', 5)
             ->take(6)
             ->orderBy('published_at', 'desc')
             ->get();

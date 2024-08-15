@@ -28,6 +28,8 @@ class News extends Model
         'video_id',
     ];
 
+    protected $dates = ['deleted_at'];
+
     public function translate()
     {
         return $this->belongsTo(NewsIng::class, 'translate_id', 'id');

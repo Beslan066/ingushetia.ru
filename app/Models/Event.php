@@ -9,6 +9,8 @@ class Event extends Model
 {
     use HasFactory;
 
+    protected $dates = ['deleted_at'];
+
     protected $fillable = [
         'id',
         'title',

@@ -16,6 +16,7 @@ class Supervisor extends Model
         'position',
         'user_id'
     ];
+    protected $dates = ['deleted_at'];
 
     public  function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');

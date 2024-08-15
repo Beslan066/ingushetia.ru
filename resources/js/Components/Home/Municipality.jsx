@@ -32,7 +32,7 @@ export default function Municipality({ cities, district, baseUrl }) {
                     <div onClick={() => setRegionModal(true)} className="municipality-image col-xxl-9 position-relative">
                         {selectedMunicipality && (
                             <>
-                                <img className="w-100 h-100"
+                                <img className="w-100 h-100 clean-image"
                                      src={`${baseUrl}/storage/${selectedMunicipality.image_main}`}
                                      alt={selectedMunicipality.title}/>
                                 <div

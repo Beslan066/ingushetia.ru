@@ -15,12 +15,14 @@ class NewsController extends Controller {
         $mainPosts = News::query()
             ->with('category')
             ->where('main_material', 1)
+            ->where('agency_id', 5)
             ->take(10)
             ->get();
         $categories = Category::query()->take(10)->get();
 
         $news = News::query()
             ->with('category')
+            ->where('agency_id', 5)
             ->orderBy('id', 'desc')
             ->get();
 

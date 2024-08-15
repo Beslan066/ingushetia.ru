@@ -11,8 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('photo_reportages', function (Blueprint $table) {
-            $table->json('slides')->nullable();
+        Schema::table('agencies', function (Blueprint $table) {
+            $table->string('full_title');
+            $table->string('logo');
         });
     }
 
@@ -21,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('photo_reportages', function (Blueprint $table) {
-            $table->dropColumn('slides');
+        Schema::table('agencies', function (Blueprint $table) {
+            Schema::dropColumns('agencies', 'full_title, logo');
         });
     }
 };

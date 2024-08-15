@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class MilitarySupport extends Model
 {
     use HasFactory;
+    protected $dates = ['deleted_at'];
 
     protected $fillable = [
       'title',

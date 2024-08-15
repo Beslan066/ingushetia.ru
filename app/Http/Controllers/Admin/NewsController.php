@@ -27,10 +27,12 @@ class NewsController extends Controller
     public function index()
     {
 
+        $authUser = Auth::user()->agency_id;
 
         $news = News::with('user', 'category', 'video')->orderBy('id', 'desc')->paginate(10);
+        $agencyNews = News::query()->where('agency_id', $authUser)->get();
 
-        return view('admin.news.index', compact('news' ));
+        return view('admin.news.index', compact('news', 'agencyNews' ));
     }
 
     /**

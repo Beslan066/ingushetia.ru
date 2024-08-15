@@ -13,6 +13,7 @@ class Municipality extends Model
     const TYPE_DISTRICT = 20;
 
 
+    protected $dates = ['deleted_at'];
 
     public static function getTypes() {
 

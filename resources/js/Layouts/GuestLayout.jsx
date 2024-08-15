@@ -7,7 +7,7 @@ import Search from "@/Components/Home/Search.jsx";
 import SupportButton from "@/Components/SupportButton.jsx";
 import SupportModal from "@/Components/SupportModal.jsx";
 import Rightbar from "@/Components/Rightbar.jsx";
-
+import Logo100 from "@/Components/Logo100.jsx";
 export default function Guest({ children }) {
     const [search, setSearch] = React.useState(false);
     const [supportModal, setSupportModal] = React.useState(false);
@@ -36,7 +36,7 @@ export default function Guest({ children }) {
             <header className={`fixed-header`}>
                 <div className="container p-16 d-flex justify-content-between align-items-center">
                     <div className="logo d-flex align-items-center">
-                        <img src="img/logo.svg" alt="" className="mr-12"/>
+                        <img src="img/logo100.svg" alt=""/>
                         <Link href={'/'}>
                             <div>
                                 <h1 className="main-title">Республика Ингушетия</h1>
@@ -54,6 +54,7 @@ export default function Guest({ children }) {
                                     <li><Link href="">Глава Республики</Link></li>
                                     <li><Link href="/pravitelstvo">Правительство</Link></li>
                                     <li><Link href="">Федеральные органы власти</Link></li>
+                                    <li><Link href={route('agencies.index')}>Министерства</Link></li>
                                 </ul>
                             </li>
                             <li><Link href="">Медиа</Link></li>

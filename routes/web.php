@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\AgencyController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\RegionController;
@@ -18,6 +19,9 @@ Route::get('/region', [RegionController::class, 'index'])->name('region');
 Route::get('/economic', [RegionController::class, 'economic'])->name('economic');
 Route::get('/municipalities', [RegionController::class, 'municipality'])->name('municipality');
 Route::get('/history', [RegionController::class, 'history'])->name('history');
+
+Route::get('/agencies', [AgencyController::class, 'index'])->name('agencies.index');
+Route::get('/agencies/{agency}', [AgencyController::class, 'singleAgency'])->name('agencies.single');
 
 Route::get('/region', function () {
     return Inertia::render('Region/Region');
@@ -43,7 +47,7 @@ Route::get('/sostav-pravitelstva', function () {
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
 
-Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
+Route::group(['namespace' => 'Admin', 'middleware' => \App\Http\Middleware\Admin::class], function () {
     Route::get('/admin', [\App\Http\Controllers\Admin\IndexController::class, 'index'])->middleware(['auth', 'verified'])->name('admin');
 
 
@@ -193,6 +197,17 @@ Route::group(['namespace' => 'Admin', 'middleware' => 'auth'], function () {
         Route::get('/agencies/{agency}/edit', [App\Http\Controllers\Admin\AgencyController::class, 'edit'])->name('admin.agencies.edit');
         Route::patch('/agencies/{agency}', [App\Http\Controllers\Admin\AgencyController::class, 'update'])->name('admin.agencies.update');
         Route::delete('/agencies/{agency}', [App\Http\Controllers\Admin\AgencyController::class, 'destroy'])->name('admin.agencies.delete');
+
+    });
+
+    Route::group(['namespace' => 'AgencyActivity', 'prefix' => 'admin'], function () {
+        Route::get('/agencies-activity', [App\Http\Controllers\Admin\AgencyActivityController::class, 'index'])->name('admin.agenciesActivity.index');
+
+        Route::get('/agencies-activity/create', [App\Http\Controllers\Admin\AgencyActivityController::class, 'create'])->name('admin.agenciesActivity.create');
+        Route::post('/agencies-activity/store', [App\Http\Controllers\Admin\AgencyActivityController::class, 'store'])->name('admin.agenciesActivity.store');
+        Route::get('/agencies-activity/{agencyActivity}/edit', [App\Http\Controllers\Admin\AgencyActivityController::class, 'edit'])->name('admin.agenciesActivity.edit');
+        Route::patch('/agencies-activity/{agencyActivity}', [App\Http\Controllers\Admin\AgencyActivityController::class, 'update'])->name('admin.agenciesActivity.update');
+        Route::delete('/agencies-activity/{agencyActivity}', [App\Http\Controllers\Admin\AgencyActivityController::class, 'destroy'])->name('admin.agenciesActivity.delete');
 
     });
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\User\StoreRequest;
 use App\Http\Requests\Admin\User\UpdateRequest;
+use App\Models\Agency;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -19,10 +20,9 @@ class UserController extends Controller
     public function index()
     {
 
-
-        return Inertia::render('Admin/User/Index', [
-            'users' => User::orderBy('id', 'desc')->paginate(10)
-        ]);
+        return view('admin.user.index', [
+            'users' => User::orderBy('id', 'desc')->paginate(10),
+            ]);
     }
 
     /**
@@ -31,9 +31,11 @@ class UserController extends Controller
     public function create()
     {
 
+        $agencies = Agency::all();
         $roles = User::getRoles();
-        return Inertia::render('Admin/User/Create', [
-            'roles' =>$roles
+        return view('admin.user.create', [
+            'roles' => $roles,
+            'agencies' => $agencies
         ]);
     }
 
@@ -42,23 +44,18 @@ class UserController extends Controller
      */
     public function store(StoreRequest $request)
     {
-        $data = $request->validated();
-        $data['password'] = Hash::make($data['password']);
 
+        $data = $request->validated();
+
+        $data['password'] = Hash::make($data['password']);
 
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
-
-            $data['avatar'] = Storage::put('avatars', $data['avatar']);
+            $data['avatar'] = Storage::put('avatars', $avatar);
             $data['avatar'] = str_replace('avatars/', '', $data['avatar']);
         }
 
-
-        dd($data);
-        $users = User::firstOrCreate(['email' => $data['email']],$data);
-
-        $users->save();
-
+        User::create($data);
 
         return to_route('admin.users.index');
     }
@@ -68,16 +65,18 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User  $user)
+    public function edit(User $user)
     {
-        return Inertia::render('Admin/User/Edit', [
-            'category' => $user
+        $roles = User::getRoles();
+
+        return view('admin.user.edit', [
+            'roles' => $roles,
+            'user' => $user
         ]);
     }
 
@@ -88,6 +87,23 @@ class UserController extends Controller
     {
         $data = $request->validated();
 
+        if ($request->filled('password')) {
+            $data['password'] = Hash::make($request->password);
+        } else {
+            unset($data['password']);
+        }
+
+        if ($request->hasFile('avatar')) {
+
+            // Удаляем старый аватар, если новый загружается
+            if ($user->avatar) {
+                Storage::delete('avatars/' . $user->avatar);
+            }
+
+            $avatar = $request->file('avatar');
+            $data['avatar'] = Storage::put('avatars', $avatar);
+            $data['avatar'] = str_replace('avatars/', '', $data['avatar']);
+        }
 
         $user->update($data);
 
@@ -99,6 +115,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if ($user->avatar) {
+            Storage::delete('avatars/' . $user->avatar);
+        }
+
         $user->delete();
 
         return to_route('admin.users.index');

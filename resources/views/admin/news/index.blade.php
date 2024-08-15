@@ -35,37 +35,73 @@
 
                                     <tbody>
 
-                                    @if(isset($news))
-                                        @foreach($news as $item)
-                                            <tr role="row" class="odd">
-                                                <td class="" tabindex="0">{{$item->id}}</td>
-                                                <td class="" tabindex="0">{{mb_substr($item->title, 0, 80)}}</td>
-                                                <td>{{$item->user->name}}</td>
-                                                <td class="">{{$item->category->title}}</td>
-                                                <td class="">
-                                                    @if($item->video)
-                                                        Есть
-                                                    @else
-                                                        Нет
-                                                    @endif
-                                                </td>
-                                                <td style="display: none;">Нет</td>
-                                                <td class="sorting_1">{{$item->published_at}}</td>
-                                                <td style="">
-                                                    <div class="btn-group">
-                                                        <button type="button" class="btn btn-outline-success waves-effect waves-light">Перевод</button>
-                                                        <a href="{{route('admin.news.edit', $item->id)}}" class="btn btn-outline-primary waves-effect waves-light">Редактировать</a>
-                                                        <form action="{{route('admin.news.delete', $item->id)}}" method="post">
-                                                            @csrf
-                                                            @method('delete')
-                                                            <button type="submit" class="btn btn-outline-danger waves-effect waves-light">Удалить</button>
-                                                        </form>
+                                    @if(auth()->user()->role == 10)
+                                        @if(isset($news))
+                                            @foreach($news as $item)
+                                                <tr role="row" class="odd">
+                                                    <td class="" tabindex="0">{{$item->id}}</td>
+                                                    <td class="" tabindex="0">{{mb_substr($item->title, 0, 80)}}</td>
+                                                    <td>{{$item->user->name}}</td>
+                                                    <td class="">{{$item->category->title}}</td>
+                                                    <td class="">
+                                                        @if($item->video)
+                                                            Есть
+                                                        @else
+                                                            Нет
+                                                        @endif
+                                                    </td>
+                                                    <td style="display: none;">Нет</td>
+                                                    <td class="sorting_1">{{$item->published_at}}</td>
+                                                    <td style="">
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-outline-success waves-effect waves-light">Перевод</button>
+                                                            <a href="{{route('admin.news.edit', $item->id)}}" class="btn btn-outline-primary waves-effect waves-light">Редактировать</a>
+                                                            <form action="{{route('admin.news.delete', $item->id)}}" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" class="btn btn-outline-danger waves-effect waves-light">Удалить</button>
+                                                            </form>
 
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
+                                    @else
+                                        @if(isset($agencyNews))
+                                            @foreach($agencyNews as $item)
+                                                <tr role="row" class="odd">
+                                                    <td class="" tabindex="0">{{$item->id}}</td>
+                                                    <td class="" tabindex="0">{{mb_substr($item->title, 0, 80)}}</td>
+                                                    <td>{{$item->user->name}}</td>
+                                                    <td class="">{{$item->category->title}}</td>
+                                                    <td class="">
+                                                        @if($item->video)
+                                                            Есть
+                                                        @else
+                                                            Нет
+                                                        @endif
+                                                    </td>
+                                                    <td style="display: none;">Нет</td>
+                                                    <td class="sorting_1">{{$item->published_at}}</td>
+                                                    <td style="">
+                                                        <div class="btn-group">
+                                                            <button type="button" class="btn btn-outline-success waves-effect waves-light">Перевод</button>
+                                                            <a href="{{route('admin.news.edit', $item->id)}}" class="btn btn-outline-primary waves-effect waves-light">Редактировать</a>
+                                                            <form action="{{route('admin.news.delete', $item->id)}}" method="post">
+                                                                @csrf
+                                                                @method('delete')
+                                                                <button type="submit" class="btn btn-outline-danger waves-effect waves-light">Удалить</button>
+                                                            </form>
+
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @endif
                                     @endif
+
+
                                     </tbody>
                                 </table></div></div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="selection-datatable_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="selection-datatable_paginate"><ul class="pagination pagination-rounded"><li class="paginate_button page-item previous disabled" id="selection-datatable_previous"><a href="#" aria-controls="selection-datatable" data-dt-idx="0" tabindex="0" class="page-link"><i class="mdi mdi-chevron-left"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="selection-datatable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="selection-datatable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="selection-datatable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="selection-datatable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="selection-datatable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item "><a href="#" aria-controls="selection-datatable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li><li class="paginate_button page-item next" id="selection-datatable_next"><a href="#" aria-controls="selection-datatable" data-dt-idx="7" tabindex="0" class="page-link"><i class="mdi mdi-chevron-right"></i></a></li></ul></div></div></div></div>
 

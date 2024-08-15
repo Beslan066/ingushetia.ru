@@ -24,9 +24,11 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required|string',
             'email' => 'required| string|email|unique:users',
+            'agency_id' => 'nullable',
             'role' => 'required| integer',
-            'avatar' => 'required|image|mimes:jpg,jpeg,webp,png',
+            'avatar' => 'nullable|image|mimes:jpg,jpeg,webp,png',
             'password' => 'required',
+            'password_confirmation' => 'nullable',
         ];
     }
 }

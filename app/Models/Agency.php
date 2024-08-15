@@ -12,5 +12,14 @@ class Agency extends Model
     protected $fillable = [
         'id',
         'name',
+        'supervisor_id',
+        'supervisor_type',
+        'logo',
+        'full_title',
     ];
+    protected $dates = ['deleted_at'];
+
+    public  function supervisor() {
+        return $this->belongsTo(Supervisor::class, 'supervisor_id', 'id');
+    }
 }

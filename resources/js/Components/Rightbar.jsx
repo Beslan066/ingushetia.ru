@@ -3,7 +3,7 @@ import {Link} from "@inertiajs/react";
 export default function Rightbar({rightBar}) {
     return (
         <div className={`rightbar ${rightBar ? 'open' : ''}`}>
-            <div className="container d-flex justify-content-end">
+            <div className=" d-flex justify-content-end">
                 <div className="right-menu">
                     <ul>
                         <Link>

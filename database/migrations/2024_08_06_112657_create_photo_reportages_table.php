@@ -11,10 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('photo_reportages', function (Blueprint $table) {
+        Schema::create('photo_reportages', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');
+            $table->string('lead')->nullable();
+            $table->string('image_main');
+            $table->json('slides')->nullable();
+            $table->foreignId('news_id')->nullable()->constrained();
+            $table->dateTime('published_at');
             $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('agency_id')->nullable()->constrained();
-            $table->dateTime('published_at')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -23,8 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('photo_reportages', function (Blueprint $table) {
-            Schema::dropColumns('user_id', 'agency_id');
-        });
+        Schema::dropIfExists('photo_reportages');
     }
 };

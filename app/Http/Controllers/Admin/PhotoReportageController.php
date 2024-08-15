@@ -74,7 +74,7 @@ class PhotoReportageController extends Controller
         $news = PhotoReportage::create([
             'title' => $request->title,
             'user_id' => $request->user_id,
-            'content' => $request->content,
+            'lead' => $request->lead,
             'agency_id' => $request->agency_id,
             'published_at' => $request->published_at,
             'image_main' => $data['image_main'],

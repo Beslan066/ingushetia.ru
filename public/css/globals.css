@@ -135,11 +135,22 @@ body {
   overflow-y: scroll
 }
 
+.top-header {
+    background-color: #484848;
+}
+
 header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: #F6F6F6;
+}
+.logo {
+    height: 40px;
+}
+
+.logo img {
+    height: 100%;
 }
 
 .logo a{
@@ -150,7 +161,6 @@ header {
   list-style: none;
 
 }
-
 .menu-icons button {
   background-color: transparent;
   border: none;
@@ -390,6 +400,11 @@ main .filtered-news-item h4:hover {
   height: 200px !important;
 }
 
+.clean-image {
+    object-fit: cover;
+
+}
+
 .news-image video {
     height: 200px !important;
     object-fit: cover
@@ -597,9 +612,6 @@ h3 {
   cursor: pointer;
 }
 
-
-
-
 .municipality-city li.active {
   background-color: #DFDFDF;
 }
@@ -631,7 +643,8 @@ h3 {
 }
 
 .document-item:hover {
-    background-color: #B3B3B3;
+    background-color: #DFDFDF;
+    transition: 0.3s;
     cursor: pointer;
     animation: slideUp ease-out;
 
@@ -652,6 +665,11 @@ h3 {
   background-color: #F6F6F6;
   max-width: 23%;
   cursor: pointer;
+}
+
+.resource-item:hover {
+    background-color: #DFDFDF;
+    transition: 0.3s;
 }
 
 .resource-item a {
@@ -714,7 +732,7 @@ section.municipalities.mb-32 {
 }
 
 .home-media .news-text {
-    min-height: 105px;
+    height: 130px;
 }
 
 .home-media .news-image {
@@ -925,4 +943,70 @@ section.municipalities.mb-32 {
     font-size: 16px!important;
     line-height: 24px !important;
     font-weight: 400 !important;
+}
+
+.year-banner {
+    background: linear-gradient(to right, #D6F7EB 88%, #20D792 88%);
+    height: 180px;
+
+}
+
+.year-banner .container {
+    padding: 20px 112px 20px 112px;
+    height: 180px;
+}
+
+.agency-items {
+    margin-bottom: 80px;
+}
+
+.agency-items ul{
+    padding: unset !important;
+}
+
+.agency-item {
+    background-color:#F6F6F6;
+    padding: 20px 24px 20px 24px;
+    margin-bottom: 20px;
+}
+
+.agency-item h3 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+    color: #000 !important;
+}
+
+.agency-item span {
+    font-size: 13px;
+    color: #07A267;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.activities {
+    margin-bottom: 48px;
+}
+
+.activities ul {
+    padding: unset !important;
+}
+
+.activities li {
+    background-color: #F6F6F6;
+    padding: 12px 20px 12px 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.activities li:hover {
+    background-color: #DFDFDF;
+    transition: 0.3s;
+}
+
+.activity-item h4 {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
+    color: #000;
 }

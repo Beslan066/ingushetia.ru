@@ -282,7 +282,7 @@ input {
 }
 
 .right-menu {
-    max-width: 300px; /* Ширина самого меню */
+    max-width: 500px; /* Ширина самого меню */
     padding: 32px 20px 32px 20px;
     background-color: #fff;
     height: 100vh; /* Меню занимает всю высоту rightbar */
@@ -328,4 +328,5 @@ header .rightbar.open {
 }
 body.rightbar-open {
     overflow: hidden; /* Отключаем скроллинг на всей странице */
+    margin-right: 15px;
 }

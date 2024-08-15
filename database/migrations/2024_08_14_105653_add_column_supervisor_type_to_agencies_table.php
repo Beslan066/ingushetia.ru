@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('photo_reportages', function (Blueprint $table) {
-            $table->foreignId('news_id')->nullable()->constrained();
+        Schema::table('agencies', function (Blueprint $table) {
+            $table->string('supervisor_type')->nullable();
         });
     }
 
@@ -21,8 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('photo_reportages', function (Blueprint $table) {
-            Schema::dropColumn('news_id');
+        Schema::table('agencies', function (Blueprint $table) {
+            Schema::dropColumn('supervisor_type');
         });
     }
 };

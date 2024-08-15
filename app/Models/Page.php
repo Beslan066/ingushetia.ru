@@ -11,6 +11,8 @@ class Page extends Model
     use HasFactory;
     protected $fillable = ['title', 'url', 'content', 'user_id', 'agency_id', 'parent_id', 'important'];
 
+    protected $dates = ['deleted_at'];
+
     public  function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }

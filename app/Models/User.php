@@ -11,6 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 class User extends Authenticatable
 {
     use  HasFactory, Notifiable;
+    protected $dates = ['deleted_at'];
 
     /**
      * The attributes that are mass assignable.
@@ -21,10 +22,10 @@ class User extends Authenticatable
 
     protected $guarded = false;
 
-    const ROLE_ADMIN = '1';
-    const ROLE_SUPER_ADMIN = '10';
-    const ROLE_USER = '0';
-    const ROLE_CORRECTOR = '2';
+    const ROLE_ADMIN = 1;
+    const ROLE_SUPER_ADMIN = 10;
+    const ROLE_USER = 0;
+    const ROLE_CORRECTOR = 2;
 
 
     public static function getRoles() {

@@ -13,6 +13,7 @@ import Municipality from "@/Components/Home/Municipality.jsx";
 import PhotoReportageItem from "@/Components/Home/PhotoReportageItem.jsx";
 import SupportModal from "@/Components/SupportModal.jsx";
 import LimitedPosts from "@/Components/Home/LimitedPosts.jsx";
+import YearBanner from "@/Components/Home/YearBanner.jsx";
 export default function Welcome() {
 
 

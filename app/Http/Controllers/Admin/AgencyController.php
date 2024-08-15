@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\Agency\StoreRequest;
 use App\Http\Requests\Admin\Agency\UpdateRequest;
 use App\Models\Agency;
+use App\Models\Supervisor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -18,6 +19,7 @@ class AgencyController extends Controller
     public function index()
     {
 
+
         $agencies = Agency::orderBy('id', 'desc')->paginate(10);
 
         return view('admin.agency.index', compact('agencies'));
@@ -29,8 +31,9 @@ class AgencyController extends Controller
     public function create()
     {
 
+        $peoples = Supervisor::all();
         $authors = User::query()->where('role', 10)->get();
-        return view('admin.agency.create', compact('authors'));
+        return view('admin.agency.create', compact('authors', 'peoples'));
 
     }
 
@@ -40,6 +43,12 @@ class AgencyController extends Controller
     public function store(StoreRequest $request)
     {
         $data = $request->validated();
+
+        if (isset($data['logo'])) {
+            $path = Storage::put('logos', $data['logo']);
+            // Сохранение пути к изображению в базе данных
+            $data['logo'] = $path ?? null;
+        }
 
         $agency = Agency::firstOrCreate($data);
 

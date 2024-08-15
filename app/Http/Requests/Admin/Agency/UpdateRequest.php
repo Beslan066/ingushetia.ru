@@ -23,6 +23,10 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'supervisor_id' => 'required',
+            'supervisor_type' => 'nullable',
+            'full_title' => 'required|string',
+            'logo' => 'required|image|mimes:jpg,jpeg,webp,png',
         ];
     }
 
@@ -31,6 +35,11 @@ class UpdateRequest extends FormRequest
         return [
             'name.required' => 'Заголовок обязателен для заполнения',
             'name.max' => 'Длина заголовка не должна превышать 255 символов',
+            'full_title.required' => 'Полное наименование обязателен для заполнения',
+            'full_title.max' => 'Длина наименования не должна превышать 255 символов',
+            'logo.required' => 'Необходимо выбрать изображение.',
+            'logo.image' => 'Файл должен быть изображением.',
+            'logo.mimes' => 'Изображение должно быть в формате: jpg, jpeg, webp, png.',
         ];
     }
 }

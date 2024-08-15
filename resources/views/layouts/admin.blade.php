@@ -259,12 +259,17 @@
                     <li><a href="{{route('admin.photoReportage.index')}}" class=" waves-effect"><i class="bx bx-news"></i><span>Фоторепортажи</span></a></li>
                     <li><a href="{{route('admin.videos.index')}}" class=" waves-effect"><i class="bx bx-video"></i><span>Видео</span></a></li>
                     <li><a href="{{route('admin.categories.index')}}" class=" waves-effect"><i class="bx bx-tag"></i><span>Категории</span></a></li>
-                    <li><a href="{{route('admin.supervisors.index')}}" class=" waves-effect"><i class="bx bxs-user-badge"></i><span>Руководители</span></a></li>
-                    <li><a href="{{route('admin.municipalities.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Муниципальные образования</span></a></li>
+                    @if(auth()->user()->role == 10 )
+                        <li><a href="{{route('admin.supervisors.index')}}" class=" waves-effect"><i class="bx bxs-user-badge"></i><span>Руководители</span></a></li>
+                        <li><a href="{{route('admin.municipalities.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Муниципальные образования</span></a></li>
+                        <li><a href="{{route('admin.agencies.index')}}" class=" waves-effect"><i class="bx bx-buildings"></i><span>Министерства</span></a></li>
+                        <li><a href="{{route('admin.agenciesActivity.index')}}" class=" waves-effect"><i class="bx bx-buildings"></i><span>Деятельность министерств</span></a></li>
+                        <li><a href="{{route('admin.natProjects.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Национальные проекты</span></a></li>
+                        <li><a href="{{route('admin.users.index')}}" class=" waves-effect"><i class="bx bx-user"></i><span>Пользователи</span></a></li>
+                    @endif
+
                     <li><a href="{{route('admin.militarySupport.index')}}" class=" waves-effect"><i class="bx--error-circle"></i><span>Поддержка СВО</span></a></li>
-                    <li><a href="{{route('admin.natProjects.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Национальные проекты</span></a></li>
                     <li><a href="{{route('admin.resources.index')}}" class=" waves-effect"><i class="bx bx-link"></i><span>Полезные ресурсы</span></a></li>
-                    <li><a href="{{route('admin.agencies.index')}}" class=" waves-effect"><i class="bx bx-buildings"></i><span>Министерства</span></a></li>
                     <li><a href="calendar.html" class=" waves-effect"><i class="bx bxs-map"></i><span>Регион</span></a></li>
 
                     <li>
@@ -284,7 +289,6 @@
                             <li><a href="pages-500.html">Error 500</a></li>
                         </ul>
                     </li>
-                    <li><a href="" class=" waves-effect"><i class="bx bx-user"></i><span>Пользователи</span></a></li>
 
                     <li>
                         <a href="javascript: void(0);" class="waves-effect"><i class="bx bx-cog"></i><span class="badge badge-pill badge-danger float-right">6</span><span>Настройки</span></a>
