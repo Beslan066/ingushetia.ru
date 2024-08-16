@@ -129,7 +129,9 @@ export default function Welcome() {
                                             user={post.user}
                                             agency={post.agency}
                                             category={post.category.title}
+                                            categoryId={post.category.id}
                                             published={post.published_at}
+
                                         />
                                     );
                                 })}

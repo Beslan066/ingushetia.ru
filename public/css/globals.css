@@ -1047,3 +1047,7 @@ section.municipalities.mb-32 {
     font-weight: 600;
     margin-bottom: 32px;
 }
+
+.news-category-page .filtered-news {
+    margin-top: unset;
+}

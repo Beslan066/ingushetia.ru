@@ -3,7 +3,7 @@ import FilterIcon from "@/Components/FilterIcon.jsx";
 
 import React from "react";
 
-export default function NewsFilter({ categories, onFilterChange }) {
+export default function NewsFilter() {
     const [filter, setFilter] = React.useState(false);
     const [selectedCategory, setSelectedCategory] = React.useState('all');
     const [startDate, setStartDate] = React.useState('');
@@ -47,16 +47,6 @@ export default function NewsFilter({ categories, onFilterChange }) {
                     >
                         Все новости
                     </button>
-                    {categories.map((category) => (
-                        <button
-                            className={selectedCategory === category.title ? 'active' : ''}
-                            key={category.title}
-                            onClick={() => handleCategoryClick(category.title)}
-                        >
-                            {category.title}
-                        </button>
-                    ))}
-
                 </div>
                 <div className="filter-icon-button">
                     <button onClick={handleFilterIconClick}>

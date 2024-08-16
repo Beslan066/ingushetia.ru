@@ -6,7 +6,7 @@ import {usePage} from "@inertiajs/react";
 import { format, parseISO } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
-export default function HomeNewsSidebar({key, title, lead, content, image, user, category, onClick, stateValue, agency, published, video, reportages}) {
+export default function HomeNewsSidebar({key, title, lead, content, image, user, category, onClick, stateValue, agency, categoryId, published, video, reportages}) {
 
     const [modal,setModal] = React.useState(false);
     const formattedDate = format(parseISO(published), 'HH:mm, d MMMM', { locale: ru });
@@ -53,6 +53,7 @@ export default function HomeNewsSidebar({key, title, lead, content, image, user,
 
             <Modal
                 title={title}
+                categoryId={categoryId}
                 reportages={cleanSlidesString}
                 date={formattedDate}
                 category={category}

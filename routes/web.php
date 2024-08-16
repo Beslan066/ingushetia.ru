@@ -46,6 +46,8 @@ Route::get('/sostav-pravitelstva', function () {
 
 
 Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news-by-category/{categoryId}', [NewsController::class, 'getPostsByCategory'])->name('posts.by.tag');
+
 
 Route::group(['namespace' => 'Admin', 'middleware' => \App\Http\Middleware\Admin::class], function () {
     Route::get('/admin', [\App\Http\Controllers\Admin\IndexController::class, 'index'])->middleware(['auth', 'verified'])->name('admin');

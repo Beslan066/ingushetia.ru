@@ -1,6 +1,7 @@
 import "../../../public/css/modal.css";
 import React from "react";
-export default function Modal({ active, onClose, title, image, content, category, date, reportages }) {
+import {Link} from "@inertiajs/react";
+export default function Modal({ active, onClose, title, image, content, category, date, reportages, categoryId }) {
 
     const baseUrl = import.meta.env.VITE_APP_URL;
 
@@ -26,9 +27,15 @@ export default function Modal({ active, onClose, title, image, content, category
                     </div>
 
                     <div className="modal-news-content mt-40 mb-24">
-                        <div className="modal-news-date">
-                            <p className="news-date text-black mb-4">{date}<span
-                                className="news-category">{category}</span></p>
+                        <div className="modal-news-date d-flex align-items-center">
+                            <p className="news-date text-black mb-4">{date}
+                                {categoryId && (
+                                    <Link href={route('posts.by.tag', { categoryId: categoryId })}>
+                                        <span className="news-category">{category}</span>
+                                    </Link>
+                                )}
+                            </p>
+
                         </div>
 
                         <div className="modal-news-title">
