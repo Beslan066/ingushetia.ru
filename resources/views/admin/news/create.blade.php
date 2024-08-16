@@ -51,6 +51,15 @@
                             @error('image_main')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
+
+                            <div class="form-row w-50 mb-4">
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Автор фотографии" name="image_author">
+                                </div>
+                                <div class="col">
+                                    <input type="text" class="form-control" placeholder="Описание фотографии" name="image_description">
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group w-50">

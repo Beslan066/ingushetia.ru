@@ -14,12 +14,12 @@ import PhotoReportageItem from "@/Components/Home/PhotoReportageItem.jsx";
 import SupportModal from "@/Components/SupportModal.jsx";
 import LimitedPosts from "@/Components/Home/LimitedPosts.jsx";
 import YearBanner from "@/Components/Home/YearBanner.jsx";
+import Mountains from "@/Components/Home/Mountains.jsx";
+import AgencyNews from "@/Components/Home/AgencyNews.jsx";
 export default function Welcome() {
 
 
-    let {posts, categories, mainPosts, resources, photoReportages, videos, cities, districts, search, setSearch} = usePage().props;
-
-
+    let {posts, categories, mainPosts, resources, photoReportages, videos, cities, districts, search, setSearch, mountains, agencies, agencyNews} = usePage().props;
 
 
 // Состояние для выбранной категории
@@ -50,11 +50,8 @@ export default function Welcome() {
         return format(date, 'HH:mm, d MMMM', { locale: ru });
     };
 
-
     const baseUrl = import.meta.env.VITE_APP_URL;
     return (
-
-
         <Guest>
             <div>
                 <main className={`${!search ? 'mt-40' : ''}`}>
@@ -280,150 +277,12 @@ export default function Welcome() {
                         </div>
                     </div>
                 </section>
-                <section className="home-media">
-                    <div className="container d-flex flex-column">
-                        <h3>Новости министерств</h3>
-                        <div className="filtered-news w-full d-flex mt-40 flex-column">
 
-                        <div className="filter-items">
-                                <button className="active">Миннац</button>
-                                <button>Министерство Образования</button>
-                                <button>Министерство здравохранения</button>
-                                <button>Министерство спорта</button>
-                                <button>Комитет по туризму</button>
-                            </div>
-                        </div>
-                        <div className="d-flex justify-content-between flex-wrap">
-                                <div className="filtered-news-item col-4 ">
-                                    <div className="news-image">
-                                        <img src="img/Rectangle 1.png" alt="" className="w-100 h-100"/>
-                                    </div>
-
-                                    <div className="news-text pl-20 d-flex flex-column justify-content-between">
-                                        <div>
-                                            <Link href="">
-                                                <h4>Глава республики посетил открытие новой школы</h4>
-                                            </Link>
-                                        </div>
-                                        <p className="news-date">13:45, 8 июля<span
-                                            className="news-category ml-4">Проекты</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="filtered-news-item col-4">
-                                    <div className="news-image">
-                                        <img className="w-100 h-100" src="img/content/image 7 (2).png" alt=""/>
-                                    </div>
-                                    <div className="news-text pl-20 d-flex flex-column justify-content-between">
-                                        <div>
-                                            <Link href="">
-                                                <h4>НИИ Ингушетии представели новый дрон для сельского хозяйства</h4>
-                                            </Link>
-                                        </div>
-                                        <p className="news-date">09:22, 5 июня <span
-                                            className="news-category ml-4">Проекты</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="filtered-news-item col-4">
-                                    <div className="news-image">
-                                        <img className="w-100" src="img/content/image 7 (3).png" alt=""/>
-                                    </div>
-
-                                    <div className="news-text pl-20 d-flex flex-column justify-content-between">
-                                        <div>
-                                            <Link href="">
-                                                <h4>Курорт “Армхи” будет полностью обновлен к 2025 году </h4>
-                                            </Link>
-                                        </div>
-                                        <p className="news-date">11:34, 2 июля<span
-                                            className="news-category ml-4">Проекты</span>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="filtered-news-item col-4">
-                                    <div className="news-image">
-                                        <img src="img/Rectangle 1.png" alt="" className="w-100 h-100"/>
-                                    </div>
-
-                                    <div className="news-text pl-20 d-flex flex-column justify-content-between">
-                                        <div>
-                                            <Link href="">
-                                                <h4>Глава республики посетил открытие новой школы</h4>
-                                            </Link>
-                                        </div>
-                                        <p className="news-date">21:57, 28 июня<span
-                                            className="news-category ml-4">Проекты</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="filtered-news-item col-4">
-                                    <div className="news-image">
-                                        <img className="w-100 h-100" src="img/content/image 7 (2).png" alt=""/>
-                                    </div>
-                                    <div className="news-text pl-20 d-flex flex-column justify-content-between">
-                                        <div>
-                                            <Link href="">
-                                                <h4>НИИ Ингушетии представели новый дрон для сельского хозяйства</h4>
-                                            </Link>
-                                        </div>
-                                        <p className="news-date">21:57, 27 июня<span
-                                            className="news-category ml-4">Проекты</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="filtered-news-item col-4">
-                                    <div className="news-image">
-                                        <img className="w-100" src="img/content/image 7 (3).png" alt=""/>
-                                    </div>
-
-                                    <div className="news-text pl-20 d-flex flex-column justify-content-between">
-                                        <div>
-                                            <Link href="">
-                                                <h4>Курорт “Армхи” будет полностью обновлен к 2025 году </h4>
-                                            </Link>
-                                        </div>
-                                        <p className="news-date">11:57, 26 июня<span
-                                            className="news-category ml-4">Проекты</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="filtered-news-item col-4">
-                                    <div className="news-image">
-                                        <img src="img/Rectangle 1.png" alt="" className="w-100 h-100"/>
-                                    </div>
-
-                                    <div className="news-text pl-20 d-flex flex-column justify-content-between">
-                                        <div>
-                                            <Link href="">
-                                                <h4>Глава республики посетил открытие новой школы</h4>
-                                            </Link>
-                                        </div>
-                                        <p className="news-date">10:07, 26 июня<span
-                                            className="news-category ml-4">Проекты</span>
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="filtered-news-item col-4">
-                                    <div className="news-image">
-                                        <img src="img/Rectangle 1.png" alt="" className="w-100 h-100"/>
-                                    </div>
-
-                                    <div className="news-text pl-20 d-flex flex-column justify-content-between">
-                                        <div>
-                                            <Link href="">
-                                                <h4>Глава республики посетил открытие новой школы</h4>
-                                            </Link>
-                                        </div>
-                                        <p className="news-date">21:15, 25 июня<span
-                                            className="news-category ml-4">Проекты</span>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                </section>
+                <AgencyNews
+                    agencyNews={agencyNews}
+                    agencies={agencies}
+                    baseUrl={baseUrl}
+                />
 
                 <Municipality cities={cities} district={districts} baseUrl={baseUrl}/>
 
@@ -454,6 +313,8 @@ export default function Welcome() {
                     </div>
                 </section>
 
+                <Mountains mountains={mountains} baseUrl={baseUrl}/>
+
 
                 <section className="other-resources mb-32">
                     <div className="container">
@@ -470,9 +331,7 @@ export default function Welcome() {
                                     </Link>
                                 </div>
                             </div>
-                        ))
-                        }
-
+                        ))}
                     </div>
 
                     <div className="container mt-40">

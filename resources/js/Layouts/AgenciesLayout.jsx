@@ -59,16 +59,7 @@ export default function Guest({ children, agency, baseUrl }) {
                     <nav className="header-menu">
                         <ul className="d-flex align-items-center topmenu">
                             <li><Link href={'news'}>Новости</Link></li>
-                            <li><Link href={'region'}>Регион</Link></li>
-                            <li>
-                                <Link href="">Органы власти</Link>
-                                <ul className="submenu">
-                                    <li><Link href="">Глава Республики</Link></li>
-                                    <li><Link href="/pravitelstvo">Правительство</Link></li>
-                                    <li><Link href="">Федеральные органы власти</Link></li>
-                                    <li><Link href={route('agencies.index')}>Министерства</Link></li>
-                                </ul>
-                            </li>
+                            <li><Link href={'agencies'}>Деятельность</Link></li>
                             <li><Link href="">Медиа</Link></li>
                             <li><Link href="">Документы</Link></li>
                             <li><Link href={route('contacts')}>Контакты</Link></li>

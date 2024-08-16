@@ -269,6 +269,7 @@
                     @endif
 
                     <li><a href="{{route('admin.militarySupport.index')}}" class=" waves-effect"><i class="bx--error-circle"></i><span>Поддержка СВО</span></a></li>
+                    <li><a href="{{route('admin.mountains.index')}}" class=" waves-effect"><i class="bx bx-mountain"></i><span>Родина башен</span></a></li>
                     <li><a href="{{route('admin.resources.index')}}" class=" waves-effect"><i class="bx bx-link"></i><span>Полезные ресурсы</span></a></li>
                     <li><a href="calendar.html" class=" waves-effect"><i class="bx bxs-map"></i><span>Регион</span></a></li>
 

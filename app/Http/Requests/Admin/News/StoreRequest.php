@@ -34,6 +34,8 @@ class StoreRequest extends FormRequest
             'main_material' => 'nullable',
             'user_id' => 'required',
             'agency_id' => 'required',
+            'image_author' => 'required|string|max:255',
+            'image_description' => 'required|string|max:255',
             'published_at' => 'required|date_format:Y-m-d\TH:i',
             'video_id' => 'nullable',
             'reportage_id' => 'nullable',
@@ -59,6 +61,13 @@ class StoreRequest extends FormRequest
             'agency_id.required' => 'Ошибка при определении организации.',
             'published_at.required' => 'Укажите дату публикации.',
             'published_at.date_format' => 'Некорректный формат даты, используйте формат ГГГГ-ММ-ДДTЧЧ:ММ.',
+            'image_author.required' => 'Заполните краткое image_author.',
+            'image_author.string' => 'Краткое image_author должно быть строкой.',
+            'image_author.max' => 'Длина краткого image_author не должна превышать 255 символов.',
+
+            'image_description.required' => 'Заполните краткое image_description.',
+            'image_description.string' => 'Краткое image_description должно быть строкой.',
+            'image_description.max' => 'Длина краткого image_description не должна превышать 255 символов.',
         ];
     }
 }

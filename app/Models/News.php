@@ -26,6 +26,8 @@ class News extends Model
         'views',
         'reportage_id',
         'video_id',
+        'image_author',
+        'image_description',
     ];
 
     protected $dates = ['deleted_at'];

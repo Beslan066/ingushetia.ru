@@ -200,6 +200,17 @@ Route::group(['namespace' => 'Admin', 'middleware' => \App\Http\Middleware\Admin
 
     });
 
+    Route::group(['namespace' => 'Mountain', 'prefix' => 'admin'], function () {
+        Route::get('/mountains', [App\Http\Controllers\Admin\MountainController::class, 'index'])->name('admin.mountains.index');
+
+        Route::get('/mountains/create', [App\Http\Controllers\Admin\MountainController::class, 'create'])->name('admin.mountains.create');
+        Route::post('/mountains/store', [App\Http\Controllers\Admin\MountainController::class, 'store'])->name('admin.mountains.store');
+        Route::get('/mountains/{mountain}/edit', [App\Http\Controllers\Admin\MountainController::class, 'edit'])->name('admin.mountains.edit');
+        Route::patch('/mountains/{mountain}', [App\Http\Controllers\Admin\MountainController::class, 'update'])->name('admin.mountains.update');
+        Route::delete('/mountains/{mountain}', [App\Http\Controllers\Admin\MountainController::class, 'destroy'])->name('admin.mountains.delete');
+
+    });
+
     Route::group(['namespace' => 'AgencyActivity', 'prefix' => 'admin'], function () {
         Route::get('/agencies-activity', [App\Http\Controllers\Admin\AgencyActivityController::class, 'index'])->name('admin.agenciesActivity.index');
 

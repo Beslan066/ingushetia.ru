@@ -40,7 +40,7 @@ export default function Guest({ children }) {
                         <Link href={'/'}>
                             <div>
                                 <h1 className="main-title">Республика Ингушетия</h1>
-                                <p className="main-desc">ОФициальный портал</p>
+                                <p className="main-desc">Официальный портал</p>
                             </div>
                         </Link>
                     </div>

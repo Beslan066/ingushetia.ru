@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agency;
 use App\Models\Category;
 use App\Models\Contact;
 use App\Models\MilitarySupport;
+use App\Models\Mountain;
 use App\Models\Municipality;
 use App\Models\NationalProject;
 use App\Models\News;
@@ -28,6 +30,7 @@ class HomeController extends Controller
         $cities = Municipality::query()->with('supervisor')->where('type', 2)->get();
         $districts = Municipality::query()->with('supervisor')->where('type', 20)->get();
 
+        $mountains = Mountain::all();
 
         $mainPosts = News::query()
             ->with('category')
@@ -45,6 +48,9 @@ class HomeController extends Controller
             ->orderBy('published_at', 'desc')
             ->get();
 
+        $agencies = Agency::query()->where('id', '!=', 5)->get();
+        $agencyNews = News::query()->where('agency_id', '!=', 5)->with('category')->get();
+
         return Inertia::render('Welcome', [
             'posts' => $posts,
             'categories' => $categories,
@@ -53,8 +59,11 @@ class HomeController extends Controller
             'photoReportages' => $photoReportages,
             'videos' => $videos,
             'cities' => $cities,
-            'districts' => $districts
-        ]);
+            'districts' => $districts,
+            'mountains' => $mountains,
+            'agencies' => $agencies,
+            'agencyNews' => $agencyNews
+            ]);
     }
 
     public function nationalProjects()
