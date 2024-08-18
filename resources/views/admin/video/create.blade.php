@@ -27,7 +27,7 @@
                             @error('lead')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
-                            
+
 
                         <!-- Выбор видео файла -->
                         <div class="form-group w-50 ">
@@ -52,7 +52,25 @@
                             </select>
                         </div>
 
-                        <div class="form-group w-50">
+                            <div class="row w-50">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+
+                                            <h4 class="card-title">Изображение новости</h4>
+                                            <input type="file" class="dropify" data-height="300" name="image_main" multiple/>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @error('image_main')
+                            <div class="text-danger">{{ $message }}</div>
+                            @enderror
+
+
+                            <div class="form-group w-50">
                             <input type="datetime-local" class="datetime_input" name="published_at" style="color: #495057; width: 250px; border: 1px solid #ced4da; padding: 5px !important;">
                         </div>
                         @error('published_at')

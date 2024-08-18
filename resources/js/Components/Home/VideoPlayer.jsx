@@ -53,6 +53,7 @@ export default function VideoPlayer({ video, baseUrl, date }) {
                 <video
                     ref={videoRef}
                     src={`${baseUrl}/storage/${video.video}`}
+                    poster={`${baseUrl}/storage/${video.image_main}`}
                     className="video-player"
                 >
                     Ваш браузер не поддерживает данный тип видео

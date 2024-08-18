@@ -842,7 +842,7 @@ section.municipalities.mb-32 {
     -webkit-transition: 0.5s ease-in-out;
     -moz-transition: 0.5s ease-in-out;
     -o-transition: 0.5s ease-in-out;
-    transition: 0.5s ease-in-out;
+    transition: 0.3s ease-in-out;
 }
 
 
@@ -852,6 +852,23 @@ section.municipalities.mb-32 {
     outline: none;
     width: calc(100% - 100px);
     border: none;
+}
+
+.search-item {
+    color: #000;
+    margin-bottom: 10px;
+}
+
+.search-item h3 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.search-item .news-text {
+    display: flex;
+    align-items: center;
+    color: #6C6C6C;
+    font-size: 13px;
 }
 
 .search-form button {
@@ -1050,4 +1067,42 @@ section.municipalities.mb-32 {
 
 .news-category-page .filtered-news {
     margin-top: unset;
+}
+
+.filter-btns {
+    border-bottom: 1px solid #DFDFDF;
+    width: 95%;
+    margin-bottom: 32px;
+}
+
+.filter-btns button{
+    padding: 12px 20px 12px 20px;
+}
+
+.filter-btns button.active {
+    border-bottom: 2px solid #07A267 !important;
+}
+
+.search-results {
+    min-height: 510px;
+}
+
+.search-results h4 {
+    font-size: 16px;
+
+}
+
+.search-item {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.search-item-category p:first-child {
+    font-size: 13px;
+    color: #6C6C6C;
+}
+
+.search-item-category p:last-child {
+    color: #07A267;
+    font-size: 13px;
 }

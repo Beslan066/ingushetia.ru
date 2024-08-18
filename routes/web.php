@@ -1,15 +1,21 @@
 <?php
 
+use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Frontend\AgencyController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\RegionController;
+use App\Http\Controllers\Frontend\SearchController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 
 Route::get('/', [HomeController::class, 'index']);
+
+Route::get('/search', [SearchController::class, 'searchResults'])->name('search.results');
+
+Route::get('/search/page', [SearchController::class, 'searchPage'])->name('search.page');
 Route::get('/national-projects', [HomeController::class, 'nationalProjects'])->name('natProjects');
 Route::get('/support-svo', [HomeController::class, 'svoSupport'])->name('svoSupport');
 Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
@@ -234,6 +240,9 @@ Route::group(['namespace' => 'Admin', 'middleware' => \App\Http\Middleware\Admin
         Route::delete('/users/{user}', [App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('admin.users.delete');
 
     });
+
+
+    Route::post('/support', [SupportController::class, 'store'])->name('support.store');
 });
 
 Route::get('/dashboard', function () {

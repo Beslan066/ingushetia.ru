@@ -3,11 +3,13 @@ import { Link } from '@inertiajs/react';
 import 'bootstrap/dist/css/bootstrap.css';
 import "../../../public/css/globals.css";
 import "../../../public/css/region.css";
+import "../../../public/css/modal.css";
 import Search from "@/Components/Home/Search.jsx";
 import SupportButton from "@/Components/SupportButton.jsx";
 import SupportModal from "@/Components/SupportModal.jsx";
 import Rightbar from "@/Components/Rightbar.jsx";
 import Logo100 from "@/Components/Logo100.jsx";
+
 export default function Guest({ children }) {
     const [search, setSearch] = React.useState(false);
     const [supportModal, setSupportModal] = React.useState(false);
@@ -21,15 +23,20 @@ export default function Guest({ children }) {
         setRightBar(prevRightBar => !prevRightBar);
     };
 
+    useEffect(() => {
+        // Закрываем боковое меню при переходе на любую другую страницу
+        setRightBar(false);
+        // Закрываем модальное окно поддержки при переходе на любую другую страницу
+        setSupportModal(false);
+    }, []);
 
     useEffect(() => {
         if (rightBar) {
             document.body.classList.add('rightbar-open');
         } else {
             document.body.classList.remove('rightbar-open');
-            setRightBar(false); }
+        }
     }, [rightBar]);
-
 
     return (
         <div className={'position-relative'}>
@@ -108,4 +115,3 @@ export default function Guest({ children }) {
         </div>
     );
 }
-

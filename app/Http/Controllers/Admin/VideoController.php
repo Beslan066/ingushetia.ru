@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
+use Carbon\Carbon;
 
 
 class VideoController extends Controller
@@ -82,6 +83,11 @@ class VideoController extends Controller
         $news = News::query()->orderBy('id', 'desc')->get();
         $authors = User::query()->where('role', 10)->get();
 
+        // Преобразуем строку в объект Carbon
+        if ($video->published_at) {
+            $video->published_at = Carbon::parse($video->published_at);
+        }
+
         return view('admin.video.edit', compact('video', 'news', 'authors'));
     }
 
@@ -93,18 +99,33 @@ class VideoController extends Controller
         $data = $request->validated();
 
         if (isset($data['image_main'])) {
+            // Удаляем старое изображение
+            if ($video->image_main) {
+                Storage::delete($video->image_main);
+            }
             $path = Storage::put('images', $data['image_main']);
-            $data['image_main'] = $path ?? null;
+            $data['image_main'] = $path;
         }
 
         if (isset($data['video'])) {
+            // Удаляем старое видео
+            if ($video->video) {
+                Storage::delete($video->video);
+            }
             $path = Storage::put('videos', $data['video']);
-            $data['video'] = $path ?? null;
+            $data['video'] = $path;
         }
+
+        // Преобразуем дату и время в объект Carbon, если это строка
+        if (isset($data['published_at'])) {
+            $data['published_at'] = Carbon::parse($data['published_at']);
+        }
+
         $video->update($data);
 
-        return redirect()->route('admin.videos.index')->with('success', 'News updated successfully');
+        return redirect()->route('admin.videos.index')->with('success', 'Видео успешно обновлено');
     }
+
 
     /**
      * Remove the specified resource from storage.

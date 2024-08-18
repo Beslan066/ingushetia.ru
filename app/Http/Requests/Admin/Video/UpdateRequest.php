@@ -23,8 +23,9 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'lead' => 'required|string|max:255',
-            'video' => 'required|mimes:mp4,avi,mov,wmv,flv,mkv|max:512000',
+            'lead' => 'nullable|string|max:255',
+            'video' => 'nullable|mimes:mp4,avi,mov,wmv,flv,mkv|max:512000',
+            'image_main' => 'nullable|image|mimes:jpg,jpeg,webp,png',
             'news_id' => 'nullable',
             'user_id' => 'required',
             'agency_id' => 'required',
@@ -48,6 +49,9 @@ class UpdateRequest extends FormRequest
             'agency_id.required' => 'Ошибка при определении организации.',
             'published_at.required' => 'Укажите дату публикации.',
             'published_at.date_format' => 'Некорректный формат даты, используйте формат ГГГГ-ММ-ДДTЧЧ:ММ.',
+            'image_main.required' => 'Необходимо выбрать изображение.',
+            'image_main.image' => 'Файл должен быть изображением.',
+            'image_main.mimes' => 'Изображение должно быть в формате: jpg, jpeg, webp, png.',
         ];
     }
 }
