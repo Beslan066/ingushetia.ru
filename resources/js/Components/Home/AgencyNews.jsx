@@ -1,32 +1,41 @@
-import {Link} from "@inertiajs/react";
-import React from "react";
-import { useEffect, useState } from 'react';
+import { Link } from "@inertiajs/react";
+import React, { useState, useEffect } from "react";
 import { format, parseISO } from 'date-fns';
 import { ru } from 'date-fns/locale';
+import Modal from "@/Components/Modal.jsx";
 
+export default function AgencyNews({ agencies, agencyNews, baseUrl }) {
 
-export default function AgencyNews({agencies, agencyNews, baseUrl}) {
+    const [modal, setModal] = useState(false);
+    const [selectedPost, setSelectedPost] = useState(null); // Хранит выбранную новость
+
+    useEffect(() => {
+        if (modal) {
+            document.body.classList.add('fixed-body');
+        } else {
+            document.body.classList.remove('fixed-body');
+        }
+    }, [modal]);
 
     // Состояние для выбранной категории
-    const [selectedAgencies, setSelectedAgencies] = useState(null);
+    const [selectedAgency, setSelectedAgency] = useState(null);
 
     // Функция для обработки клика по категории
     const handleCategoryClick = (agency) => {
-        setSelectedAgencies(agency);
+        setSelectedAgency(agency);
     };
 
     // Функция для обработки клика по кнопке "Все новости"
     const handleAllNewsClick = () => {
-        setSelectedAgencies(null);
+        setSelectedAgency(null);
     };
 
     // Фильтрация постов по выбранной категории
-    const filteredPosts = selectedAgencies
-        ? agencyNews.filter(post => post.agency_id === selectedAgencies.id)
+    const filteredPosts = selectedAgency
+        ? agencyNews.filter(post => post.agency_id === selectedAgency.id)
         : agencyNews;
 
-
-    // Ограничение вывода новостей до 3 постов
+    // Ограничение вывода новостей до 8 постов
     const limitedPosts = filteredPosts.slice(0, 8);
 
     // Функция для форматирования даты
@@ -34,15 +43,15 @@ export default function AgencyNews({agencies, agencyNews, baseUrl}) {
         const date = parseISO(dateString);
         return format(date, 'HH:mm, d MMMM', { locale: ru });
     };
+
     return (
         <section className="home-media">
             <div className="container d-flex flex-column">
                 <h3>Новости министерств</h3>
                 <div className="filtered-news w-full d-flex mt-40 flex-column">
-
                     <div className="filter-items">
                         <button
-                            className={`filter-button ${selectedAgencies === null ? 'active' : ''}`}
+                            className={`filter-button ${selectedAgency === null ? 'active' : ''}`}
                             onClick={handleAllNewsClick}
                         >
                             Все новости
@@ -50,7 +59,7 @@ export default function AgencyNews({agencies, agencyNews, baseUrl}) {
                         {agencies.map((agency) => (
                             <button
                                 key={agency.id}
-                                className={`filter-button ${selectedAgencies && selectedAgencies.id === agency.id ? 'active' : ''}`}
+                                className={`filter-button ${selectedAgency && selectedAgency.id === agency.id ? 'active' : ''}`}
                                 onClick={() => handleCategoryClick(agency)}
                             >
                                 {agency.name}
@@ -59,31 +68,49 @@ export default function AgencyNews({agencies, agencyNews, baseUrl}) {
                     </div>
                 </div>
                 <div className="d-flex justify-content-between flex-wrap">
-
                     {limitedPosts &&
                         limitedPosts.map((post) => (
-                            <div className="filtered-news-item col-4 ">
-                            <div className="news-image">
-                                    <img style={{objectFit: 'cover'}} src={`${baseUrl}/storage/${post.image_main}`} alt="" className="w-100 h-100"/>
+                            <div className="filtered-news-item col-4" key={post.id}>
+                                <div className="news-image">
+                                    <img
+                                        style={{ objectFit: 'cover' }}
+                                        src={`${baseUrl}/storage/${post.image_main}`}
+                                        alt=""
+                                        className="w-100 h-100"
+                                    />
                                 </div>
-
                                 <div className="news-text pl-20 d-flex flex-column justify-content-between">
                                     <div>
-                                        <Link href="">
-                                            <h4>{post.title.slice(0,90)}</h4>
-                                        </Link>
+                                        <h4 onClick={() => { setModal(true); setSelectedPost(post); }}>
+                                            {post.title.slice(0, 90)}
+                                        </h4>
                                     </div>
-                                    <p className="news-date">{formatDate(post.published_at)}<span
-                                        className="news-category ml-4">{post.category.title}</span>
+                                    <p className="news-date">
+                                        {formatDate(post.published_at)}
+                                        <span className="news-category ml-4">
+                                            {post.category.title}
+                                        </span>
                                     </p>
                                 </div>
                             </div>
                         ))
                     }
-
-
                 </div>
             </div>
+
+            {selectedPost && (
+                <Modal
+                    title={selectedPost.title}
+                    categoryId={selectedPost.category.id}
+                    reportages={selectedPost.reportages}
+                    date={formatDate(selectedPost.published_at)}
+                    category={selectedPost.category.title}
+                    image={selectedPost.image_main}
+                    content={selectedPost.content}
+                    active={modal}
+                    onClose={() => setModal(false)}
+                />
+            )}
         </section>
-    )
+    );
 }

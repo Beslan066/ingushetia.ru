@@ -16,6 +16,7 @@ import LimitedPosts from "@/Components/Home/LimitedPosts.jsx";
 import YearBanner from "@/Components/Home/YearBanner.jsx";
 import Mountains from "@/Components/Home/Mountains.jsx";
 import AgencyNews from "@/Components/Home/AgencyNews.jsx";
+import OtherResource from "@/Components/Home/OtherResource.jsx";
 export default function Welcome() {
 
 
@@ -97,6 +98,7 @@ export default function Welcome() {
                                             user={post.user}
                                             agency={post.agency}
                                             category={post.category.title}
+                                            categoryId={post.category.id}
                                             published={post.published_at}
                                             baseUrl={baseUrl}
                                         />
@@ -280,11 +282,13 @@ export default function Welcome() {
                     </div>
                 </section>
 
-                <AgencyNews
-                    agencyNews={agencyNews}
-                    agencies={agencies}
-                    baseUrl={baseUrl}
-                />
+                {AgencyNews &&
+                    <AgencyNews
+                        agencyNews={agencyNews}
+                        agencies={agencies}
+                        baseUrl={baseUrl}
+                    />
+                }
 
                 <Municipality cities={cities} district={districts} baseUrl={baseUrl}/>
 
@@ -308,6 +312,7 @@ export default function Welcome() {
                                     video={video}
                                     baseUrl={baseUrl}
                                     date={formatDate(video.published_at)}
+
                                 />
                             ))}
 
@@ -318,31 +323,7 @@ export default function Welcome() {
                 <Mountains mountains={mountains} baseUrl={baseUrl}/>
 
 
-                <section className="other-resources mb-32">
-                    <div className="container">
-                        <h3 className="section-title">Полезные ресурсы</h3>
-                    </div>
-                    <div className="container d-flex justify-content-between aligh-items-center ">
-                        {resources.map((resource) => (
-                            <div className="resource-item col-3 p-25 d-flex justify-content-between flex-column">
-                                <h3>{resource.title}</h3>
-                                <div className="d-flex justify-content-between">
-                                    <Link href={resource.link}>{resource.link}</Link>
-                                    <Link href="">
-                                        <img src="img/icons/external link.svg" alt=""/>
-                                    </Link>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="container mt-40">
-                        <div className="resource-arrows d-flex align-items-center">
-                            <button><img src="../../img/icons/arrow back.svg" alt=""/></button>
-                            <button className={'pl-20'}><img src="../../img/icons/arrow next .svg" alt=""/></button>
-                        </div>
-                    </div>
-                </section>
+                <OtherResource resources={resources} />
 
             </div>
 

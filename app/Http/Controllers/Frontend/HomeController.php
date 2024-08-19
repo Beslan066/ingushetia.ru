@@ -23,7 +23,7 @@ class HomeController extends Controller
     {
 
         $categories = Category::query()->take(10)->get();
-        $resources = Resource::query()->where('agency_id', 5)->take(4)->get();
+        $resources = Resource::query()->where('agency_id', 5)->get();
         $photoReportages = PhotoReportage::query()->take(4)->orderBy('published_at', 'desc')->get();
         $videos = Video::query()->take(4)->orderBy('published_at', 'desc')->get();
 

@@ -4,7 +4,7 @@ import {ru} from "date-fns/locale";
 import Modal from "@/Components/Modal.jsx";
 import React from "react";
 
-export default function LimitedPosts({key, title, lead, content, image, user, category, onClick, stateValue, agency, published, video, reportages, baseUrl}) {
+export default function LimitedPosts({key, title, lead, content, image, user, category, categoryId, onClick, stateValue, agency, published, video, reportages, baseUrl}) {
 
     const formattedDate = format(parseISO(published), 'HH:mm, d MMMM', { locale: ru });
     const [modal,setModal] = React.useState(false);
@@ -45,6 +45,8 @@ export default function LimitedPosts({key, title, lead, content, image, user, ca
                 reportages={cleanSlidesString}
                 date={formattedDate}
                 category={category}
+                categoryId={categoryId}
+
                 image={image}
                 content={content}
                 active={modal} onClose={() => setModal(false)}/>

@@ -665,6 +665,7 @@ h3 {
   background-color: #F6F6F6;
   max-width: 23%;
   cursor: pointer;
+    height: 145px;
 }
 
 .resource-item:hover {

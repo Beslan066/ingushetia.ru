@@ -270,7 +270,6 @@ input {
 
 .rightbar {
     position: fixed;
-    top: 92px; /* Высота хедера */
     right: 0;
     min-height: calc(100vh - 80px); /* Высота экрана минус высота хедера */
     width: 100%;
