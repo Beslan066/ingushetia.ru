@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agency;
+use App\Models\Anticorruption;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\Implementation;
 use App\Models\MilitarySupport;
 use App\Models\Mountain;
 use App\Models\Municipality;
@@ -46,10 +48,42 @@ class HomeController extends Controller
             ->where('agency_id', 5)
             ->take(6)
             ->orderBy('published_at', 'desc')
-            ->get();
+            ->get()
+            ->map(function ($post) {
+                // Получаем похожие новости для каждого поста
+                $relatedPosts = News::query()
+                    ->with('category')
+                    ->where('category_id', $post->category_id)  // Поиск по той же категории
+                    ->where('id', '!=', $post->id)  // Исключаем текущий пост
+                    ->orderBy('published_at', 'desc')
+                    ->take(3)  // Получаем три похожих поста
+                    ->get();
+
+                // Добавляем relatedPosts к текущему посту
+                $post->relatedPosts = $relatedPosts;
+                return $post;
+            });
+
+
 
         $agencies = Agency::query()->where('id', '!=', 5)->get();
-        $agencyNews = News::query()->where('agency_id', '!=', 5)->with('category')->get();
+        $agencyNews = News::query()
+            ->where('agency_id', '!=', 5)
+            ->with('category')  // Добавляем связку с категориями
+            ->get();
+
+        $agencyNewsWithRelated = $agencyNews->map(function ($newsItem) {
+            $relatedPosts = News::query()
+                ->with('category')  // Подгружаем категорию для связанных новостей
+                ->where('agency_id', '!=', 5)
+                ->where('category_id', $newsItem->category_id)
+                ->where('id', '!=', $newsItem->id)
+                ->take(3)
+                ->get();
+            $newsItem->relatedPosts = $relatedPosts;
+            return $newsItem;
+        });
+
 
         return Inertia::render('Welcome', [
             'posts' => $posts,
@@ -62,8 +96,8 @@ class HomeController extends Controller
             'districts' => $districts,
             'mountains' => $mountains,
             'agencies' => $agencies,
-            'agencyNews' => $agencyNews
-            ]);
+            'agencyNews' => $agencyNewsWithRelated,
+        ]);
     }
 
     public function nationalProjects()
@@ -91,6 +125,25 @@ class HomeController extends Controller
         $contacts = Contact::all();
         return Inertia::render('Contacts', [
             'contacts' => $contacts
+        ]);
+    }
+
+    public function implementations()
+    {
+
+        $implementations = Implementation::query()->orderBy('id', 'desc')->get();
+
+        return Inertia::render('Implementation', [
+            'implementations' => $implementations
+        ]);
+    }
+
+    public function anticorruptions()
+    {
+        $anticorruptions = Anticorruption::query()->orderBy('id', 'desc')->get();
+
+        return Inertia::render('Anticorruption', [
+            'anticorruptions' => $anticorruptions
         ]);
     }
 }

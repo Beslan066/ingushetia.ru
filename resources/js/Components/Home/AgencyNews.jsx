@@ -4,8 +4,7 @@ import { format, parseISO } from 'date-fns';
 import { ru } from 'date-fns/locale';
 import Modal from "@/Components/Modal.jsx";
 
-export default function AgencyNews({ agencies, agencyNews, baseUrl }) {
-
+export default function AgencyNews({ agencies, agencyNews, baseUrl, relatedAgencyNews }) {
     const [modal, setModal] = useState(false);
     const [selectedPost, setSelectedPost] = useState(null); // Хранит выбранную новость
 
@@ -17,28 +16,22 @@ export default function AgencyNews({ agencies, agencyNews, baseUrl }) {
         }
     }, [modal]);
 
-    // Состояние для выбранной категории
     const [selectedAgency, setSelectedAgency] = useState(null);
 
-    // Функция для обработки клика по категории
     const handleCategoryClick = (agency) => {
         setSelectedAgency(agency);
     };
 
-    // Функция для обработки клика по кнопке "Все новости"
     const handleAllNewsClick = () => {
         setSelectedAgency(null);
     };
 
-    // Фильтрация постов по выбранной категории
     const filteredPosts = selectedAgency
         ? agencyNews.filter(post => post.agency_id === selectedAgency.id)
         : agencyNews;
 
-    // Ограничение вывода новостей до 8 постов
     const limitedPosts = filteredPosts.slice(0, 8);
 
-    // Функция для форматирования даты
     const formatDate = (dateString) => {
         const date = parseISO(dateString);
         return format(date, 'HH:mm, d MMMM', { locale: ru });
@@ -108,6 +101,7 @@ export default function AgencyNews({ agencies, agencyNews, baseUrl }) {
                     image={selectedPost.image_main}
                     content={selectedPost.content}
                     active={modal}
+                    relatedPosts={selectedPost.relatedPosts}
                     onClose={() => setModal(false)}
                 />
             )}

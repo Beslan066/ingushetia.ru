@@ -20,7 +20,7 @@ import OtherResource from "@/Components/Home/OtherResource.jsx";
 export default function Welcome() {
 
 
-    let {posts, categories, mainPosts, resources, photoReportages, videos, cities, districts, search, setSearch, mountains, agencies, agencyNews} = usePage().props;
+    let {posts, categories, mainPosts, resources, photoReportages, relatedAgencyNews, videos, cities, districts, search, setSearch, mountains, agencies, agencyNews} = usePage().props;
 
 
 // Состояние для выбранной категории
@@ -101,6 +101,7 @@ export default function Welcome() {
                                             categoryId={post.category.id}
                                             published={post.published_at}
                                             baseUrl={baseUrl}
+                                            relatedPosts={post.relatedPosts}
                                         />
                                         ))}
                                     </div>
@@ -133,7 +134,7 @@ export default function Welcome() {
                                             category={post.category.title}
                                             categoryId={post.category.id}
                                             published={post.published_at}
-
+                                            relatedPosts={post.relatedPosts} // Передаем relatedPosts в компонент
                                         />
                                     );
                                 })}
@@ -152,27 +153,21 @@ export default function Welcome() {
                                 </div>
                                 <ul>
                                     <li>
-                                        <Link href={route('natProjects')} >Нац. проекты</Link>
+                                        <Link href={route('natProjects')}>Нац. проекты</Link>
                                     </li>
                                     <li>
                                         <Link href={route('svoSupport')}>Поддержка семей участников СВО</Link>
                                     </li>
                                     <li>
-                                        <Link href="">Инвестиции</Link>
+                                        <Link href={route('implementations')}>Реализация указов Президента РФ</Link>
                                     </li>
                                     <li>
-                                        <Link href="">Противодействие коррупции</Link>
+                                        <Link href="">Поддержка экономики и граждан</Link>
                                     </li>
                                     <li>
-                                        <Link href="">Помощь нуждающимся</Link>
+                                        <Link href={route('anticorruptions')}>Противодействие коррупции</Link>
                                     </li>
                                 </ul>
-                                <div className="important-application d-flex align-items-center">
-                                    <MailIcon />
-                                    <span className={'ml-2'}>
-                                        Написать обращение
-                                    </span>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 import "../../../public/css/modal.css";
 import React from "react";
 import {Link} from "@inertiajs/react";
-export default function Modal({ active, onClose, title, image, content, category, date, reportages, categoryId }) {
+export default function Modal({ active, onClose, title, image, content, category, date, reportages, categoryId, relatedPosts }) {
 
     const baseUrl = import.meta.env.VITE_APP_URL;
 
@@ -30,7 +30,7 @@ export default function Modal({ active, onClose, title, image, content, category
                         <div className="modal-news-date d-flex align-items-center">
                             <p className="news-date text-black mb-4">{date}
                                 {categoryId && (
-                                    <Link href={route('posts.by.tag', { categoryId: categoryId })}>
+                                    <Link href={route('posts.by.tag', {categoryId: categoryId})}>
                                         <span className="news-category">{category}</span>
                                     </Link>
                                 )}
@@ -76,7 +76,7 @@ export default function Modal({ active, onClose, title, image, content, category
                             <a href="" type="button">Гамурзиево</a>
                         </div>
                         <div className="share-buttons d-flex aligh-items-center">
-                        <span className="mr-12">Поделиться:</span>
+                            <span className="mr-12">Поделиться:</span>
                             <a href="" type="button"><img src="img/icons/social/telegram (1).png" alt=""/></a>
                             <a href="" type="button"><img src="img/icons/social/VK.png" alt=""/></a>
                             <a href="" type="button"><img src="img/icons/social/ok.png" alt=""/></a>
@@ -88,46 +88,22 @@ export default function Modal({ active, onClose, title, image, content, category
 
                     <div className="see-also d-flex flex-column">
                         <h3 className="mb-24">Смотрите также</h3>
-                        <div className="d-flex justify-content-between aligh-items-center">
-                            <div className="filtered-news-item">
-                                <div className="news-image">
-                                    <img className="w-100" src="img/14.png" alt=""/>
+                        <div className="d-flex justify-content-between align-items-center">
+                            {relatedPosts && relatedPosts.map((post, index) => (
+                                <div key={index} className="filtered-news-item">
+                                    <div className="news-image">
+                                        <img className="w-100" style={{objectFit: 'cover'}} src={`${baseUrl}/storage/${post.image_main}`}
+                                             alt={post.title}/>
+                                    </div>
+                                    <div className="news-text p-25 mt-4">
+                                        <a href={`/posts/${post.id}`}>
+                                            <h4>{post.title}</h4>
+                                        </a>
+                                        <p className="news-date">{date}
+                                            <span className="news-category ml-4">{post.category.title}</span></p>
+                                    </div>
                                 </div>
-
-                                <div className="news-text p-25 mt-4">
-                                    <a href="">
-                                        <h4>Для туристов в республике запустят специальную программу</h4>
-                                    </a>
-                                    <p className="news-date">27 июня <span className="news-category ml-4">Проекты</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="filtered-news-item ">
-                                <div className="news-image">
-                                    <img className="w-100" src="img/15.png" alt=""/>
-                                </div>
-
-                                <div className="news-text p-25 mt-4">
-                                    <a href="">
-                                        <h4>Для туристов в республике запустят специальную программу</h4>
-                                    </a>
-                                    <p className="news-date">27 июня <span className="news-category ml-4">Проекты</span>
-                                    </p>
-                                </div>
-                            </div>
-                            <div className="filtered-news-item">
-                                <div className="news-image">
-                                    <img className="w-100" src="img/16.png" alt=""/>
-                                </div>
-
-                                <div className="news-text p-25 mt-4">
-                                    <a href="">
-                                        <h4>Для туристов в республике запустят специальную программу</h4>
-                                    </a>
-                                    <p className="news-date">27 июня <span className="news-category ml-4">Проекты</span>
-                                    </p>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                 </div>

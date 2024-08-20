@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\ImplementationController;
 use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Frontend\AgencyController;
 use App\Http\Controllers\Frontend\HomeController;
@@ -19,7 +20,8 @@ Route::get('/search/page', [SearchController::class, 'searchPage'])->name('searc
 Route::get('/national-projects', [HomeController::class, 'nationalProjects'])->name('natProjects');
 Route::get('/support-svo', [HomeController::class, 'svoSupport'])->name('svoSupport');
 Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
-
+Route::get('/implementations', [HomeController::class, 'implementations'])->name('implementations');
+Route::get('/anticorruptions', [HomeController::class, 'anticorruptions'])->name('anticorruptions');
 
 Route::get('/region', [RegionController::class, 'index'])->name('region');
 Route::get('/economic', [RegionController::class, 'economic'])->name('economic');
@@ -130,6 +132,28 @@ Route::group(['namespace' => 'Admin', 'middleware' => \App\Http\Middleware\Admin
         Route::get('/pages/{page}/edit', [App\Http\Controllers\Admin\PageController::class, 'edit'])->name('admin.page.edit');
         Route::patch('/pages/{page}', [App\Http\Controllers\Admin\PageController::class, 'update'])->name('admin.page.update');
         Route::delete('/pages/{page}', [App\Http\Controllers\Admin\PageController::class, 'destroy'])->name('admin.page.delete');
+
+    });
+
+    Route::group(['namespace' => 'Implementation', 'prefix' => 'admin'], function () {
+        Route::get('/implementation', [App\Http\Controllers\Admin\ImplementationController::class, 'index'])->name('admin.implementations.index');
+
+        Route::get('/implementations/create', [App\Http\Controllers\Admin\ImplementationController::class, 'create'])->name('admin.implementations.create');
+        Route::post('/implementations/store', [App\Http\Controllers\Admin\ImplementationController::class, 'store'])->name('admin.implementations.store');
+        Route::get('/implementations/{implementation}/edit', [App\Http\Controllers\Admin\ImplementationController::class, 'edit'])->name('admin.implementations.edit');
+        Route::patch('/implementations/{implementation}', [App\Http\Controllers\Admin\ImplementationController::class, 'update'])->name('admin.implementations.update');
+        Route::delete('/implementations/{implementation}', [App\Http\Controllers\Admin\ImplementationController::class, 'destroy'])->name('admin.implementations.delete');
+
+    });
+
+    Route::group(['namespace' => 'Anticorruption.jsx', 'prefix' => 'admin'], function () {
+        Route::get('/anticorruptions', [App\Http\Controllers\Admin\AnticorruptionController::class, 'index'])->name('admin.anticorruptions.index');
+
+        Route::get('/anticorruptions/create', [App\Http\Controllers\Admin\AnticorruptionController::class, 'create'])->name('admin.anticorruptions.create');
+        Route::post('/anticorruptions/store', [App\Http\Controllers\Admin\AnticorruptionController::class, 'store'])->name('admin.anticorruptions.store');
+        Route::get('/anticorruptions/{anticorruption}/edit', [App\Http\Controllers\Admin\AnticorruptionController::class, 'edit'])->name('admin.anticorruptions.edit');
+        Route::patch('/anticorruptions/{anticorruption}', [App\Http\Controllers\Admin\AnticorruptionController::class, 'update'])->name('admin.anticorruptions.update');
+        Route::delete('/anticorruptions/{anticorruption}', [App\Http\Controllers\Admin\AnticorruptionController::class, 'destroy'])->name('admin.anticorruptions.delete');
 
     });
 
