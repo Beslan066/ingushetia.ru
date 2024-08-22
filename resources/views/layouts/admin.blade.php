@@ -179,6 +179,7 @@
                         <li><a href="{{route('admin.agenciesActivity.index')}}" class=" waves-effect"><i class="bx bx-buildings"></i><span>Деятельность министерств</span></a></li>
                         <li><a href="{{route('admin.natProjects.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Национальные проекты</span></a></li>
                         <li><a href="{{route('admin.implementations.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Реализация указов Президента</span></a></li>
+                        <li><a href="{{route('admin.economicSupports.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Поддержка экономики</span></a></li>
                         <li><a href="{{route('admin.users.index')}}" class=" waves-effect"><i class="bx bx-user"></i><span>Пользователи</span></a></li>
                     @endif
                     <li><a href="{{route('admin.anticorruptions.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Противодействие коррупции</span></a></li>

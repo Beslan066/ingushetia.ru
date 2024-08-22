@@ -7,6 +7,7 @@ use App\Models\Agency;
 use App\Models\Anticorruption;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\EconomicSupport;
 use App\Models\Implementation;
 use App\Models\MilitarySupport;
 use App\Models\Mountain;
@@ -144,6 +145,18 @@ class HomeController extends Controller
 
         return Inertia::render('Anticorruption', [
             'anticorruptions' => $anticorruptions
+        ]);
+    }
+
+    public function economicSupport()
+    {
+
+        $economicSupports = EconomicSupport::query()->where('type', 0)->orderBy('id', 'desc')->get();
+        $economicSupportsBuisness = EconomicSupport::query()->where('type', 1)->orderBy('id', 'desc')->get();
+
+        return Inertia::render('EconomicSupport', [
+            'economicSupports' => $economicSupports,
+            'economicSupportsBuisness' => $economicSupportsBuisness
         ]);
     }
 }

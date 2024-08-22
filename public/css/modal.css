@@ -91,6 +91,7 @@ input {
 
 .modal-news-image img {
     height: 460px;
+    object-fit: cover;
 }
 
 .image-info {

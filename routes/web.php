@@ -22,6 +22,7 @@ Route::get('/support-svo', [HomeController::class, 'svoSupport'])->name('svoSupp
 Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
 Route::get('/implementations', [HomeController::class, 'implementations'])->name('implementations');
 Route::get('/anticorruptions', [HomeController::class, 'anticorruptions'])->name('anticorruptions');
+Route::get('/economic-support', [HomeController::class, 'economicSupport'])->name('economicSupport');
 
 Route::get('/region', [RegionController::class, 'index'])->name('region');
 Route::get('/economic', [RegionController::class, 'economic'])->name('economic');
@@ -146,7 +147,7 @@ Route::group(['namespace' => 'Admin', 'middleware' => \App\Http\Middleware\Admin
 
     });
 
-    Route::group(['namespace' => 'Anticorruption.jsx', 'prefix' => 'admin'], function () {
+    Route::group(['namespace' => 'Anticorruption', 'prefix' => 'admin'], function () {
         Route::get('/anticorruptions', [App\Http\Controllers\Admin\AnticorruptionController::class, 'index'])->name('admin.anticorruptions.index');
 
         Route::get('/anticorruptions/create', [App\Http\Controllers\Admin\AnticorruptionController::class, 'create'])->name('admin.anticorruptions.create');
@@ -154,6 +155,17 @@ Route::group(['namespace' => 'Admin', 'middleware' => \App\Http\Middleware\Admin
         Route::get('/anticorruptions/{anticorruption}/edit', [App\Http\Controllers\Admin\AnticorruptionController::class, 'edit'])->name('admin.anticorruptions.edit');
         Route::patch('/anticorruptions/{anticorruption}', [App\Http\Controllers\Admin\AnticorruptionController::class, 'update'])->name('admin.anticorruptions.update');
         Route::delete('/anticorruptions/{anticorruption}', [App\Http\Controllers\Admin\AnticorruptionController::class, 'destroy'])->name('admin.anticorruptions.delete');
+
+    });
+
+    Route::group(['namespace' => 'EconomicSupport', 'prefix' => 'admin'], function () {
+        Route::get('/economic-support', [App\Http\Controllers\Admin\EconomicSupportController::class, 'index'])->name('admin.economicSupports.index');
+
+        Route::get('/economic-support/create', [App\Http\Controllers\Admin\EconomicSupportController::class, 'create'])->name('admin.economicSupports.create');
+        Route::post('/economic-support/store', [App\Http\Controllers\Admin\EconomicSupportController::class, 'store'])->name('admin.economicSupports.store');
+        Route::get('/economic-support/{economicSupport}/edit', [App\Http\Controllers\Admin\EconomicSupportController::class, 'edit'])->name('admin.economicSupports.edit');
+        Route::patch('/economic-support/{economicSupport}', [App\Http\Controllers\Admin\EconomicSupportController::class, 'update'])->name('admin.economicSupports.update');
+        Route::delete('/economic-support/{economicSupport}', [App\Http\Controllers\Admin\EconomicSupportController::class, 'destroy'])->name('admin.economicSupports.delete');
 
     });
 

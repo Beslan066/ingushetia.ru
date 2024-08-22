@@ -1178,3 +1178,41 @@ quote::after {
 .anticorruption-lead a {
     color: #07A267 !important;
 }
+
+.economic-support-lead p{
+    margin-bottom: 24px !important;
+}
+
+.economic-support-card {
+    background-color: #F6F6F6;
+    max-width: 300px;
+    min-width: 300px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    height: 165px;
+    padding: 20px 24px 20px 24px;
+    cursor: pointer;
+}
+
+.for-peoples h2 {
+    margin-bottom: 20px;
+}
+
+.for-peoples h4 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.for-buisness h2 {
+    margin-bottom: 20px;
+}
+
+.for-buisness h4 {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.for-buisness p {
+    margin-bottom: 36px !important;
+}
+
