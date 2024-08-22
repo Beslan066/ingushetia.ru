@@ -277,6 +277,8 @@ export default function Welcome() {
                     </div>
                 </section>
 
+                <YearBanner />
+
                 {AgencyNews &&
                     <AgencyNews
                         agencyNews={agencyNews}

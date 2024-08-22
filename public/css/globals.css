@@ -964,14 +964,32 @@ section.municipalities.mb-32 {
 }
 
 .year-banner {
-    background: linear-gradient(to right, #D6F7EB 88%, #20D792 88%);
+    background: url("img/banner100.png") no-repeat center;
     height: 180px;
+    margin-bottom: 80px;
 
 }
 
 .year-banner .container {
-    padding: 20px 112px 20px 112px;
-    height: 180px;
+    min-height: 180px;
+}
+
+.year-logo {
+    height: 140px;
+}
+
+.year-logo img {
+    height: 100%;
+    width: 100%;
+}
+
+.year-text h2 {
+    font-size: 32px;
+    color: #055335;
+}
+
+.year-text p {
+    max-width: 940px;
 }
 
 .agency-items {

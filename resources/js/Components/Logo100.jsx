@@ -1,6 +1,6 @@
 export default function Logo100() {
     return (
-        <svg width="148" height="68" viewBox="0 0 148 68" fill="none" xmlns="http://www.w3.org/2000/svg"
+        <svg width="300" height="140" viewBox="0 0 300 140" fill="none" xmlns="http://www.w3.org/2000/svg"
              xmlns:xlink="http://www.w3.org/1999/xlink">
             <rect width="148" height="68" fill="url(#pattern0_1008_8197)"/>
             <defs>
