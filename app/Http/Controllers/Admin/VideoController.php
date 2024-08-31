@@ -116,9 +116,17 @@ class VideoController extends Controller
             $data['video'] = $path;
         }
 
+        if ($request->input('remove_video') == '1') {
+            if ($video->video) {
+                Storage::delete($video->video);
+            }
+            $data['video'] = null;
+        }
+
         // Преобразуем дату и время в объект Carbon, если это строка
         if (isset($data['published_at'])) {
             $data['published_at'] = Carbon::parse($data['published_at']);
+
         }
 
         $video->update($data);

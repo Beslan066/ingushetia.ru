@@ -20,12 +20,14 @@ Route::get('/search/page', [SearchController::class, 'searchPage'])->name('searc
 Route::get('/national-projects', [HomeController::class, 'nationalProjects'])->name('natProjects');
 Route::get('/support-svo', [HomeController::class, 'svoSupport'])->name('svoSupport');
 Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
+Route::get('/media', [HomeController::class, 'media'])->name('media');
 Route::get('/implementations', [HomeController::class, 'implementations'])->name('implementations');
 Route::get('/anticorruptions', [HomeController::class, 'anticorruptions'])->name('anticorruptions');
 Route::get('/economic-support', [HomeController::class, 'economicSupport'])->name('economicSupport');
 
 Route::get('/region', [RegionController::class, 'index'])->name('region');
 Route::get('/economic', [RegionController::class, 'economic'])->name('economic');
+Route::get('/social-economic-development', [RegionController::class, 'socialEconomicDevelopment'])->name('socialEconomicDevelopment');
 Route::get('/municipalities', [RegionController::class, 'municipality'])->name('municipality');
 Route::get('/history', [RegionController::class, 'history'])->name('history');
 
@@ -147,6 +149,17 @@ Route::group(['namespace' => 'Admin', 'middleware' => \App\Http\Middleware\Admin
 
     });
 
+    Route::group(['namespace' => 'SocialEconomicDevelopment', 'prefix' => 'admin'], function () {
+        Route::get('/social-economic-development', [App\Http\Controllers\Admin\SocialEconomicDevelopmentController::class, 'index'])->name('admin.socialEconomicDevelopments.index');
+
+        Route::get('/social-economic-development/create', [App\Http\Controllers\Admin\SocialEconomicDevelopmentController::class, 'create'])->name('admin.socialEconomicDevelopments.create');
+        Route::post('/social-economic-development/store', [App\Http\Controllers\Admin\SocialEconomicDevelopmentController::class, 'store'])->name('admin.socialEconomicDevelopments.store');
+        Route::get('/social-economic-development/{socialEconomicDevelopment}/edit', [App\Http\Controllers\Admin\SocialEconomicDevelopmentController::class, 'edit'])->name('admin.socialEconomicDevelopments.edit');
+        Route::patch('/social-economic-development/{socialEconomicDevelopment}', [App\Http\Controllers\Admin\SocialEconomicDevelopmentController::class, 'update'])->name('admin.socialEconomicDevelopments.update');
+        Route::delete('/social-economic-development/{socialEconomicDevelopment}', [App\Http\Controllers\Admin\SocialEconomicDevelopmentController::class, 'destroy'])->name('admin.socialEconomicDevelopments.delete');
+
+    });
+
     Route::group(['namespace' => 'Anticorruption', 'prefix' => 'admin'], function () {
         Route::get('/anticorruptions', [App\Http\Controllers\Admin\AnticorruptionController::class, 'index'])->name('admin.anticorruptions.index');
 
@@ -227,9 +240,9 @@ Route::group(['namespace' => 'Admin', 'middleware' => \App\Http\Middleware\Admin
 
         Route::get('/municipalities/create', [App\Http\Controllers\Admin\MunicipalityController::class, 'create'])->name('admin.municipalities.create');
         Route::post('/municipalities/store', [App\Http\Controllers\Admin\MunicipalityController::class, 'store'])->name('admin.municipalities.store');
-        Route::get('/municipalities/{supervisor}/edit', [App\Http\Controllers\Admin\MunicipalityController::class, 'edit'])->name('admin.municipalities.edit');
-        Route::patch('/municipalities/{supervisor}', [App\Http\Controllers\Admin\MunicipalityController::class, 'update'])->name('admin.municipalities.update');
-        Route::delete('/municipalities/{supervisor}', [App\Http\Controllers\Admin\MunicipalityController::class, 'destroy'])->name('admin.municipalities.delete');
+        Route::get('/municipalities/{municipality}/edit', [App\Http\Controllers\Admin\MunicipalityController::class, 'edit'])->name('admin.municipalities.edit');
+        Route::patch('/municipalities/{municipality}', [App\Http\Controllers\Admin\MunicipalityController::class, 'update'])->name('admin.municipalities.update');
+        Route::delete('/municipalities/{municipality}', [App\Http\Controllers\Admin\MunicipalityController::class, 'destroy'])->name('admin.municipalities.delete');
 
     });
 

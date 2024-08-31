@@ -24,7 +24,7 @@ class ResourceController extends Controller
     {
 
 
-        $resources = Resource::with('user')->orderBy('id', 'desc')->paginate(10);
+        $resources = Resource::query()->where('agency_id', auth()->user()->agency_id)->with('user')->orderBy('id', 'desc')->get();
 
         return view('admin.resource.index', compact('resources', ));
     }
@@ -69,7 +69,7 @@ class ResourceController extends Controller
 
         $authors = User::query()->where('role', 10)->get();
 
-        return view('admin.news.edit', compact('resource', 'authors'));
+        return view('admin.resource.edit', compact('resource', 'authors'));
     }
 
     /**

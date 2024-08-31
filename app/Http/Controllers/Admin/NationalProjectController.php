@@ -77,9 +77,11 @@ class NationalProjectController extends Controller
     {
 
 
+        $reportages = PhotoReportage::all();
+
         $authors = User::query()->where('role', 10)->get();
 
-        return view('admin.nat-project.edit', compact('nationalProject', 'authors'));
+        return view('admin.nat-project.edit', compact('nationalProject', 'authors', 'reportages'));
     }
 
     /**
@@ -88,6 +90,13 @@ class NationalProjectController extends Controller
     public function update(UpdateRequest $request, NationalProject $nationalProject)
     {
         $data = $request->validated();
+        if (isset($data['image_main'])) {
+            $path = Storage::put('images', $data['image_main']);
+            // Сохранение пути к изображению в базе данных
+            $data['image_main'] = $path ?? null;
+        }
+
+
         $nationalProject->update($data);
 
         return redirect()->route('admin.natProjects.index')->with('success', 'Project updated successfully');

@@ -74,7 +74,7 @@
                                 </div>
                             </div>
 
-                            @error('image_main')
+                            @error('arms')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
                         </div>
@@ -84,7 +84,7 @@
                             <select class="form-control" id="exampleFormControlSelect1" name="supervisor_id">
                                 <option value="">Выберите руководителя</option>
                                 @foreach($peoples as $people)
-                                    <option value="{{$people->id}}">{{$people->title}}</option>
+                                    <option value="{{$people->id}}">{{$people->name}}</option>
                                 @endforeach
                             </select>
                         </div>

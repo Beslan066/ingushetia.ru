@@ -27,6 +27,34 @@
     <link rel="stylesheet" href="{{asset('plugins/summernote/summernote-bs4.min.css')}}">
 
 
+    <style>
+        .thumbnail-container {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+
+        .thumbnail-container img {
+            height: 75px;
+            border: 1px solid #ddd;
+            padding: 2px;
+        }
+
+        .thumbnail-container .remove-thumbnail {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
@@ -180,6 +208,7 @@
                         <li><a href="{{route('admin.natProjects.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Национальные проекты</span></a></li>
                         <li><a href="{{route('admin.implementations.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Реализация указов Президента</span></a></li>
                         <li><a href="{{route('admin.economicSupports.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Поддержка экономики</span></a></li>
+                        <li><a href="{{route('admin.socialEconomicDevelopments.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Социально-экономическое развитие</span></a></li>
                         <li><a href="{{route('admin.users.index')}}" class=" waves-effect"><i class="bx bx-user"></i><span>Пользователи</span></a></li>
                     @endif
                     <li><a href="{{route('admin.anticorruptions.index')}}" class=" waves-effect"><i class="bx bxs-city"></i><span>Противодействие коррупции</span></a></li>
@@ -305,6 +334,9 @@
             return button.render();   // Return button as jQuery object
         }
 
+
+
+
         // Initialize Summernote
         $('.summernote').summernote({
             height: 300,
@@ -381,6 +413,9 @@
             event.preventDefault();
         }
     });
+
+
+
 
 </script>
 

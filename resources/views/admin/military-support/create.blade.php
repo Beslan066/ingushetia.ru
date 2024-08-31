@@ -25,23 +25,6 @@
                             @error('content')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
-
-                            <div class="row w-50">
-                                <div class="col-12">
-                                    <div class="card">
-                                        <div class="card-body">
-
-                                            <h4 class="card-title">Изображение новости</h4>
-                                            <input type="file" class="dropify" data-height="300" name="image_main" multiple/>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            @error('image_main')
-                            <div class="text-danger">{{ $message }}</div>
-                            @enderror
                         </div>
 
 

@@ -27,7 +27,6 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'required|string',
             'content' => 'required',
-            'image_main' => 'nullable|image|mimes:jpg,jpeg,webp,png',
             'user_id' => 'required',
         ];
     }
@@ -38,9 +37,6 @@ class StoreRequest extends FormRequest
             'title.required' => 'Заголовок обязателен для заполнения.',
             'title.string' => 'Заголовок должен быть строкой.',
             'content.required' => 'Заполните содержимое новости.',
-            'image_main.required' => 'Необходимо выбрать изображение.',
-            'image_main.image' => 'Файл должен быть изображением.',
-            'image_main.mimes' => 'Изображение должно быть в формате: jpg, jpeg, webp, png.',
             'user_id.required' => 'Ошибка при определении пользователя.',
         ];
     }

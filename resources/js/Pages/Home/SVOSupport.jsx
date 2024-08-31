@@ -47,6 +47,8 @@ export default function SVOSupport() {
                             supports.map((support) => (
                                 <SupportItem
                                     title={support.title}
+                                    content={support.content}
+                                    published={support.created_at}
                                 />
                             ))
                         }

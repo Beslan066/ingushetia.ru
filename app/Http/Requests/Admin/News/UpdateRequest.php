@@ -23,16 +23,19 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'year' => 'required|integer',
-            'population' => 'required|integer',
-            'square' => 'required|integer',
-            'type' => 'required',
-            'major_id' => 'required',
-            'image_main' => 'required|image|mimes:jpg,jpeg,webp,png',
+            'lead' => 'required|string|max:255',
+            'content' => 'required',
+            'image_main' => 'nullable|image|mimes:jpg,jpeg,webp,png',
+            'category_id' => 'nullable',
+            'news_ing' => 'nullable',
+            'main_material' => 'nullable',
+            'user_id' => 'required',
+            'agency_id' => 'required',
+            'image_author' => 'nullable|string|max:255',
+            'image_description' => 'nullable|string|max:255',
+            'published_at' => 'nullable|date_format:Y-m-d\TH:i',
             'video_id' => 'nullable',
             'reportage_id' => 'nullable',
-            'image_author' => 'required|string|max:255',
-            'image_description' => 'required|string|max:255',
         ];
     }
 

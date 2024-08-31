@@ -22,7 +22,7 @@ class UpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
+            'title' => 'required|string',
             'user_id' => 'required',
             'content' => 'required',
             'agency_id' => 'required',
@@ -35,6 +35,8 @@ class UpdateRequest extends FormRequest
         return [
             'title.required' => 'Заголовок обязателен для заполнения',
             'title.max' => 'Длина заголовка не должна превышать 255 символов',
+            'user_id.required' => 'Ошибка при определении пользователя.',
+            'agency_id.required' => 'Ошибка при определении организации.',
         ];
     }
 }

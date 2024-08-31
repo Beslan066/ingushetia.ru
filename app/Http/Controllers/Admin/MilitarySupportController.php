@@ -48,12 +48,6 @@ class MilitarySupportController extends Controller
     {
         $data = $request->validated();
 
-        if (isset($data['image_main'])) {
-            $path = Storage::put('images', $data['image_main']);
-            // Сохранение пути к изображению в базе данных
-            $data['image_main'] = $path ?? null;
-        }
-
 
         $supports = MilitarySupport::create($data);
 
@@ -86,6 +80,7 @@ class MilitarySupportController extends Controller
     public function update(UpdateRequest $request, MilitarySupport $militarySupport)
     {
         $data = $request->validated();
+
         $militarySupport->update($data);
 
         return redirect()->route('admin.militarySupport.index')->with('success', 'Support updated successfully');

@@ -44,7 +44,7 @@ export default function VideoPlayer({ video, baseUrl, date }) {
     };
 
     return (
-        <div className="filtered-news-item col-4">
+        <div className="filtered-news-item">
             <div
                 className="news-image position-relative d-flex flex-column align-items-center"
                 onMouseEnter={handleMouseEnter}
@@ -78,7 +78,7 @@ export default function VideoPlayer({ video, baseUrl, date }) {
             </div>
             <div className="news-text pl-20 d-flex flex-column justify-content-between">
                 <div>
-                    <h4>{video.title}</h4>
+                    <h4>{video.title.slice(0,70)}</h4>
                 </div>
                 <p className="news-date">{date}</p>
             </div>

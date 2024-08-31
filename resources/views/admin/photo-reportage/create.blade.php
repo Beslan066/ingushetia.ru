@@ -23,35 +23,25 @@
                                     <textarea class="summernote" placeholder="Введите что-нибудь" name="content"></textarea>
                                 </div>
 
-                                <div class="w-50 d-flex flex-column align-items-center">
-                                    <div class="col-12">
-                                        <div class="card">
-                                            <div class="card-body">
+                        </div>
 
-                                                <h4 class="card-title">Изображение новости</h4>
-                                                <input type="file" class="dropify" data-height="300" name="image_main" multiple/>
-
-                                            </div> <!-- end card-body-->
-                                        </div> <!-- end card-->
-                                    </div> <!-- end col -->
-
-                                    <div class="col-12">
-                                        <div class="custom-file">
-                                            <input type="file" name="slides[]" multiple style="padding: 10px; border: 1px solid green">
-                                            <label for="exampleInputFile">Слайд-шоу фотографий</label>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="form-group w-50">
+                                <label for="image_main">Изображение новости</label>
+                                <input type="file" id="image_main" name="image_main" class="dropify" data-height="300"/>
                             </div>
 
-                            <div class="row w-50">
-
-                            </div>
 
                             @error('image_main')
                             <div class="text-danger">{{ $message }}</div>
                             @enderror
-                        </div>
+
+                            <div class="form-group w-50">
+                                <label for="slides">Слайд-шоу фотографий</label>
+                                <input type="file" id="slides" name="slides[]" class="dropify" data-height="300" multiple/>
+                            </div>
+
+                            <!-- Контейнер для миниатюр слайдов -->
+                            <div id="thumbnails" class="d-flex flex-wrap mt-3"></div>
 
 
                         <div class="form-group w-50">

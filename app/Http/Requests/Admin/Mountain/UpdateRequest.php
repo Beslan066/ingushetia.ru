@@ -23,15 +23,16 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
+            'lead' => 'required|string|max:255',
             'year' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'coordinates' => 'required|string|max:255',
             'see_height' => 'required|string|max:255',
             'structure' => 'required|string|max:255',
             'content' => 'required',
-            'image_main' => 'required|image|mimes:jpg,jpeg,webp,png',
-            'image_author' => 'required|string|max:255',
-            'image_description' => 'required|string|max:255',
+            'image_main' => 'nullable|image|mimes:jpg,jpeg,webp,png',
+            'image_author' => 'nullable|string|max:255',
+            'image_description' => 'nullable|string|max:255',
             'user_id' => 'required',
             'reportage_id' => 'nullable',
         ];
@@ -69,7 +70,6 @@ class UpdateRequest extends FormRequest
             'structure.max' => 'Длина краткого structure не должна превышать 255 символов.',
 
             'content.required' => 'Заполните содержимое новости.',
-            'image_main.required' => 'Необходимо выбрать изображение.',
             'image_main.image' => 'Файл должен быть изображением.',
             'image_main.mimes' => 'Изображение должно быть в формате: jpg, jpeg, webp, png.',
 

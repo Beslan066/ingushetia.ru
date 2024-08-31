@@ -22,7 +22,7 @@
 
 
                             <div class="form-group w-50">
-                                <textarea id="summernote" placeholder="Введите что-нибудь" name="content">{{$page->content}}</textarea>
+                                <textarea id="summernote" class="summernote" placeholder="Введите что-нибудь" name="content">{{$page->content}}</textarea>
                             </div>
 
                         </div>

@@ -71,7 +71,10 @@ class AgencyController extends Controller
      */
     public function edit(Agency  $agency)
     {
-       return view('admin.agency.edit', compact('agency'));
+
+        $peoples = Supervisor::all();
+
+        return view('admin.agency.edit', compact('agency', 'peoples'));
     }
 
     /**
@@ -81,6 +84,11 @@ class AgencyController extends Controller
     {
         $data = $request->validated();
 
+        if (isset($data['logo'])) {
+            $path = Storage::put('logos', $data['logo']);
+            // Сохранение пути к изображению в базе данных
+            $data['logo'] = $path ?? null;
+        }
 
         $agency->update($data);
 

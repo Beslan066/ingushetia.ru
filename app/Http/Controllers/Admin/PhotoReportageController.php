@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 
@@ -97,25 +98,64 @@ class PhotoReportageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(News $news)
+    public function edit(PhotoReportage $reportage)
     {
 
+        $news = News::all();
         $categories = Category::all();
         $authors = User::query()->where('role', 10)->get();
 
-        return view('admin.photo-reportage.edit', compact('news', 'categories', 'authors'));
+        return view('admin.photo-reportage.edit', compact('reportage', 'categories', 'authors', 'news'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRequest $request, News $news)
+    public function update(UpdateRequest $request, PhotoReportage $reportage)
     {
         $data = $request->validated();
-        $news->update($data);
 
-        return redirect()->route('admin.photoReportage.index')->with('success', 'News updated successfully');
+        // Преобразование строки JSON в массив
+        $removedSlides = !empty($data['remove_slides']) ? json_decode($data['remove_slides'], true) : [];
+
+        // Получаем существующие слайды из базы данных
+        $existingSlides = json_decode($reportage->slides, true) ?: [];
+
+        // Проверка и удаление слайдов
+        if (!empty($removedSlides)) {
+            // Удаляем слайды из массива существующих слайдов
+            $existingSlides = array_diff($existingSlides, $removedSlides);
+
+            // Удаляем файлы с диска
+            foreach ($removedSlides as $slide) {
+                Storage::delete($slide);
+            }
+        }
+
+        // Добавление новых слайдов
+        if ($request->hasFile('slides')) {
+            foreach ($request->file('slides') as $slide) {
+                $filename = $slide->store('slide_images');
+                $existingSlides[] = $filename;
+            }
+        }
+
+        // Обновляем список слайдов
+        $data['slides'] = json_encode(array_values($existingSlides));
+
+        // Обработка основного изображения
+        if ($request->hasFile('image_main')) {
+            $imageMain = $request->file('image_main');
+            $imageMainPath = $imageMain->store('images');
+            $data['image_main'] = $imageMainPath;
+        }
+
+        // Обновление фоторепортажа
+        $reportage->update($data);
+
+        return redirect()->route('admin.photoReportage.index')->with('success', 'Фоторепортаж успешно обновлен');
     }
+
 
     /**
      * Remove the specified resource from storage.

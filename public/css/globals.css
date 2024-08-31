@@ -137,6 +137,12 @@ body {
 
 .top-header {
     background-color: #484848;
+    height: 40px;
+    padding-top: 8px;
+}
+
+.top-header a {
+    color: #f6f6f6;
 }
 
 header {
@@ -145,12 +151,13 @@ header {
   justify-content: space-between;
   background-color: #F6F6F6;
 }
+
 .logo {
     height: 40px;
 }
 
 .logo img {
-    height: 100%;
+    height: 100%    ;
 }
 
 .logo a{
@@ -366,6 +373,7 @@ ul {
   flex-direction: column;
   padding: unset !important;
   max-width: 302px !important;
+  min-height: 323px;
 }
 
 
@@ -920,6 +928,11 @@ section.municipalities.mb-32 {
     height: 72px;
     padding: 12px 20px ;
     margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.support-item:hover {
+    cursor: pointer;
 }
 
 .support-item p {
@@ -1233,4 +1246,66 @@ quote::after {
 .for-buisness p {
     margin-bottom: 36px !important;
 }
+
+
+
+.media-filter {
+    border-bottom: 1px solid #DFDFDF;
+    margin-bottom: 32px;
+}
+
+.media-filter button {
+    padding: 12px 20px 12px 20px;
+}
+
+.media-filter button.active {
+    border-bottom: 2px solid #07A267;
+}
+
+.media-filter button:first-child {
+    padding-left: unset;
+}
+
+.media-filter svg {
+    cursor: pointer;
+}
+
+.media-items-col .filtered-news-item:not(:nth-child(4n)) {
+    background-color: #F6F6F6;
+    margin-right: 22px;
+}
+
+.media-count {
+    display: none;
+}
+
+.media-items-col .media-count {
+    display: block;
+}
+
+.media-count {
+    padding: 4px 12px 4px 12px;
+    background-color: #F6F6F6;
+    right: 12px;
+    top: 12px;
+    opacity: 80%;
+}
+
+.media-count span {
+    font-size: 13px;
+    color: black;
+    text-transform: uppercase;
+    line-height: 20px;
+}
+
+.filter-body.active {
+    display: flex;
+}
+
+.media-filter-container .filter-body .tire {
+    margin-top: unset;
+}
+
+
+
 

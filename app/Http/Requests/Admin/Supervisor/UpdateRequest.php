@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
             'position' => 'required|string',
             'user_id' => 'required',
             'bio' => 'nullable',
-            'image_main' => 'required|image|mimes:jpg,jpeg,webp,png',
+            'image_main' => 'nullable|image|mimes:jpg,jpeg,webp,png',
         ];
     }
 

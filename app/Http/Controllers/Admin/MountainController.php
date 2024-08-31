@@ -76,8 +76,10 @@ class MountainController extends Controller
     public function edit(Mountain $mountain)
     {
         $authors = User::query()->where('role', 10)->get();
+        $reportages = PhotoReportage::query()->where('mountain_reportage', '=', 1)->get();
 
-        return view('admin.mountain.edit', compact('mountain', 'authors'));
+
+        return view('admin.mountain.edit', compact('mountain', 'authors', 'reportages'));
     }
 
     /**
@@ -86,6 +88,14 @@ class MountainController extends Controller
     public function update(UpdateRequest $request, Mountain $mountain)
     {
         $data = $request->validated();
+
+        if (isset($data['image_main'])) {
+            $path = Storage::put('images', $data['image_main']);
+            // Сохранение пути к изображению в базе данных
+            $data['image_main'] = $path ?? null;
+        }
+
+
         $mountain->update($data);
 
         return redirect()->route('admin.mountains.index')->with('success', 'Mountain updated successfully');

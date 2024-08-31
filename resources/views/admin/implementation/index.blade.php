@@ -36,7 +36,7 @@
                                         @foreach($implementations as $implementation)
                                             <tr role="row" class="odd">
                                                 <td class="" tabindex="0">{{$implementation->id}}</td>
-                                                <td class="" tabindex="0">{{$implementation->title}}</td>
+                                                <td class="" tabindex="0">{{mb_substr($implementation->title, 0, 90)}}</td>
                                                 <td class="sorting_1">{{$implementation->created_at}}</td>
                                                 <td style="">
                                                     <div class="btn-group">

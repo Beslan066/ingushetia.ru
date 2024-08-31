@@ -29,7 +29,7 @@ class NewsController extends Controller
 
         $authUser = Auth::user()->agency_id;
 
-        $news = News::with('user', 'category', 'video')->orderBy('id', 'desc')->paginate(10);
+        $news = News::query()->where('agency_id', auth()->user()->agency_id)->with('user', 'category', 'video')->orderBy('id', 'desc')->paginate(10);
         $agencyNews = News::query()->where('agency_id', $authUser)->get();
 
         return view('admin.news.index', compact('news', 'agencyNews' ));
@@ -86,12 +86,14 @@ class NewsController extends Controller
     public function edit(News $news)
     {
 
+
+        $reportages = PhotoReportage::all();
         $videos = Video::all();
 
         $categories = Category::all();
         $authors = User::query()->where('role', 10)->get();
 
-        return view('admin.news.edit', compact('news', 'categories', 'authors', 'videos'));
+        return view('admin.news.edit', compact('news', 'categories', 'authors', 'videos', 'reportages'));
     }
 
     /**
@@ -100,6 +102,16 @@ class NewsController extends Controller
     public function update(UpdateRequest $request, News $news)
     {
         $data = $request->validated();
+
+        if (isset($data['image_main'])) {
+            $path = Storage::put('images', $data['image_main']);
+            // Сохранение пути к изображению в базе данных
+            $data['image_main'] = $path ?? null;
+        }
+
+        // Обработка значения чекбокса
+        $data['main_material'] = $request->has('main_material') ? 1 : 0;
+
         $news->update($data);
 
         return redirect()->route('admin.news.index')->with('success', 'News updated successfully');

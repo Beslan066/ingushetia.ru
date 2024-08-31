@@ -7,7 +7,7 @@
             <div class="card">
 
                 <div class="card-body">
-                    <form action="{{route('admin.anticorruptions.store')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{route('admin.anticorruptions.store', $anticorruption->id)}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group w-50">
                             <label for="">Заголовок</label>

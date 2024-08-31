@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('national_projects', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('lead');
+            $table->text('lead');
             $table->text('content');
             $table->string('image_main');
             $table->dateTime('published_at');

@@ -23,11 +23,11 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'lead' => 'required',
-            'content' => 'required',
-            'image_main' => 'required|image|mimes:jpg,jpeg,webp,png',
+            'lead' => 'nullable',
+            'content' => 'nullable',
+            'image_main' => 'nullable|image|mimes:jpg,jpeg,webp,png',
             'user_id' => 'required',
-            'published_at' => 'required|date_format:Y-m-d\TH:i',
+            'published_at' => 'nullable|date_format:Y-m-d\TH:i',
             'reportage_id' => 'nullable',
         ];
     }

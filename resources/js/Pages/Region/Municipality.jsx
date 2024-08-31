@@ -86,7 +86,8 @@ export default function Municipality() {
                                 <li><Link href="/history">История</Link></li>
                                 <li><Link href="/economic">Экономика</Link></li>
                                 <li className="active"><Link href="">Муниципальные образования</Link></li>
-                                <li><Link href="">Социально-экономическое развитие</Link></li>
+                                <li><Link href={route('socialEconomicDevelopment')}>Социально-экономическое
+                                    развитие</Link></li>
                                 <li><Link href="">Реализация стратегических инициатив Президента РФ</Link></li>
                                 <li><Link href="/economic-support">Поддержка экономики и граждан</Link></li>
                             </ul>

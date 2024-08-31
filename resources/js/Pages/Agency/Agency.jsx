@@ -93,6 +93,7 @@ export default function Agency({search, mainPosts, posts, categories, resources,
                                                 user={post.user}
                                                 agency={post.agency}
                                                 category={post.category.title}
+                                                categoryId={post.category.id}
                                                 published={post.published_at}
                                                 baseUrl={baseUrl}
                                             />
@@ -125,6 +126,7 @@ export default function Agency({search, mainPosts, posts, categories, resources,
                                             user={post.user}
                                             agency={post.agency}
                                             category={post.category.title}
+                                            categoryId={post.category.id}
                                             published={post.published_at}
                                         />
                                     );

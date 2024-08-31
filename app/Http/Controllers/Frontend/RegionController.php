@@ -11,6 +11,7 @@ use App\Models\NationalProject;
 use App\Models\News;
 use App\Models\PhotoReportage;
 use App\Models\Resource;
+use App\Models\SocialEconomicDevelopment;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
@@ -41,6 +42,16 @@ class RegionController extends Controller
         return Inertia::render('Region/Municipality', [
             'cities' => $cities,
             'districts' => $districts
+        ]);
+    }
+
+    public function socialEconomicDevelopment()
+    {
+
+        $socialEconomicDevelopment = SocialEconomicDevelopment::query()->orderBy('id', 'desc')->get();
+
+        return Inertia::render('Region/SocialEconomicDevelopment', [
+            'socialEconomicDevelopment' => $socialEconomicDevelopment
         ]);
     }
 }

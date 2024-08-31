@@ -35,14 +35,8 @@ class StoreRequest extends FormRequest
             'supervisor_id' => 'required',
             'image_main' => 'required|image|mimes:jpg,jpeg,webp,png',
             'arms' => 'required|image|mimes:jpg,jpeg,webp,png',
-            'phone_number' => [
-                'required',
-                'regex:/^8-\d{3}-\d{3}-\d{2}-\d{2}$/'
-            ],
-            'fax_number' => [
-                'required',
-                'regex:/^8 \(\d{4}\) \d{2} \d{2} \d{2}$/'
-            ],
+            'phone_number' => 'required',
+            'fax_number' => 'required',
             'email' => 'required|email',
             'address' => 'required|string|max:255',
         ];
@@ -56,6 +50,11 @@ class StoreRequest extends FormRequest
             'image_main.required' => 'Необходимо выбрать изображение.',
             'image_main.image' => 'Файл должен быть изображением.',
             'image_main.mimes' => 'Изображение должно быть в формате: jpg, jpeg, webp, png.',
+
+            'arms.required' => 'Необходимо выбрать изображение.',
+            'arms.image' => 'Файл должен быть изображением.',
+            'arms.mimes' => 'Изображение должно быть в формате: jpg, jpeg, webp, png.',
+
             'phone_number.required' => 'Телефон обязателен для заполнения.',
             'phone_number.regex' => 'Телефон должен быть в формате: 8-928-090-48-33.',
             'fax_number.required' => 'Факс обязателен для заполнения.',

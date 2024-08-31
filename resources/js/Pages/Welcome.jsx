@@ -46,9 +46,20 @@ export default function Welcome() {
     const limitedPosts = filteredPosts.slice(0, 3);
 
     // Функция для форматирования даты
+
     const formatDate = (dateString) => {
         const date = parseISO(dateString);
-        return format(date, 'HH:mm, d MMMM', { locale: ru });
+        const currentYear = new Date().getFullYear();
+        const reportYear = date.getFullYear();
+
+        let dateFormat = 'HH:mm, d MMMM';
+
+        // Если год не текущий, добавляем год в форматирование
+        if (reportYear !== currentYear) {
+            dateFormat += ' yyyy';
+        }
+
+        return format(date, dateFormat, { locale: ru });
     };
 
     const baseUrl = import.meta.env.VITE_APP_URL;
@@ -127,6 +138,8 @@ export default function Welcome() {
                                             video={post.video}
                                             reportages={post.reportage}
                                             image={post.image_main}
+                                            imageAuthor={post.image_author}
+                                            imageDesc={post.image_description}
                                             lead={post.lead}
                                             content={post.content}
                                             user={post.user}
@@ -300,7 +313,9 @@ export default function Welcome() {
                                                     formatDate={formatDate(reportage.published_at)}
 
                                 />
+
                             ))
+
                             }
 
                             {videos.map((video) => (

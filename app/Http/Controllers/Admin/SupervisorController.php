@@ -72,7 +72,9 @@ class SupervisorController extends Controller
     public function edit(Supervisor $supervisor)
     {
 
-        return view('admin.supervisor.edit');
+        return view('admin.supervisor.edit', [
+            'supervisor' => $supervisor
+        ]);
     }
 
     /**
@@ -81,6 +83,13 @@ class SupervisorController extends Controller
     public function update(UpdateRequest $request, Supervisor $supervisor)
     {
         $data = $request->validated();
+
+        if (isset($data['image_main'])) {
+            $path = Storage::put('images', $data['image_main']);
+        }
+
+        // Сохранение пути к изображению в базе данных
+        $data['image_main'] = $path ?? null;
         $supervisor->update($data);
 
         return redirect()->route('admin.supervisors.index')->with('success', 'Supervisor updated successfully');

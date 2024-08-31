@@ -8,6 +8,7 @@ import SupportButton from "@/Components/SupportButton.jsx";
 import SupportModal from "@/Components/SupportModal.jsx";
 import Rightbar from "@/Components/Rightbar.jsx";
 import Logo100 from "@/Components/Logo100.jsx";
+import ReturnSvg from "@/Components/ReturnSvg.jsx";
 export default function Guest({ children, agency, baseUrl }) {
     const [search, setSearch] = React.useState(false);
     const [supportModal, setSupportModal] = React.useState(false);
@@ -37,7 +38,7 @@ export default function Guest({ children, agency, baseUrl }) {
                 <Link>
                     <div className="container d-flex justify-content-center">
                         <div className={'d-flex align-items-center'}>
-                            <img src={'img/icons/return.svg'} alt=""/>
+                            <ReturnSvg />
                             <span>
                                 Вернуться на портал Администрации РИ
                             </span>
@@ -94,7 +95,7 @@ export default function Guest({ children, agency, baseUrl }) {
 
                     <div className="d-flex align-items-center justify-content-between">
                         <div className="logo d-flex align-items-center">
-                            <img src="img/logo.svg" alt="" className="mr-12"/>
+                            <img src={'img/logo.svg'} alt="" className="mr-12"/>
                             <div>
                                 <h2 className="main-title">Республика Ингушетия</h2>
                                 <p className="main-desc">ОФициальный портал</p>

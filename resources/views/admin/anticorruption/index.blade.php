@@ -39,7 +39,7 @@
                                                 <td class="sorting_1">{{$anticorruption->created_at}}</td>
                                                 <td style="">
                                                     <div class="btn-group">
-                                                        <button type="button" class="btn btn-outline-primary waves-effect waves-light mr-2">Редактировать</button>
+                                                        <a href="{{route('admin.anticorruptions.edit', $anticorruption->id)}}" class="btn btn-outline-primary waves-effect waves-light mr-2">Редактировать</a>
                                                         <button type="button" class="btn btn-outline-danger waves-effect waves-light">Удалить</button>
 
                                                     </div>

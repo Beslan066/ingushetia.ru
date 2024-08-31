@@ -81,8 +81,10 @@ class MunicipalityController extends Controller
     {
 
         $peoples = Supervisor::all();
+        $types = Municipality::getTypes();
 
-        return view('admin.municipality.edit', compact('peoples', 'municipality'));
+
+        return view('admin.municipality.edit', compact('peoples', 'municipality', 'types'));
     }
 
     /**

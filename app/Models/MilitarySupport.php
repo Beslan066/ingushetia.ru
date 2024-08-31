@@ -14,7 +14,6 @@ class MilitarySupport extends Model
       'title',
       'content',
       'user_id',
-      'image_main'
     ];
 
     public  function user() {

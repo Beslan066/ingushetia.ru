@@ -1,7 +1,7 @@
 import "../../../public/css/modal.css";
 import React from "react";
 import {Link} from "@inertiajs/react";
-export default function Modal({ active, onClose, title, image, content, category, date, reportages, categoryId, relatedPosts }) {
+export default function Modal({ active, onClose, title, image, content, category, date, reportages, categoryId, relatedPosts, imageAuthor, imageDesc }) {
 
     const baseUrl = import.meta.env.VITE_APP_URL;
 
@@ -45,8 +45,16 @@ export default function Modal({ active, onClose, title, image, content, category
                         <div className="modal-news-image d-flex flex-column">
                             <img className="w-100" src={`${baseUrl}/storage/${image}`} alt=""/>
                             <div className="image-info d-flex aligh-items-center justify-content-between mt-2">
-                                <p className="image-author">Фото: Beslan Shamaev</p>
-                                <p className="image-desc">План нового спортивного комплекса в Гамурзиево</p>
+                                <p className="image-author">
+                                    {imageAuthor &&
+                                        imageAuthor
+                                    }
+                                </p>
+                                <p className="image-desc">
+                                    {imageDesc &&
+                                        imageDesc
+                                    }
+                                </p>
                             </div>
                         </div>
 

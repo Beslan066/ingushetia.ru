@@ -25,7 +25,7 @@ class UpdateRequest extends FormRequest
             'title' => 'required|string|max:255',
             'document' => 'nullable|file|mimes:pdf,docx,doc',
             'lead' => 'nullable|string',
-            'type' => 'required',
+            'type' => 'nullable',
             'content' => 'nullable'
         ];
     }
@@ -33,9 +33,13 @@ class UpdateRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => 'Заголовок обязателен для заполнения',
-            'title.max' => 'Длина заголовка не должна превышать 255 символов',
-            'user_id.required' => 'Ошибка при определении пользователя',
+            'title.required' => 'Заголовок обязателен для заполнения.',
+            'title.string' => 'Заголовок должен быть строкой.',
+            'lead.required' => 'Заполните краткое описание.',
+            'lead.string' => 'Краткое описание должно быть строкой.',
+            'lead.max' => 'Длина краткого описания не должна превышать 255 символов.',
+            'content.required' => 'Заполните содержимое новости.',
+            'type.nullable' => 'Это поле не обязательно для заполнения.',
         ];
     }
 }

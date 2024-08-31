@@ -64,7 +64,7 @@ export default function Guest({ children }) {
                                     <li><Link href={route('agencies.index')}>Министерства</Link></li>
                                 </ul>
                             </li>
-                            <li><Link href="">Медиа</Link></li>
+                            <li><Link href={route('media')}>Медиа</Link></li>
                             <li><Link href="">Документы</Link></li>
                             <li><Link href={route('contacts')}>Контакты</Link></li>
                             <div className="d-flex">

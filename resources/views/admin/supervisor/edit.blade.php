@@ -7,7 +7,7 @@
 
                 <form action="{{route('admin.supervisors.update', $supervisor->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('post')
+                    @method('patch')
                     <div class="card-body">
                         <div>
                             <div class="form-group w-50">
@@ -27,7 +27,7 @@
                             @enderror
 
                             <div class="form-group w-50">
-                                <textarea id="summernote" placeholder="Введите немного биографии" name="bio">{{$supervisor->bio}}</textarea>
+                                <textarea id="summernote" class="summernote" placeholder="Введите немного биографии" name="bio">{{$supervisor->bio}}</textarea>
                             </div>
                             @error('content')
                             <div class="text-danger">{{ $message }}</div>
@@ -37,9 +37,9 @@
                                 <div class="col-12">
                                     <div class="card">
                                         <div class="card-body">
-
-                                            <h4 class="card-title">Изображение</h4>
-                                            <input type="file" class="dropify" data-height="300" name="image_main" multiple/>
+                                            <input type="file" class="dropify" data-height="300" name="image_main" @if($supervisor->image_main)
+                                                data-default-file="{{ asset('storage/' . $supervisor->image_main) }}"
+                                                @endif/>
 
                                         </div>
                                     </div>

@@ -87,6 +87,16 @@ class EconomicSupportController extends Controller
     public function update(UpdateRequest $request, EconomicSupport $economicSupport)
     {
         $data = $request->validated();
+
+        if (isset($data['document'])) {
+            $path = Storage::put('documents', $data['document']);
+            // Сохранение пути к изображению в базе данных
+            $data['document'] = $path ?? null;
+        }
+
+        // Обработка значения чекбокса
+        $data['type'] = $request->has('type') ? 1 : 0;
+
         $economicSupport->update($data);
 
         return redirect()->route('admin.economicSupports.index')->with('success', 'anticorruption updated successfully');

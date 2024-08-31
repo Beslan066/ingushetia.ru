@@ -49,6 +49,8 @@ class DocumentController extends Controller
 
         if (isset($data['file'])) {
             $path = Storage::put('documents', $data['file']);
+            // Сохранение пути к изображению в базе данных
+            $data['file'] = $path ?? null;
         }
 
 
@@ -74,7 +76,7 @@ class DocumentController extends Controller
 
         $types = Document::getTypes();
 
-        return view('admin.documents.edit', compact('document', 'types'));
+        return view('admin.document.edit', compact('document', 'types'));
     }
 
     /**
@@ -83,6 +85,13 @@ class DocumentController extends Controller
     public function update(UpdateRequest $request, Document $document)
     {
         $data = $request->validated();
+
+        if (isset($data['file'])) {
+            $path = Storage::put('documents', $data['file']);
+            // Сохранение пути к изображению в базе данных
+            $data['file'] = $path ?? null;
+        }
+
         $document->update($data);
 
         return redirect()->route('admin.documents.index')->with('success', 'Document updated successfully');

@@ -1,6 +1,10 @@
 import DownloadIcon from "@/Components/DownloadIcon.jsx";
 import Guest from "@/Layouts/GuestLayout.jsx";
 import {Link, usePage} from "@inertiajs/react";
+import EconomicSupportModal from "@/Components/Home/EconomicSupportModal.jsx";
+import EconomicSupportCol from "@/Components/Region/EconomicSupportCol.jsx";
+import { format, parseISO } from 'date-fns';
+import { ru } from 'date-fns/locale';
 
 export default function EconomicSupport() {
 
@@ -36,12 +40,17 @@ export default function EconomicSupport() {
                             <div className={'d-flex flex-wrap'}>
                                 {economicSupports &&
                                     economicSupports.map((economicSupport) => (
-                                        <div className="col economic-support-card">
-                                            <h4>{economicSupport.title}</h4>
-                                            <span>{economicSupport.lead}</span>
-                                        </div>
+                                        <EconomicSupportCol
+                                            title={economicSupport.title}
+                                            lead={economicSupport.lead}
+                                            content={economicSupport.content}
+                                            baseUrl={baseUrl}
+                                            published={economicSupport.created_at}
+                                        />
                                     ))
                                 }
+
+                                <EconomicSupportModal />
                             </div>
                         </div>
 
@@ -51,10 +60,13 @@ export default function EconomicSupport() {
                             <div className="d-flex flex-wrap">
                                 {economicSupportsBuisness &&
                                     economicSupportsBuisness.map((supportBuisness) => (
-                                        <div className="col economic-support-card">
-                                            <h4>{supportBuisness.title}</h4>
-                                            <span>{supportBuisness.lead}</span>
-                                        </div>
+                                        <EconomicSupportCol
+                                            title={supportBuisness.title}
+                                            lead={supportBuisness.lead}
+                                            content={supportBuisness.content}
+                                            baseUrl={baseUrl}
+                                            published={supportBuisness.created_at}
+                                        />
                                     ))
                                 }
                             </div>
@@ -76,6 +88,8 @@ export default function EconomicSupport() {
                     </div>
                 </div>
             </main>
+
+
         </Guest>
     )
 }

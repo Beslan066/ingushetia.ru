@@ -84,6 +84,12 @@ class AnticorruptionController extends Controller
     public function update(UpdateRequest $request, Anticorruption $anticorruption)
     {
         $data = $request->validated();
+
+        if (isset($data['document'])) {
+            $path = Storage::put('documents', $data['document']);
+            // Сохранение пути к изображению в базе данных
+            $data['document'] = $path ?? null;
+        }
         $anticorruption->update($data);
 
         return redirect()->route('admin.anticorruptions.index')->with('success', 'anticorruption updated successfully');

@@ -159,4 +159,16 @@ class HomeController extends Controller
             'economicSupportsBuisness' => $economicSupportsBuisness
         ]);
     }
+
+    public function media()
+    {
+
+        $videos = Video::query()->orderBy('published_at', 'desc')->get();
+        $photoReportages = PhotoReportage::query()->orderBy('published_at', 'desc')->get();
+
+        return Inertia::render('Media', [
+            'videos' => $videos,
+            'photoReportages' => $photoReportages
+        ]);
+    }
 }

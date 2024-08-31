@@ -6,9 +6,9 @@
         <div class="col-12">
             <div class="card">
 
-                <form action="{{route('admin.resources.update')}}" method="post" enctype="multipart/form-data">
+                <form action="{{route('admin.resources.update', $resource->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('post')
+                    @method('patch')
                     <div class="card-body">
                         <div>
                             <div class="form-group w-50">
@@ -21,8 +21,8 @@
 
                             <div class="form-group w-50">
                                 <label for="exampleFormControlTextarea1">Ссылка на ресурс</label>
-                                <input class="form-control" id="exampleFormControlTextarea1" style="height: 101px;"
-                                          placeholder="Введите ссылку" name="link" value="{{$resource->link}}">
+                                <input type="text" class="form-control" id="exampleFormControlTextarea1"  style="height: 101px;"
+                                       placeholder="Вставьте ссылку" name="link"  value="{{$resource->link}}"/>
                             </div>
                             @error('lead')
                             <div class="text-danger">{{ $message }}</div>
