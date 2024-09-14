@@ -10,6 +10,7 @@ use App\Models\Supervisor;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class AgencyController extends Controller
 {
@@ -50,6 +51,9 @@ class AgencyController extends Controller
             $data['logo'] = $path ?? null;
         }
 
+        $data['slug'] = Str::slug($data['name']);
+
+
         $agency = Agency::firstOrCreate($data);
 
         $agency->save();
@@ -89,6 +93,8 @@ class AgencyController extends Controller
             // Сохранение пути к изображению в базе данных
             $data['logo'] = $path ?? null;
         }
+
+        $data['slug'] = Str::slug($data['name']);
 
         $agency->update($data);
 

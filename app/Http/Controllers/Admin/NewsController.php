@@ -15,6 +15,7 @@ use Binafy\LaravelUserMonitoring\Models\VisitMonitoring;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Inertia\Inertia;
 use PHPUnit\TextUI\Configuration\Php;
 
@@ -63,6 +64,9 @@ class NewsController extends Controller
             $data['image_main'] = $path ?? null;
         }
 
+        $data['url'] = Str::slug($data['title']);
+
+
         // Обработка значения чекбокса
         $data['main_material'] = $request->has('main_material') ? 1 : 0;
 
@@ -108,6 +112,8 @@ class NewsController extends Controller
             // Сохранение пути к изображению в базе данных
             $data['image_main'] = $path ?? null;
         }
+
+        $data['url'] = Str::slug($data['title']);
 
         // Обработка значения чекбокса
         $data['main_material'] = $request->has('main_material') ? 1 : 0;

@@ -23,7 +23,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'document' => 'required|file|mimes:pdf,docx|max:10240', // Максимум 10 MB
+            'document' => 'nullable|file|mimes:pdf,docx|max:10240', // Максимум 10 MB
         ];
     }
 }

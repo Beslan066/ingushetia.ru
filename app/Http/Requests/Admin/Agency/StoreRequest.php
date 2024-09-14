@@ -25,6 +25,7 @@ class StoreRequest extends FormRequest
             'name' => 'required|string',
             'supervisor_id' => 'required',
             'supervisor_type' => 'nullable',
+            'slug' => 'nullable',
             'full_title' => 'required|string',
             'logo' => 'required|image|mimes:jpg,jpeg,webp,png,svg',
         ];

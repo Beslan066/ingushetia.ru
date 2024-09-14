@@ -36,6 +36,8 @@ class UpdateRequest extends FormRequest
             'published_at' => 'nullable|date_format:Y-m-d\TH:i',
             'video_id' => 'nullable',
             'reportage_id' => 'nullable',
+            'url' => 'nullable',
+
         ];
     }
 
@@ -61,7 +63,6 @@ class UpdateRequest extends FormRequest
             'image_author.required' => 'Заполните краткое image_author.',
             'image_author.string' => 'Краткое image_author должно быть строкой.',
             'image_author.max' => 'Длина краткого image_author не должна превышать 255 символов.',
-
             'image_description.required' => 'Заполните краткое image_description.',
             'image_description.string' => 'Краткое image_description должно быть строкой.',
             'image_description.max' => 'Длина краткого image_description не должна превышать 255 символов.',

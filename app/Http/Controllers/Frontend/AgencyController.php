@@ -29,8 +29,11 @@ class AgencyController extends Controller
 
     }
 
-    public function singleAgency(Agency $agency)
+    public function singleAgency($slug)
     {
+        $agency = Agency::where('slug', $slug)->firstOrFail();
+
+
         $agencys = Agency::query()
             ->where('id', $agency->id)
             ->get();

@@ -26,6 +26,11 @@
                         @enderror
 
                         <div class="form-group w-50">
+                            <label for="">Slug</label>
+                            <input class="form-control form-control-lg mb-3" type="text" placeholder="Оставьте пустым для автоматического заполнения" name="slug">
+                        </div>
+
+                        <div class="form-group w-50">
                             <label for="exampleFormControlSelect1">Глава</label>
                             <select class="form-control" id="exampleFormControlSelect1" name="supervisor_id">
                                 <option value="">Выберите руководителя</option>

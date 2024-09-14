@@ -12,7 +12,7 @@ export default function Home() {
                         <div className={'agency-items'}>
                             <ul>
                                 {agencies.map((agency) => (
-                                    <Link href={route('agencies.single', agency.id)}>
+                                    <Link href={route('agencies.single', agency.slug)}>
                                         <li className={'agency-item d-flex align-items-center justify-content-between'}>
                                             <div>
                                                 <h3>{agency.name}</h3>

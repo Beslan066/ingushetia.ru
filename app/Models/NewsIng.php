@@ -18,6 +18,7 @@ class NewsIng extends Model
         'category_id',
         'translate_id',
         'published_at',
+        'agency_id',
         'user_id',
     ];
     protected $dates = ['deleted_at'];
@@ -28,6 +29,11 @@ class NewsIng extends Model
 
     public  function user() {
         return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function agency()
+    {
+        return $this->belongsTo(Agency::class, 'agency_id', 'id');
     }
 
 }

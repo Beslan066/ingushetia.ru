@@ -26,6 +26,7 @@ class UpdateRequest extends FormRequest
             'file' => 'nullable|file|mimes:pdf,docx',
             'type' => 'required|integer',
             'published_at' => 'required|date_format:Y-m-d\TH:i',
+            'agency_id' => 'required',
         ];
     }
 
@@ -34,6 +35,8 @@ class UpdateRequest extends FormRequest
         return [
             'title.required' => 'Заголовок обязателен для заполнения',
             'title.max' => 'Длина заголовка не должна превышать 255 символов',
+            'agency_id.required' => 'Ошибка при определении организации.',
+
         ];
     }
 }

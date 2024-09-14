@@ -23,7 +23,7 @@ class DocumentController extends Controller
     {
 
 
-        $documents = Document::query()->orderBy('id', 'desc')->paginate(10);
+        $documents = Document::query()->where('agency_id', auth()->user()->agency_id)->orderBy('id', 'desc')->paginate(10);
 
         return view('admin.document.index', compact('documents', ));
     }

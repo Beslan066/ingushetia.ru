@@ -39,6 +39,7 @@ class StoreRequest extends FormRequest
             'published_at' => 'required|date_format:Y-m-d\TH:i',
             'video_id' => 'nullable',
             'reportage_id' => 'nullable',
+            'url' => 'nullable',
         ];
     }
 

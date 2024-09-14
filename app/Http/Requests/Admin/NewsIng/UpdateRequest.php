@@ -27,6 +27,7 @@ class UpdateRequest extends FormRequest
             'content' => 'required',
             'image_main' => 'nullable',
             'category_id' => 'nullable',
+            'agency_id' => 'required',
             'user_id' => 'required',
             'published_at' => 'required|date_format:Y-m-d\TH:i',
 
@@ -47,6 +48,7 @@ class UpdateRequest extends FormRequest
             'news_ing.in' => 'Выберите правильное значение для перевода',
             'published_at.required' => 'Укажите дату публикации',
             'published_at.date' => 'Некорректный формат даты',
+            'agency_id.required' => 'Ошибка при определении организации.',
             'user_id.required' => 'Ошибка при определении пользователя',
         ];
     }

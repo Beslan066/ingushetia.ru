@@ -1,23 +1,35 @@
-
-import React from 'react'
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Modal from "@/Components/Modal.jsx";
-import {Link, usePage} from "@inertiajs/react";
+import { Link, usePage } from "@inertiajs/react";
+import { Inertia } from '@inertiajs/inertia'; // Импортируем Inertia
 import { format, parseISO } from 'date-fns';
 import { ru } from 'date-fns/locale';
 
-export default function HomeNewsSidebar({key, title, lead, content, image, user, category, onClick, stateValue, agency, categoryId, published, video, reportages, relatedPosts}) {
-
+export default function HomeNewsSidebar({
+                                            key, title, lead, content, image, user, category, onClick, stateValue, agency, categoryId, published, video, reportages, relatedPosts, slug // добавляем slug
+                                        }) {
     const [modal, setModal] = React.useState(false);
     const formattedDate = format(parseISO(published), 'HH:mm, d MMMM', { locale: ru });
 
     useEffect(() => {
         if (modal) {
-            document.body.classList.add('fixed-body')
+            document.body.classList.add('fixed-body');
         } else {
-            document.body.classList.remove('fixed-body')
+            document.body.classList.remove('fixed-body');
         }
-    });
+    }, [modal]);
+
+    // Закрытие модального окна и возврат к предыдущему URL
+    const handleModalClose = () => {
+        setModal(false);
+        Inertia.visit(window.location.pathname, { preserveScroll: true }); // Возвращаемся на предыдущий URL
+    };
+
+    // Открытие модального окна и изменение URL
+    const handlePostClick = () => {
+        setModal(true);
+        Inertia.visit(`/news/${slug}`, { preserveState: true, preserveScroll: true }); // Меняем URL на /news/slug без перезагрузки страницы
+    };
 
     return (
         <div className="news-item">
@@ -29,7 +41,9 @@ export default function HomeNewsSidebar({key, title, lead, content, image, user,
                 </div>
                 {video && <img src="img/icons/video-icon.svg" alt="" />}
             </div>
-            <h2 onClick={() => setModal(true)}>{title}</h2>
+            <Link href={`/news/${slug}`} preserveScroll={true}>
+                <h2>{title}</h2>
+            </Link>
 
             <Modal
                 title={title}
@@ -40,10 +54,9 @@ export default function HomeNewsSidebar({key, title, lead, content, image, user,
                 image={image}
                 content={content}
                 active={modal}
-                onClose={() => setModal(false)}
+                onClose={handleModalClose} // Закрытие модального окна
                 relatedPosts={relatedPosts}
             />
         </div>
     );
 }
-

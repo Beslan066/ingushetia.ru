@@ -42,6 +42,17 @@
                             </select>
                         </div>
 
+                        <div class="form-group w-50 mt-2">
+
+                            <select class="form-control" id="exampleFormControlSelect1" name="agency_id">
+                                <option value="{{auth()->user()->agency->id}}">{{auth()->user()->agency->name}}</option>
+                            </select>
+                        </div>
+
+                        @error('agency_id')
+                        <div class="text-danger">{{ $message }}</div>
+                        @enderror
+
 
                         <div class="form-group w-50">
                             <input type="datetime-local" class="datetime_input" name="published_at" style="color: #495057; width: 250px; border: 1px solid #ced4da; padding: 5px !important; ">

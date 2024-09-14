@@ -20,6 +20,12 @@
                             @enderror
 
                             <div class="form-group w-50">
+                                <label for="">Slug</label>
+                                <input class="form-control form-control-lg mb-3" type="text" placeholder="Оставьте пустым для автоматического заполнения" name="url" value="{{$news->url}}">
+                            </div>
+
+
+                            <div class="form-group w-50">
                                 <label for="exampleFormControlTextarea1">Лид новости</label>
                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" style="height: 101px;"
                                           placeholder="Введите лид" name="lead">{{$news->lead}}</textarea>

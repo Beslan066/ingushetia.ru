@@ -147,7 +147,8 @@ export default function Welcome() {
                                             category={post.category.title}
                                             categoryId={post.category.id}
                                             published={post.published_at}
-                                            relatedPosts={post.relatedPosts} // Передаем relatedPosts в компонент
+                                            relatedPosts={post.relatedPosts}
+                                            slug={post.url}
                                         />
                                     );
                                 })}

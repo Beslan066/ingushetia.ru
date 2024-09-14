@@ -25,6 +25,7 @@ class UpdateRequest extends FormRequest
             'name' => 'required|string',
             'supervisor_id' => 'required',
             'supervisor_type' => 'nullable',
+            'slug' => 'nullable',
             'full_title' => 'required|string',
             'logo' => 'nullable|image|mimes:jpg,jpeg,webp,png,svg',
         ];

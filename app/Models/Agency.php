@@ -16,10 +16,16 @@ class Agency extends Model
         'supervisor_type',
         'logo',
         'full_title',
+        'slug'
     ];
     protected $dates = ['deleted_at'];
 
     public  function supervisor() {
         return $this->belongsTo(Supervisor::class, 'supervisor_id', 'id');
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
     }
 }

@@ -24,7 +24,7 @@ class PhotoReportageController extends Controller
     {
 
 
-        $news = PhotoReportage::orderBy('id', 'desc')->paginate(10);
+        $news = PhotoReportage::query()->where('agency_id', auth()->user()->agency_id)->orderBy('id', 'desc')->paginate(10);
 
         return view('admin.photo-reportage.index', compact('news'));
     }
