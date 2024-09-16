@@ -1,7 +1,7 @@
 import {Link, Head, usePage, router} from '@inertiajs/react';
 import Guest from "@/Layouts/GuestLayout.jsx";
 import Modal from "@/Components/Modal.jsx";
-import React from 'react'
+import React, { Fragment } from 'react'
 import { useEffect, useState } from 'react';
 import HomeNewsSidebar from "@/Components/Home/HomeNewsSidebar.jsx";
 import { format, parseISO } from 'date-fns';
@@ -98,8 +98,8 @@ export default function Welcome() {
 
                                     <div className="d-flex flex-wrap">
                                     {limitedPosts.map((post) => (
+                                        <Fragment key={post.id}>
                                         <LimitedPosts
-                                            key={post.id}
                                             title={post.title}
                                             video={post.video}
                                             reportages={post.reportage}
@@ -114,6 +114,7 @@ export default function Welcome() {
                                             baseUrl={baseUrl}
                                             relatedPosts={post.relatedPosts}
                                         />
+                                        </Fragment>
                                         ))}
                                     </div>
 
@@ -132,8 +133,8 @@ export default function Welcome() {
 
                                 {posts.map((post) => {
                                     return (
+                                        <Fragment key={post.id}>
                                         <HomeNewsSidebar
-                                            key={post.id}
                                             title={post.title}
                                             video={post.video}
                                             reportages={post.reportage}
@@ -150,6 +151,7 @@ export default function Welcome() {
                                             relatedPosts={post.relatedPosts}
                                             slug={post.url}
                                         />
+                                        </Fragment>
                                     );
                                 })}
 
@@ -308,25 +310,26 @@ export default function Welcome() {
                         <h3 className={'mb-24'}>Фото и видеорепортажи</h3>
                         <div className="d-flex justify-content-between flex-wrap">
                             {photoReportages.map((reportage) => (
+                                <Fragment key={reportage.id}>
                                 <PhotoReportageItem className={'d-flex'}
                                                     baseUrl={baseUrl}
                                                     reportage={reportage}
                                                     formatDate={formatDate(reportage.published_at)}
-
                                 />
-
+                                </Fragment>
                             ))
 
                             }
 
                             {videos.map((video) => (
+                                <Fragment key={video.id}>
                                 <VideoPlayer
                                     key={video.id}
                                     video={video}
                                     baseUrl={baseUrl}
                                     date={formatDate(video.published_at)}
-
                                 />
+                                </Fragment>
                             ))}
 
                         </div>
