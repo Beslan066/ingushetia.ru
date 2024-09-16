@@ -362,63 +362,70 @@
                 quote: QuoteButton
             }
         });
-        CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
-            mode: "htmlmixed",
-            theme: "monokai"
-        });
+
+        if (typeof CodeMirror !== 'undefined') {
+            CodeMirror.fromTextArea(document.getElementById("codeMirrorDemo"), {
+                mode: "htmlmixed",
+                theme: "monokai"
+            });
+        }
     });
 
     // Загрузка видео
 
 
-    document.getElementById('videoInput').addEventListener('change', function() {
-        const form = document.getElementById('upload-form');
-        const formData = new FormData(form);
-        const progressBar = document.querySelector('.progress-bar');
+    if (document.getElementById('videoInput')) {
+        document.getElementById('videoInput').addEventListener('change', function() {
+            const form = document.getElementById('upload-form');
+            const formData = new FormData(form);
+            const progressBar = document.querySelector('.progress-bar');
 
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', form.action, true);
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', form.action, true);
 
-        xhr.upload.onprogress = function(event) {
-            if (event.lengthComputable) {
-                const percentComplete = Math.round((event.loaded / event.total) * 100);
-                progressBar.style.width = percentComplete + '%';
-                progressBar.setAttribute('aria-valuenow', percentComplete);
-                progressBar.textContent = percentComplete + '%';
+            xhr.upload.onprogress = function(event) {
+                if (event.lengthComputable) {
+                    const percentComplete = Math.round((event.loaded / event.total) * 100);
+                    progressBar.style.width = percentComplete + '%';
+                    progressBar.setAttribute('aria-valuenow', percentComplete);
+                    progressBar.textContent = percentComplete + '%';
+                }
+            };
+
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    alert('Видео успешно загружено!');
+                    progressBar.style.width = '0%';
+                    progressBar.setAttribute('aria-valuenow', 0);
+                    progressBar.textContent = '0%';
+                } else {
+                    alert('Произошла ошибка при загрузке видео.');
+                }
+            };
+
+            xhr.send(formData);
+        });
+    }
+
+    if (document.getElementById('contactForm')) {
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            var phoneInput = document.getElementById('phone_number');
+            var faxInput = document.getElementById('fax_number');
+
+            var phonePattern = /^(8 \(\d{3}\) \d{2} \d{2} \d{2}|^\+7\(\d{3}\)|8-\d{3}-\d{3}-\d{2}-\d{2})$/;
+            var faxPattern = /^8 \(\d{4}\) \d{2} \d{2} \d{2}$/;
+
+            if (!phonePattern.test(phoneInput.value)) {
+                alert('Введите номер в формате: 8 (928) 49 38 39, +7(928) или 8-928-090-48-33');
+                event.preventDefault();
             }
-        };
 
-        xhr.onload = function() {
-            if (xhr.status === 200) {
-                alert('Видео успешно загружено!');
-                progressBar.style.width = '0%';
-                progressBar.setAttribute('aria-valuenow', 0);
-                progressBar.textContent = '0%';
-            } else {
-                alert('Произошла ошибка при загрузке видео.');
+            if (!faxPattern.test(faxInput.value)) {
+                alert('Введите номер факса в формате: 8 (8732) 37 48 94');
+                event.preventDefault();
             }
-        };
-
-        xhr.send(formData);
-    });
-
-    document.getElementById('contactForm').addEventListener('submit', function(event) {
-        var phoneInput = document.getElementById('phone_number');
-        var faxInput = document.getElementById('fax_number');
-
-        var phonePattern = /^(8 \(\d{3}\) \d{2} \d{2} \d{2}|^\+7\(\d{3}\)|8-\d{3}-\d{3}-\d{2}-\d{2})$/;
-        var faxPattern = /^8 \(\d{4}\) \d{2} \d{2} \d{2}$/;
-
-        if (!phonePattern.test(phoneInput.value)) {
-            alert('Введите номер в формате: 8 (928) 49 38 39, +7(928) или 8-928-090-48-33');
-            event.preventDefault();
-        }
-
-        if (!faxPattern.test(faxInput.value)) {
-            alert('Введите номер факса в формате: 8 (8732) 37 48 94');
-            event.preventDefault();
-        }
-    });
+        });
+    }
 
 
 
