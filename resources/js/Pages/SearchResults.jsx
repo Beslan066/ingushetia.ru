@@ -43,7 +43,7 @@ export default function SearchResultsPage() {
     return (
         <Guest>
             <div className="container">
-                <h2 className={'mt-40 mb-32'}>Результаты поиска: {query}</h2>
+                <h2 className={'mt-xl-40 mb-32'}>Результаты поиска: {query}</h2>
                 <div className="search-filters d-flex align-items-center justify-content-between">
                     <div className="filter-btns">
                         <button onClick={() => filterResults('all')}

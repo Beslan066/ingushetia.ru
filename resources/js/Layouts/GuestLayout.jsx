@@ -41,15 +41,23 @@ export default function Guest({ children }) {
     return (
         <div className={'position-relative'}>
             <header className={`fixed-header`}>
-                <div className="container p-16 d-flex justify-content-between align-items-center">
+                <div className="header container">
                     <div className="logo d-flex align-items-center">
-                        <img src="img/logo100.svg" alt=""/>
+                        <img src="/img/logo.svg" alt=""/>
                         <Link href={'/'}>
                             <div>
                                 <h1 className="main-title">Республика Ингушетия</h1>
                                 <p className="main-desc">Официальный портал</p>
                             </div>
                         </Link>
+                    </div>
+                    <div className="header-mobile-actions">
+                        <button onClick={handleSearchClick}>
+                            <img src={`/img/icons/${search ? 'Close' : 'search'}.svg`} alt=""/>
+                        </button>
+                        <button onClick={handleRightBarToggle}>
+                            <img src={`/img/icons/${rightBar ? 'Close' : 'burger'}.svg`} alt=""/>
+                        </button>
                     </div>
                     <nav className="header-menu">
                         <ul className="d-flex align-items-center topmenu">
@@ -70,13 +78,13 @@ export default function Guest({ children }) {
                             <div className="d-flex">
                                 {!rightBar &&
                                     <li style={{cursor: 'pointer'}} className="menu-icons" onClick={handleSearchClick}>
-                                        <img src={`img/icons/${search ? 'Close' : 'search'}.svg`} alt="Close"/>
+                                        <img src={`/img/icons/${search ? 'Close' : 'search'}.svg`} alt="Close"/>
                                     </li>
                                 }
 
                                 <li className="menu-icons">
                                     <button style={{border: 'none'}} onClick={handleRightBarToggle}>
-                                        <img src={`img/icons/${rightBar ? 'Close' : 'burger'}.svg`} alt="Menu"/>
+                                        <img src={`/img/icons/${rightBar ? 'Close' : 'burger'}.svg`} alt="Menu"/>
                                     </button>
                                 </li>
                             </div>
@@ -96,9 +104,9 @@ export default function Guest({ children }) {
                         {/* ваш код */}
                     </div>
 
-                    <div className="d-flex align-items-center justify-content-between">
+                    <div className="d-flex align-items-center justify-content-between flex-wrap gap-4">
                         <div className="logo d-flex align-items-center">
-                            <img src="img/logo.svg" alt="" className="mr-12"/>
+                            <img src="/img/logo.svg" alt="" className="mr-12"/>
                             <div>
                                 <h2 className="main-title">Республика Ингушетия</h2>
                                 <p className="main-desc">ОФициальный портал</p>

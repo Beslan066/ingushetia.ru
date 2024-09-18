@@ -9,7 +9,7 @@ export default function Anticorruption() {
     return (
         <Guest>
             <main>
-                <div className="container mt-40">
+                <div className="container mt-xl-40">
                     <h2 className={'mb-32'}>Противодействие коррупции</h2>
 
                     <div className={'mt-32 anticorruption-lead'}>
@@ -29,7 +29,7 @@ export default function Anticorruption() {
                         </div>
 
 
-                    <div className="implementation-items mt-40">
+                    <div className="implementation-items mt-xl-40">
                         {anticorruptions &&
                             anticorruptions.map((anticorruption) => (
                                 <div className="implementation-item d-flex justify-content-between align-items-center">

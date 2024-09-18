@@ -24,7 +24,7 @@ export default function Mountains({ mountains, baseUrl }) {
     return (
         <section className={'mb-32'}>
             <div className="container">
-                <h2 className={'mt-40 mb-32'}>Родина башен</h2>
+                <h2 className={'mt-xl-40 mb-32'}>Родина башен</h2>
 
                 <div className={'mountain-slider'}>
                     <div
@@ -32,15 +32,17 @@ export default function Mountains({ mountains, baseUrl }) {
                         style={{ transform: `translateX(-${currentSlide * 100}%)`, transition: 'transform 0.3s ease-in-out' }}
                     >
                         {mountains.map((mountain, index) => (
-                            <div key={index} className="mountain-item d-flex" onClick={() => openMountainModal(mountain)}>
+                            <div key={index} className="mountain-item" onClick={() => openMountainModal(mountain)}>
                                 <div className="mountain-image">
                                     <img src={`${baseUrl}/storage/${mountain.image_main}`} alt=""/>
                                 </div>
-                                <div className="mountain-text position-relative">
-                                    <h2>{mountain.title}</h2>
-                                    <p>{mountain.lead}</p>
-                                    <button className={'d-flex position-absolute bottom-5'}>
-                                        Подробнее <img src="img/icons/longarrow.svg" alt=""/>
+                                <div className="mountain-text">
+                                    <div>
+                                        <h2>{ mountain.title }</h2>
+                                        <p>{ mountain.lead }</p>
+                                    </div>
+                                    <button className={ 'more' }>
+                                    Подробнее <img src="/img/icons/longarrow.svg" alt=""/>
                                     </button>
                                 </div>
                             </div>
@@ -49,7 +51,7 @@ export default function Mountains({ mountains, baseUrl }) {
                 </div>
                 <div className="resource-arrows d-flex align-items-center" style={{marginTop: '20px'}}>
                     <button onClick={handlePrevious} style={{marginRight: '20px'}}>
-                        <img src="img/icons/arrow back.svg" alt=""/>
+                        <img src="/img/icons/arrow back.svg" alt=""/>
                     </button>
                     <div className={'page-counter'}>
                         <span>{currentSlide + 1}</span>
@@ -57,7 +59,7 @@ export default function Mountains({ mountains, baseUrl }) {
                         <span>{mountains.length}</span>
                     </div>
                     <button className={'pl-20'} onClick={handleNext}>
-                        <img src="img/icons/arrow next .svg" alt=""/>
+                        <img src="/img/icons/arrow next .svg" alt=""/>
                     </button>
                 </div>
 

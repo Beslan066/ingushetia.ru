@@ -56,9 +56,9 @@ export default function NewsComponent({ news, baseUrl, selectedCategory, selecte
         <div className="d-flex flex-wrap">
             {hasNews ? (
                 <>
-                    <div className="d-flex news-row news-image-row">
-                        {displayedNews.slice(0, 3).map((newsItem) => (
-                            <div className="filtered-news-item col-4" key={newsItem.id}>
+                    <div className="agency-news news-row news-image-row p-4">
+                        {displayedNews.map((newsItem) => (
+                            <div className="filtered-news-item cols-1 cols-md-2 cols-lg-3 cols-xl-4" key={newsItem.id}>
                                 <div className="news-image">
                                     <img src={`${baseUrl}/storage/${newsItem.image_main}`} alt="" className="w-100 h-100 clean-image" />
                                 </div>
@@ -73,38 +73,6 @@ export default function NewsComponent({ news, baseUrl, selectedCategory, selecte
                             </div>
                         ))}
                     </div>
-
-                    <div className="d-flex flex-wrap news-row">
-                        {displayedNews.slice(3, 9).map((newsItem) => (
-                            <div className="filtered-news-item col-4" key={newsItem.id}>
-                                <div className="news-text">
-                                    <p className="news-date">
-                                        {formatDate(newsItem.published_at)} <span className="news-category ml-4">{newsItem.category.title}</span>
-                                    </p>
-                                    <a href={newsItem.link}>
-                                        <h4>{newsItem.title}</h4>
-                                    </a>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    {displayedNews.length > 9 && (
-                        <div className="d-flex flex-wrap">
-                            {displayedNews.slice(9).map((newsItem) => (
-                                <div className="filtered-news-item col-4" key={newsItem.id}>
-                                    <div className="news-text">
-                                        <p className="news-date">
-                                            {formatDate(newsItem.published_at)} <span className="news-category ml-4">{newsItem.category.title}</span>
-                                        </p>
-                                        <a href={newsItem.link}>
-                                            <h4>{newsItem.title}</h4>
-                                        </a>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
 
                     <div className="load-news d-flex justify-content-center w-100">
                         {showMore ? (

@@ -23,7 +23,7 @@ export default function PhotoReportageItem({reportage, baseUrl, formatDate}) {
                     <img src={`${baseUrl}/storage/${reportage.image_main}`} alt={reportage.title}
                          className="w-100 h-100 clean-image" style={{objectFit: 'cover'}}/>
                     <div className={'position-absolute gallery-icon'}>
-                        <img src="img/icons/gallery.svg" alt=""/>
+                        <img src="/img/icons/gallery.svg" alt=""/>
                     </div>
                     <div className={'position-absolute media-count'}>
                         <span>{numberOfSlides} фото</span>

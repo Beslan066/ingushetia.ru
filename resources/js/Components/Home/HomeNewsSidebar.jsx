@@ -39,7 +39,7 @@ export default function HomeNewsSidebar({
                     <span className="news-category">{category}</span>
                 </Link>
                 </div>
-                {video && <img src="img/icons/video-icon.svg" alt="" />}
+                {video && <img src="/img/icons/video-icon.svg" alt="" />}
             </div>
             <Link href={`/news/${slug}`} preserveScroll={true}>
                 <h2>{title}</h2>

@@ -7,9 +7,9 @@ export default function EconomicSupportModal({ active, onClose, title, content, 
     return (
         <div>
             <div className={`d-flex justify-content-center modal-section typical-page`}>
-                <div className={`main-modal col-7 p-32 ${active ? 'active' : ''}`} id="mainModal">
-                    <div className="modal-head w-100 d-flex aligh-items-center justify-content-between">
-                        <p className="d-flex aligh-items-center">
+                <div className={`main-modal p-xl-32 ${active ? 'active' : ''}`} id="mainModal">
+                    <div className="modal-head w-100 d-flex align-items-center justify-content-between">
+                        <p className="d-flex align-items-center">
                             <a href="">Главная </a>
                             <span className="ml-12"><img className={'next-icon'} src="../../img/icons/no.svg"
                                                          alt=""/></span>
@@ -19,12 +19,12 @@ export default function EconomicSupportModal({ active, onClose, title, content, 
                             <a className="ml-12" href="">{title}</a>
                         </p>
                         <div>
-                            <button className="mr-12"><img src="img/icons/Print.png" alt=""/></button>
-                            <button onClick={onClose}><img src="img/icons/Close.png" alt=""/></button>
+                            <button className="mr-12"><img src="/img/icons/Print.png" alt=""/></button>
+                            <button onClick={onClose}><img src="/img/icons/Close.png" alt=""/></button>
                         </div>
                     </div>
 
-                    <div className="modal-news-content mt-40 mb-24">
+                    <div className="modal-news-content mt-xl-40 mb-24">
 
                         <div className="modal-news-title">
                             <h2>{title}</h2>

@@ -15,13 +15,13 @@ export default function EconomicSupport() {
     return (
         <Guest>
             <main>
-                <div className="container mt-40">
+                <div className="container mt-xl-40">
                     <h2 className={'mb-32'}>Поддержка экономики и граждан</h2>
                 </div>
 
-                <div className="container d-flex w-full  col-xxl-12">
-                    <div className="main-left col-9">
-                        <div className={'economic-support-lead mb-32'}>
+                <div className="container d-flex flex-column-reverse gap-4 flex-xl-row w-full  col-xxl-12">
+                    <div className="main-left">
+                        <div className={ 'economic-support-lead mb-32' }>
                             <p>Сформирован пакет мер поддержки граждан и бизнеса в условиях санкций, который включает
                                 решения для малого и среднего бизнеса, аграрного сектора, IT-компаний, строительной
                                 отрасли,
@@ -37,20 +37,20 @@ export default function EconomicSupport() {
                         </div>
                         <div className="for-peoples mb-32">
                             <h2>Для граждан</h2>
-                            <div className={'d-flex flex-wrap'}>
-                                {economicSupports &&
+                            <div className={ 'd-flex flex-wrap' }>
+                                { economicSupports &&
                                     economicSupports.map((economicSupport) => (
                                         <EconomicSupportCol
-                                            title={economicSupport.title}
-                                            lead={economicSupport.lead}
-                                            content={economicSupport.content}
-                                            baseUrl={baseUrl}
-                                            published={economicSupport.created_at}
+                                            title={ economicSupport.title }
+                                            lead={ economicSupport.lead }
+                                            content={ economicSupport.content }
+                                            baseUrl={ baseUrl }
+                                            published={ economicSupport.created_at }
                                         />
                                     ))
                                 }
 
-                                <EconomicSupportModal />
+                                <EconomicSupportModal/>
                             </div>
                         </div>
 
@@ -58,22 +58,21 @@ export default function EconomicSupport() {
                             <h2>Для бизнеса</h2>
                             <p>Проконсультироваться по мерам поддержки можно на горячей линии центра «Мой бизнес»</p>
                             <div className="d-flex flex-wrap">
-                                {economicSupportsBuisness &&
+                                { economicSupportsBuisness &&
                                     economicSupportsBuisness.map((supportBuisness) => (
                                         <EconomicSupportCol
-                                            title={supportBuisness.title}
-                                            lead={supportBuisness.lead}
-                                            content={supportBuisness.content}
-                                            baseUrl={baseUrl}
-                                            published={supportBuisness.created_at}
+                                            title={ supportBuisness.title }
+                                            lead={ supportBuisness.lead }
+                                            content={ supportBuisness.content }
+                                            baseUrl={ baseUrl }
+                                            published={ supportBuisness.created_at }
                                         />
                                     ))
                                 }
                             </div>
                         </div>
                     </div>
-
-                    <div className="main-right col-3  ml-32">
+                    <div className="main-right">
                         <div className="d-flex flex-column mb-32 region-links">
                             <ul className="region-pager">
                                 <li className="active"><Link href="/region">О Республике</Link></li>

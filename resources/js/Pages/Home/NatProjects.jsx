@@ -22,7 +22,7 @@ export default function NatProjects() {
     return (
         <Guest>
             <main>
-                <div className="container mt-40">
+                <div className="container mt-xl-40">
                     <h2 className={'mb-32'}>Национальные проекты</h2>
 
                     <div className={'d-flex'}>

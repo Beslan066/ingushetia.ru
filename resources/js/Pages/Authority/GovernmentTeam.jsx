@@ -8,7 +8,7 @@ export default function GovernmentTeam() {
     const [modal,setModal] = React.useState(false);
     return(
         <Guest>
-            <main className="mt-40">
+            <main className="mt-xl-40">
                 <div className="container">
                     <h2 className={'mb-32'}>Состав правительства</h2>
                 </div>

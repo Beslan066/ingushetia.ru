@@ -63,7 +63,7 @@ export default function VideoPlayer({ video, baseUrl, date }) {
                     onClick={playVideo}
                     ref={playButtonRef}
                 >
-                    <img src="img/icons/play.svg" alt="Play icon"/>
+                    <img src="/img/icons/play.svg" alt="Play icon"/>
                 </div>
                 {isPlaying && showControls && (
                     <div className="video-controls-overlay">

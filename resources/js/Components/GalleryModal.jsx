@@ -41,7 +41,7 @@ export default function GalleryModal({ active, onClose, title, slides, reportage
 
     return (
         <div className={`d-flex justify-content-center modal-section`}>
-            <div className={`main-modal col-7 p-32 ${active ? 'active' : ''}`} id="mainModal">
+            <div className={`main-modal p-xl-32 ${active ? 'active' : ''}`} id="mainModal">
                 <div className="modal-head w-100 d-flex align-items-center justify-content-between">
                     <p className="d-flex align-items-center">
                         <a href="/">Главная</a>
@@ -55,12 +55,12 @@ export default function GalleryModal({ active, onClose, title, slides, reportage
                     </p>
                     <div>
                         <button onClick={onClose}>
-                            <img src="img/icons/Close.png" alt="Закрыть"/>
+                            <img src="/img/icons/Close.png" alt="Закрыть"/>
                         </button>
                     </div>
                 </div>
 
-                <div className="modal-news-content mt-40 mb-24">
+                <div className="modal-news-content mt-xl-40 mb-24">
                     <div className="modal-news-title">
                         <h2>{title}</h2>
                     </div>
@@ -76,28 +76,28 @@ export default function GalleryModal({ active, onClose, title, slides, reportage
                 </div>
 
                 <div className="modal-tags d-flex flex-column mb-24">
-                    <div className="share-buttons d-flex align-items-center">
-                        <span className="mr-12">Поделиться:</span>
+                    <span className="mb-2">Поделиться:</span>
+                    <div className="share-buttons gap-2 d-flex align-items-center">
                         <a href="/" type="button">
-                            <img src={'img/icons/social/telegram (1).png'} alt="Telegram"/>
+                            <img src={ 'img/icons/social/telegram (1).png' } alt="Telegram"/>
                         </a>
                         <a href="/" type="button">
-                            <img src="img/icons/social/VK.png" alt="VK"/>
+                            <img src="/img/icons/social/VK.png" alt="VK"/>
                         </a>
                         <a href="/" type="button">
-                            <img src="img/icons/social/ok.png" alt="Одноклассники"/>
+                            <img src="/img/icons/social/ok.png" alt="Одноклассники"/>
                         </a>
                         <a href="/" type="button">
-                            <img src="img/icons/social/Whatsapp.png" alt="WhatsApp"/>
+                            <img src="/img/icons/social/Whatsapp.png" alt="WhatsApp"/>
                         </a>
                         <a href="/" type="button">
-                            <img src="img/icons/social/Link.png" alt="Ссылка"/>
+                            <img src="/img/icons/social/Link.png" alt="Ссылка"/>
                         </a>
                     </div>
                 </div>
             </div>
 
-            {hoverModalActive && (
+            { hoverModalActive && (
                 <div className="hover-modal active">
                     <div className="slides-images position-relative d-flex">
                         <div className="gallery-slide d-flex align-items-center">

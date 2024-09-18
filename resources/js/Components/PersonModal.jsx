@@ -4,19 +4,19 @@ export default function PersonModal({ active, onClose }) {
     return (
         <div>
             <div className="d-flex justify-content-center modal-section">
-                <div className={`main-modal col-7 p-32 ${active ? 'active' : ''}`} id="regionModal">
+                <div className={`main-modal p-xl-32 ${active ? 'active' : ''}`} id="regionModal">
 
-                    <div className="modal-head w-100 d-flex aligh-items-center justify-content-between mb-40">
-                        <p className="d-flex aligh-items-center">
+                    <div className="modal-head w-100 d-flex align-items-center justify-content-between mb-40">
+                        <p className="d-flex align-items-center gap-2">
                             <a href="">Главная </a>
-                            <span className="ml-12"><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
-                            <a className="ml-12" href="">Регион</a>
-                            <span className="ml-12"><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
-                            <a className="ml-12" href="">Муниципальные образования</a>
-                            <span className="ml-12"><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
-                            <a className="ml-12" href="">Магас</a>
+                            <span className=""><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
+                            <a className="" href="">Регион</a>
+                            <span className=""><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
+                            <a className="" href="">Муниципальные образования</a>
+                            <span className=""><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
+                            <a className="" href="">Магас</a>
                         </p>
-                        <div>
+                        <div className="flex-shrink-0 align-self-start">
                             <button className="mr-12"><img src="../../img/icons/Print.png" alt=""/></button>
                             <button onClick={onClose}><img src="../../img/icons/Close.png" alt=""/></button>
                         </div>
@@ -26,7 +26,7 @@ export default function PersonModal({ active, onClose }) {
                         <div className="city-title mb-40">
                             <h3>Город Магас</h3>
                         </div>
-                        <div className="d-flex aligh-items-center mb-40 w-100">
+                        <div className="d-flex flex-wrap align-items-center mb-40 w-100">
                             <div className="city-logo">
                                 <img src="../../img/image 19.png" alt="Герб города Магас"/>
                             </div>
@@ -45,7 +45,7 @@ export default function PersonModal({ active, onClose }) {
                             </div>
                         </div>
 
-                        <div className="city-stat d-flex aligh-items-center justify-content-between">
+                        <div className="city-stat d-flex align-items-center justify-content-between">
                             <div className="stat-item">
                                 <p>12,63 км²</p>
                                 <span>Площадь</span>

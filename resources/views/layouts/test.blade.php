@@ -49,7 +49,7 @@
           content="Республика Ингушетия, Махмуд-Али Калиматов, новости, новости Ингушетия, беркат, футбол Ингушетии, курс доллара, погода, Новости сегодня, переводчик, время намаза ингушетия">
     <meta name="description"
           content="{{ isset($post) ? $post->lead : (isset($material) ? $material->lead : 'Общенациональная газета «Сердало» - главное печатное издание Республики Ингушетия, предоставляющее читателям наиболее полную, оперативную, надежную и объективную информацию.') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
     <link rel="stylesheet" href="{{asset('frontend/v3/assets/css/game.css')}}">
 
@@ -1425,7 +1425,7 @@
 
             .post-expert-section {
                 flex-direction: column;
-                aligh-items: center;
+                align-items: center;
                 justify-content: center;
             }
 

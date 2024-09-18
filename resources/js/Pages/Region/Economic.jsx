@@ -8,11 +8,11 @@ import Guest from "@/Layouts/GuestLayout.jsx";
 export default function Economic() {
     return (
         <Guest>
-            <main className="mt-40">
+            <main className="mt-xl-40">
                 <div className="container">
                     <h2 className="mb-32">Экономика Ингушетии</h2>
                 </div>
-                <div className="container d-flex w-full  col-xxl-12 economic-page">
+                <div className="container d-flex flex-column-reverse gap-4 flex-xl-row w-full  col-xxl-12 economic-page">
                     <div className="main-left col-xxl-9">
                         <div className="page-head d-flex flex-column">
                             <p>
@@ -90,7 +90,7 @@ export default function Economic() {
 
                     </div>
 
-                    <div className="main-right  ml-32">
+                    <div className="main-right">
                         <div className="d-flex flex-column mb-32 region-links">
                             <ul className="region-pager">
                                 <li><Link href="/region">О Республике</Link></li>

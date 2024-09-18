@@ -1,9 +1,9 @@
 export default function YearBanner() {
     return (
         <section className={'year-banner'} >
-            <div className="container d-flex align-items-center justify-content-between">
+            <div className="container d-flex flex-column flex-xl-row align-items-center justify-content-between">
                 <div className="year-logo" >
-                    <img src="img/logo100.png" alt="" />
+                    <img src="/img/logo100.png" alt="" />
                 </div>
 
                 <div className="year-text">

@@ -9,18 +9,18 @@ export default function History() {
 
     return(
         <Guest>
-            <main className="mt-40">
+            <main className="mt-xl-40">
                 <div className="container">
                     <h2 className="mb-32">История Республики Ингушетия</h2>
                 </div>
-                <div className="container d-flex w-full  col-xxl-12 news-page">
+                <div className="container d-flex flex-column-reverse gap-4 flex-xl-row w-full  col-xxl-12 news-page">
                     <div className="main-left col-xxl-9">
                         <div className="page-head d-flex flex-column">
 
 
                             <div className="republic-history-image">
                                 <img className="w-100" src="../../img/image 6.png" alt=""/>
-                                <div className="image-info d-flex aligh-items-center justify-content-between mt-2">
+                                <div className="image-info d-flex align-items-center justify-content-between mt-2">
                                     <p className="image-desc">Город Солнца, картина Алана Дзаурова</p>
                                 </div>
                             </div>
@@ -333,7 +333,7 @@ export default function History() {
 
                     </div>
 
-                    <div className="main-right  ml-32">
+                    <div className="main-right">
                         <div className="d-flex flex-column mb-32 region-links">
                             <ul className="region-pager">
                                 <li><Link href="/region">О Республике</Link></li>

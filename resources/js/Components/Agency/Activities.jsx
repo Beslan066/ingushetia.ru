@@ -4,7 +4,7 @@ export default function Activities({activities}) {
     return (
         <section className={'activities'}>
             <div className="container">
-                <h2 className={'mt-40 mb-40'}>Деятельность</h2>
+                <h2 className={'mt-xl-40 mb-40'}>Деятельность</h2>
                 <ul>
                     {activities &&
                         activities.map((activity) => (
@@ -17,10 +17,10 @@ export default function Activities({activities}) {
                         ))
                     }
                 </ul>
-                <div className="more-news mt-40">
+                <div className="more-news mt-xl-40">
                     <Link className={'d-flex'}>
                         <span>Все виды деятельности</span>
-                        <img src="img/icons/longarrow.svg" alt="" className={'pl-3'}/>
+                        <img src="/img/icons/longarrow.svg" alt="" className={'pl-3'}/>
                     </Link>
                 </div>
             </div>

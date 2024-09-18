@@ -68,7 +68,7 @@ export default function SupportModal({ active, onClose }) {
                 <div className={'d-flex align-items-center justify-content-between support-modal-title'}>
                     <h3>Обращение в пресс-службу</h3>
                     <button onClick={onClose}>
-                        <img src="img/icons/Close.svg" alt=""/>
+                        <img src="/img/icons/Close.svg" alt=""/>
                     </button>
                 </div>
                 <p>Обратите внимание, что данное обращение будет рассмотренно в течение 2х суток</p>

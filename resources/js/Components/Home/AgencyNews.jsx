@@ -41,13 +41,13 @@ export default function AgencyNews({ agencies, agencyNews, baseUrl, relatedAgenc
         <section className="home-media">
             <div className="container d-flex flex-column">
                 <h3>Новости министерств</h3>
-                <div className="filtered-news w-full d-flex mt-40 flex-column">
+                <div className="filtered-news w-full d-flex mt-xl-40 flex-column">
                     <div className="filter-items">
                         <button
                             className={`filter-button ${selectedAgency === null ? 'active' : ''}`}
                             onClick={handleAllNewsClick}
                         >
-                            Все новости
+                            Все
                         </button>
                         {agencies.map((agency) => (
                             <button
@@ -60,10 +60,10 @@ export default function AgencyNews({ agencies, agencyNews, baseUrl, relatedAgenc
                         ))}
                     </div>
                 </div>
-                <div className="d-flex justify-content-between flex-wrap">
+                <div className="agency-news">
                     {limitedPosts &&
                         limitedPosts.map((post) => (
-                            <div className="filtered-news-item col-4" key={post.id}>
+                            <div className="agency-news-item cols-4" key={post.id}>
                                 <div className="news-image">
                                     <img
                                         style={{ objectFit: 'cover' }}

@@ -7,7 +7,7 @@ export default function Home() {
     return (
         <Guest>
             <main>
-                <div className="container mt-40">
+                <div className="container mt-xl-40">
                     <h2 className={'mb-32'}>Министерства и ведомства</h2>
                         <div className={'agency-items'}>
                             <ul>
@@ -30,7 +30,7 @@ export default function Home() {
                                                 }
                                             </div>
                                             <div>
-                                                <img src="img/icons/external link.svg" alt=""/>
+                                                <img src="/img/icons/external link.svg" alt=""/>
                                             </div>
                                         </li>
                                     </Link>

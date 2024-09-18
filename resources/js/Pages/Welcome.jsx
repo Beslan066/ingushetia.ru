@@ -17,6 +17,8 @@ import YearBanner from "@/Components/Home/YearBanner.jsx";
 import Mountains from "@/Components/Home/Mountains.jsx";
 import AgencyNews from "@/Components/Home/AgencyNews.jsx";
 import OtherResource from "@/Components/Home/OtherResource.jsx";
+import VectorItem from "@/Components/VectorItem.jsx";
+
 export default function Welcome() {
 
 
@@ -66,24 +68,23 @@ export default function Welcome() {
     return (
         <Guest>
             <div>
-                <main className={`${!search ? 'mt-40' : ''}`}>
-                    <div className="container d-flex w-full  col-xxl-12">
+                <main className={`${!search ? 'mt-xl-40' : ''}`}>
+                    <div className="main-materials-section container">
                         <div className="main-left col-xxl-9 ">
                             <div className="main-materials ">
                                 {mainPosts && <Slider
-
                                     baseUrl={baseUrl}
                                     mainPosts={mainPosts}
                                 />
                                 }
 
-                                <div className="filtered-news w-full d-flex mt-40 flex-column">
+                                <div className="filtered-news w-full d-flex mt-xl-40 flex-column">
                                     <div className="filter-items">
                                         <button
                                             className={`filter-button ${selectedCategory === null ? 'active' : ''}`}
                                             onClick={handleAllNewsClick}
                                         >
-                                            Все новости
+                                            Все
                                         </button>
                                         {categories.map((category) => (
                                             <button
@@ -96,7 +97,7 @@ export default function Welcome() {
                                         ))}
                                     </div>
 
-                                    <div className="d-flex flex-wrap">
+                                    <div className="limited-posts">
                                     {limitedPosts.map((post) => (
                                         <Fragment key={post.id}>
                                         <LimitedPosts
@@ -121,15 +122,15 @@ export default function Welcome() {
                                     <div className="more-news">
                                         <Link href={route('news.index')} className={'d-flex'}>
                                             <span>Больше новостей</span>
-                                            <img src="img/icons/longarrow.svg" alt="" className={'pl-3'}/>
+                                            <img src="/img/icons/longarrow.svg" alt="" className={'pl-3'}/>
                                         </Link>
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        <div className="main-right  ml-32">
-                            <div className="d-flex flex-column mb-32 news-sidebar">
+                        <div className="main-right">
+                            <div className="news-sidebar">
 
                                 {posts.map((post) => {
                                     return (
@@ -158,7 +159,7 @@ export default function Welcome() {
                                 <div className="more-news">
                                     <Link className={'d-flex'} href={route('news.index')}>
                                         <span>Смотреть все</span>
-                                        <img src="img/icons/longarrow.svg" alt="" className={'pl-3'}/>
+                                        <img src="/img/icons/longarrow.svg" alt="" className={'pl-3'}/>
                                     </Link>
                                 </div>
                             </div>
@@ -189,157 +190,66 @@ export default function Welcome() {
                     </div>
                 </main>
                 <section className="ingushetia-vectors mt-32">
-                    <div className="container d-flex flex-column">
-                        <h3 className="mb-48">Векторы развития республики</h3>
-                        <div className=" d-flex w-100 mb-32">
-                            <div className="vector-item  mr-32 w-100 position-relative">
-                                <img className="w-100 vector-image" src="img/content/vectors/image 7.png" alt=""/>
-                                <ul>
-                                    <li>
-                                        <h3>АПК</h3>
-                                        <div className={'d-flex align-items-center'}>
-                                            <img src="img/icons/checkmark.svg" alt=""/>
-                                            <span>Создано более 1000 рабочих мест</span>
-                                        </div>
-                                    </li>
-                                    <li className={'d-flex align-items-center'}>
-                                        <img src="img/icons/checkmark.svg" alt=""/>
-                                        <span>На 18% увеличен сбор с/х продуктов</span>
-                                    </li>
-                                    <li className={'d-flex align-items-center'}>
-                                        <img src="img/icons/checkmark.svg" alt=""/>
-                                        <span>145 гектаров новых пахатных земель</span>
-                                    </li>
-                                </ul>
-                                <div className={'position-absolute'}>
-                                    <Link href="" className={'d-flex'}>
-                                        Подробнее
-                                        <img src="img/icons/longarrow.svg" alt="" className={'pl-3'}/>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className="vector-item w-100 position-relative">
-                                <img className="w-100 vector-image" src="img/content/vectors/image 7 (1).png" alt=""/>
-                                <ul>
-                                    <li>
-                                        <h3>Цифровая сфера</h3>
-                                        <div className={'d-flex align-items-center'}>
-                                            <img src="img/icons/checkmark.svg" alt=""/>
-                                            <span>Открыт IT-университет “Школа 21”</span>
-                                        </div>
-                                    </li>
-                                    <li className={'d-flex align-items-center'}>
-                                        <img src="img/icons/checkmark.svg" alt=""/>
-                                        <span>Выпущено более 400 IT-специалистов</span>
-                                    </li>
-                                </ul>
-                                <div className={'position-absolute'}>
-                                    <Link href="" className={'d-flex'}>
-                                        Подробнее
-                                        <img src="img/icons/longarrow.svg" alt="" className={'pl-3'}/>
-                                    </Link>
-                                </div>
-                            </div>
+                    <div className="d-flex flex-column">
+                        <div className="container vectors-title">
+                            <h3>Векторы развития республики</h3>
                         </div>
-
-                        <div className="d-flex mb-48">
-                            <div className="vector-item w-100 mr-32 position-relative">
-                                <img className="w-100 vector-image" src="img/content/vectors/image 7 (2).png" alt=""/>
-                                <ul>
-                                    <li>
-                                        <h3>Промышленность</h3>
-                                        <div className={'d-flex align-items-center'}>
-                                            <img src="img/icons/checkmark.svg" alt=""/>
-                                            <span>Запущено 3 новых предприятия</span>
-                                        </div>
-                                    </li>
-                                    <li className={'d-flex align-items-center'}>
-                                        <img src="img/icons/checkmark.svg" alt=""/>
-                                        <span>Создано более 2000 новых рабочих мест</span>
-                                    </li>
-                                </ul>
-                                <div className={'position-absolute'}>
-                                    <Link href="" className={'d-flex'}>
-                                        Подробнее
-                                        <img src="img/icons/longarrow.svg" alt="" className={'pl-3'}/>
-                                    </Link>
-                                </div>
-                            </div>
-                            <div className="vector-item w-100 position-relative">
-                                <img className="w-100 vector-image" src="img/content/vectors/image 7 (3).png" alt=""/>
-                                <ul>
-                                    <li>
-                                        <h3>Туризм</h3>
-                                        <div className={'d-flex align-items-center'}>
-                                            <img src="img/icons/checkmark.svg" alt=""/>
-                                            <span>На 20% больше туристов</span>
-                                        </div>
-
-                                    </li>
-                                    <li className={'d-flex align-items-center'}>
-                                        <img src="img/icons/checkmark.svg" alt=""/>
-                                        <span>Более 2 новых туристических зон</span>
-                                    </li>
-
-                                </ul>
-                                <div className={'position-absolute'}>
-                                    <Link href="" className={'d-flex'}>
-                                        Подробнее
-                                        <img src="img/icons/longarrow.svg" alt="" className={'pl-3'}/>
-                                    </Link>
-                                </div>
-                            </div>
+                        <div className="vector-items container">
+                            <VectorItem image="/img/content/vectors/image 7.png" link="" title="АПК" profits={['Создано более 1000 рабочих мест', 'На 18% увеличен сбор с/х продуктов', '145 гектаров новых пахатных земель']}/>
+                            <VectorItem image="/img/content/vectors/image 7 (1).png" link="" title="Цифровая сфера" profits={['Открыт IT-университет “Школа 21”', 'Выпущено более 400 IT-специалистов']}/>
+                            <VectorItem image="/img/content/vectors/image 7 (2).png" link="" title="Промышленность" profits={['Запущено 3 новых предприятия', 'Создано более 2000 новых рабочих мест']}/>
+                            <VectorItem image="/img/content/vectors/image 7 (3).png" link="" title="Туризм" profits={['На 20% больше туристов', 'Более 2 новых туристических зон']}/>
                         </div>
                     </div>
                 </section>
 
-                <YearBanner />
+                <YearBanner/>
 
-                {AgencyNews &&
+                { AgencyNews &&
                     <AgencyNews
-                        agencyNews={agencyNews}
-                        agencies={agencies}
-                        baseUrl={baseUrl}
+                        agencyNews={ agencyNews }
+                        agencies={ agencies }
+                        baseUrl={ baseUrl }
                     />
                 }
 
-                <Municipality cities={cities} district={districts} baseUrl={baseUrl}/>
+                <Municipality cities={ cities } district={ districts } baseUrl={ baseUrl }/>
 
                 <section className="home-media">
                     <div className="container d-flex flex-column">
-                        <h3 className={'mb-24'}>Фото и видеорепортажи</h3>
-                        <div className="d-flex justify-content-between flex-wrap">
-                            {photoReportages.map((reportage) => (
-                                <Fragment key={reportage.id}>
-                                <PhotoReportageItem className={'d-flex'}
-                                                    baseUrl={baseUrl}
-                                                    reportage={reportage}
-                                                    formatDate={formatDate(reportage.published_at)}
-                                />
+                        <h3 className={ 'mb-24' }>Фото и видеорепортажи</h3>
+                        <div className="agency-news">
+                            { photoReportages.map((reportage) => (
+                                <Fragment key={ reportage.id }>
+                                    <PhotoReportageItem className={ 'd-flex' }
+                                                        baseUrl={ baseUrl }
+                                                        reportage={ reportage }
+                                                        formatDate={ formatDate(reportage.published_at) }
+                                    />
                                 </Fragment>
                             ))
 
                             }
 
-                            {videos.map((video) => (
-                                <Fragment key={video.id}>
-                                <VideoPlayer
-                                    key={video.id}
-                                    video={video}
-                                    baseUrl={baseUrl}
-                                    date={formatDate(video.published_at)}
-                                />
+                            { videos.map((video) => (
+                                <Fragment key={ video.id }>
+                                    <VideoPlayer
+                                        key={ video.id }
+                                        video={ video }
+                                        baseUrl={ baseUrl }
+                                        date={ formatDate(video.published_at) }
+                                    />
                                 </Fragment>
-                            ))}
+                            )) }
 
                         </div>
                     </div>
                 </section>
 
-                <Mountains mountains={mountains} baseUrl={baseUrl}/>
+                <Mountains mountains={ mountains } baseUrl={ baseUrl }/>
 
 
-                <OtherResource resources={resources} />
+                <OtherResource resources={ resources }/>
 
             </div>
 

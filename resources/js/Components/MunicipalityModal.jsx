@@ -5,19 +5,19 @@ export default function MunicipalityModal({ active, onClose, title, baseUrl, con
     return(
         <div>
             <div className="d-flex justify-content-center modal-section">
-                <div className={`main-modal col-7 p-32 ${active ? 'active' : ''}`} id="regionModal">
+                <div className={`main-modal ${active ? 'active' : ''}`} id="regionModal">
 
-                    <div className="modal-head w-100 d-flex aligh-items-center justify-content-between mb-40">
-                        <p className="d-flex aligh-items-center">
+                    <div className="modal-head w-100 d-flex align-items-center justify-content-between mb-40">
+                        <p className="d-flex align-items-center flex-wrap gap-2">
                             <a href="">Главная </a>
-                            <span className="ml-12"><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
-                            <a className="ml-12" href="">Регион</a>
-                            <span className="ml-12"><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
-                            <a className="ml-12" href="">Муниципальные образования</a>
-                            <span className="ml-12"><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
-                            <a className="ml-12" href="">Магас</a>
+                            <span className=""><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
+                            <a className="" href="">Регион</a>
+                            <span className=""><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
+                            <a className="" href="">Муниципальные образования</a>
+                            <span className=""><img className={'next-icon'} src="../../img/icons/no.svg" alt=""/></span>
+                            <a className="" href="">Магас</a>
                         </p>
-                        <div>
+                        <div className="flex-shrink-0 align-self-start">
                             <button className="mr-12"><img src="../../img/icons/Print.png" alt=""/></button>
                             <button onClick={onClose}><img src="../../img/icons/Close.png" alt=""/></button>
                         </div>
@@ -29,12 +29,12 @@ export default function MunicipalityModal({ active, onClose, title, baseUrl, con
                         <div className="city-title mb-40">
                             <h3>{title}</h3>
                         </div>
-                        <div className="d-flex aligh-items-center mb-40 w-100">
+                        <div className="d-flex flex-wrap justify-content-center gap-4 align-items-center mb-40 w-100">
                             <div className="city-logo">
                                 <img src={`${baseUrl}/storage/${arms}`} alt="Герб города Магас" />
                             </div>
 
-                                <div className="city-bio pl-32"
+                                <div className="city-bio"
                                      dangerouslySetInnerHTML={{__html: content}}>
 
                                 </div>
@@ -42,7 +42,7 @@ export default function MunicipalityModal({ active, onClose, title, baseUrl, con
 
                         </div>
 
-                        <div className="city-stat d-flex aligh-items-center justify-content-between">
+                        <div className="city-stat d-flex align-items-center gap-2 flex-wrap">
                             <div className="stat-item">
                                 <p>{square}</p>
                                 <span>Площадь</span>
@@ -57,7 +57,7 @@ export default function MunicipalityModal({ active, onClose, title, baseUrl, con
                             </div>
                         </div>
 
-                        <div className="city-head d-flex mb-32">
+                        <div className="city-head d-flex flex-column flex-md-row justify-content-center align-items-center align-items-md-start gap-4 mb-32">
                             <div className="head-person-image">
                                 <img src={`${baseUrl}/storage/${supervisorImage}`} alt=""/>
                             </div>
@@ -72,7 +72,7 @@ export default function MunicipalityModal({ active, onClose, title, baseUrl, con
                     </div>
                     }
 
-                    <div className="modal-gallery d-flex flex-wrap mb-24 w-100 municipality-gallery">
+                    <div className="modal-gallery d-flex flex-md-wrap gap-2 municipality-gallery overflow-x-md-auto overflow-x-scroll">
                         <img src="../../img/content/magas.webp" className="mr-2" alt=""/>
                         <img src="../../img/content/magas1" className="mr-2" alt=""/>
                         <img src="../../img/content/magas2" className="mr-2" alt=""/>
@@ -83,10 +83,6 @@ export default function MunicipalityModal({ active, onClose, title, baseUrl, con
                         <img src="../../img/Rectangle 1.png" alt=""/>
                         <img src="../../img/content/magas4.jpg" alt=""/>
                     </div>
-
-
-
-
                 </div>
             </div>
         </div>

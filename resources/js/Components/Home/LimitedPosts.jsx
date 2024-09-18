@@ -26,7 +26,7 @@ export default function LimitedPosts({key, title, relatedPosts, lead, content, i
         : [];
 
     return (
-        <div key={key} className="filtered-news-item col-4">
+        <div key={key} className="filtered-news-item cols-lg-3 cols-xl-4">
             <div className="news-image" onClick={() => setModal(true)}>
                 <img src={`${baseUrl}/storage/${image}`} alt=""
                      className="w-100 h-100 clean-image"/>

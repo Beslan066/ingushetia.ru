@@ -37,11 +37,11 @@ export default function News() {
 
     return (
         <Guest>
-            <main className="mt-40">
+            <main className="mt-xl-40">
                 <div className="container">
                     <h2 className="mb-32">Новости</h2>
                 </div>
-                <div className="container d-flex w-full col-xxl-12 news-page">
+                <div className="container d-flex w-full col-xxl-12 news-page main-materials-section">
                     <div className="main-left col-xxl-9">
                         <div className="main-materials">
                             {mainPosts && (
@@ -51,7 +51,7 @@ export default function News() {
                                 />
                             )}
 
-                            <div className="filtered-news w-full d-flex mt-40 flex-column">
+                            <div className="filtered-news w-full d-flex mt-xl-40 flex-column">
                                 <NewsFilter categories={categories} onFilterChange={handleFilterChange} />
                                 <NewsComponent
                                     news={news}
@@ -63,8 +63,8 @@ export default function News() {
                             </div>
                         </div>
                     </div>
-                    <div className="main-right ml-32">
-                        <div className="d-flex flex-column mb-32 news-sidebar p-3">
+                    <div className="main-right">
+                        <div className="d-flex flex-column news-sidebar p-2 m-0">
                             <h4>Популярное</h4>
                             <div className="news-item">
                                 <div className="news-date d-flex">
@@ -80,7 +80,7 @@ export default function News() {
                                     <div>
                                         11:34, 2 июля <span className="news-category">Образование</span>
                                     </div>
-                                    <img src="img/icons/video-icon.svg" alt=""/>
+                                    <img src="/img/icons/video-icon.svg" alt=""/>
                                 </div>
                                 <h2 onClick={() => setModal(true)}>В Яндаре по программе «Развитие образования» построили новый детский сад-ясли</h2>
                             </div>
@@ -108,7 +108,7 @@ export default function News() {
                                     <div>
                                         13:45, 8 июля <span className="news-category">Проекты</span>
                                     </div>
-                                    <img src="img/icons/video-icon.svg" alt=""/>
+                                    <img src="/img/icons/video-icon.svg" alt=""/>
                                 </div>
                                 <h2 onClick={() => setModal(true)}>Ингушетия снова в тройке лидеров по ожидаемой продолжительности жизни</h2>
                             </div>
@@ -116,7 +116,7 @@ export default function News() {
                             <div className="more-news">
                                 <a href="" className="d-flex">
                                     <span>Смотреть все</span>
-                                    <img src="img/icons/longarrow.svg" alt="" className="pl-3"/>
+                                    <img src="/img/icons/longarrow.svg" alt="" className="pl-3"/>
                                 </a>
                             </div>
                         </div>

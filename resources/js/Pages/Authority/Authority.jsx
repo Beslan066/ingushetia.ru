@@ -4,7 +4,7 @@ import Guest from "@/Layouts/GuestLayout.jsx";
 export default function Authority() {
     return (
         <Guest>
-            <main className="mt-40">
+            <main className="mt-xl-40">
                 <div className="container">
                     <h2 className={'mb-32'}>Правительство</h2>
                 </div>
@@ -21,7 +21,7 @@ export default function Authority() {
 
                             <div className="republic-history-image">
                                 <img className="w-100" src="../../img/content/pravitelstvori.png" alt=""/>
-                                <div className="image-info d-flex aligh-items-center justify-content-between mt-2">
+                                <div className="image-info d-flex align-items-center justify-content-between mt-2">
                                     <p className="image-desc">Здание правительства Республики Ингушетия</p>
                                 </div>
                             </div>

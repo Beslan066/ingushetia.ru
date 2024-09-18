@@ -20,7 +20,7 @@ export default function SupportItem({title, published, content}) {
         <div>
             <div className={'support-item d-flex align-items-center justify-content-between'} onClick={() => setModal(true)}>
                 <p>{title}</p>
-                <img src="img/icons/arrow grey.svg" alt=""/>
+                <img src="/img/icons/arrow grey.svg" alt=""/>
             </div>
 
             <SVOSupportModal

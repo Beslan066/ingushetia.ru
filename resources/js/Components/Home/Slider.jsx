@@ -56,7 +56,7 @@ export default function Slider({ mainPosts, baseUrl }) {
                             }}
                         >
                             <img src={`${baseUrl}/storage/${slide.image_main}`} alt="Main material" className="w-100" />
-                            <div className="info flex position-absolute w-100 flex-col  pl-40 pr-40 bottom-0 pb-16">
+                            <div className="info flex position-absolute w-100 flex-col bottom-0">
                                 <p className="news-date">
                                     {formattedDate} <span className="news-category ml-4">{slide.category.title}</span>
                                 </p>

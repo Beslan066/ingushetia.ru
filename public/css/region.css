@@ -312,11 +312,13 @@ iframe {
     margin-bottom: 24px !important;
 }
 
+.city-stat {
+  margin-bottom: 24px;
+}
+
 .stat-item {
     background-color: #F6F6F6;
-    width: 32%;
     padding: 24px;
-    margin-bottom: 20px;
 }
 
 .stat-item  p {
@@ -331,20 +333,17 @@ iframe {
 
 .city-head {
     background-color: #F6F6F6;
-    padding: 24px;
+    padding: 8px;
     margin-bottom: 32px;
 }
 
 .head-person-image {
-    max-width: 200px;
+  max-width: 200px;
+  flex-grow: 0;
 }
 
 .head-person-image img {
     width: 100%;
-}
-
-.head-person-info {
-    padding-left: 32px;
 }
 
 .head-person-info h3 {

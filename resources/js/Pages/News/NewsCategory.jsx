@@ -13,14 +13,14 @@ export default function News() {
 
     return (
         <Guest>
-            <main className="mt-40 news-category-page">
+            <main className="mt-xl-40 news-category-page">
                 <div className="container">
                     <h2 className="mb-32">{categoryTitle}</h2>
                 </div>
                 <div className="container d-flex w-full col-xxl-12 news-page">
                     <div className="main-left col-xxl-9">
                         <div className="main-materials">
-                            <div className="filtered-news w-full d-flex mt-40 flex-column">
+                            <div className="filtered-news w-full d-flex mt-xl-40 flex-column">
                                 <NewsComponent
                                     news={news}
                                     baseUrl={baseUrl}
@@ -45,7 +45,7 @@ export default function News() {
                                     <div>
                                         11:34, 2 июля <span className="news-category">Образование</span>
                                     </div>
-                                    <img src="img/icons/video-icon.svg" alt=""/>
+                                    <img src="/img/icons/video-icon.svg" alt=""/>
                                 </div>
                                 <h2 onClick={() => setModal(true)}>В Яндаре по программе «Развитие образования» построили новый детский сад-ясли</h2>
                             </div>
@@ -73,7 +73,7 @@ export default function News() {
                                     <div>
                                         13:45, 8 июля <span className="news-category">Проекты</span>
                                     </div>
-                                    <img src="img/icons/video-icon.svg" alt=""/>
+                                    <img src="/img/icons/video-icon.svg" alt=""/>
                                 </div>
                                 <h2 onClick={() => setModal(true)}>Ингушетия снова в тройке лидеров по ожидаемой продолжительности жизни</h2>
                             </div>
@@ -81,7 +81,7 @@ export default function News() {
                             <div className="more-news">
                                 <a href="" className="d-flex">
                                     <span>Смотреть все</span>
-                                    <img src="img/icons/longarrow.svg" alt="" className="pl-3"/>
+                                    <img src="/img/icons/longarrow.svg" alt="" className="pl-3"/>
                                 </a>
                             </div>
                         </div>

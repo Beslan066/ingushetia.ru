@@ -50,8 +50,8 @@ export default function Agency({search, mainPosts, posts, categories, resources,
             agency={agency}
         >
             <div>
-                <main className={`${!search ? 'mt-40' : ''}`}>
-                    <div className="container d-flex w-full  col-xxl-12">
+                <main className={`${!search ? 'mt-xl-40' : ''}`}>
+                    <div className="container main-materials-section">
                         <div className="main-left col-xxl-9 ">
                             <div className="main-materials ">
                                 {mainPosts && <Slider
@@ -61,13 +61,13 @@ export default function Agency({search, mainPosts, posts, categories, resources,
                                 />
                                 }
 
-                                <div className="filtered-news w-full d-flex mt-40 flex-column">
+                                <div className="filtered-news w-full d-flex mt-xl-40 flex-column">
                                     <div className="filter-items">
                                         <button
                                             className={`filter-button ${selectedCategory === null ? 'active' : ''}`}
                                             onClick={handleAllNewsClick}
                                         >
-                                            Все новости
+                                            Все
                                         </button>
                                         {categories.map((category) => (
                                             <button
@@ -80,7 +80,7 @@ export default function Agency({search, mainPosts, posts, categories, resources,
                                         ))}
                                     </div>
 
-                                    <div className="d-flex flex-wrap">
+                                    <div className="limited-posts">
                                         {limitedPosts.map((post) => (
                                             <LimitedPosts
                                                 key={post.id}
@@ -103,7 +103,7 @@ export default function Agency({search, mainPosts, posts, categories, resources,
                                     <div className="more-news">
                                         <Link href={route('news.index')} className={'d-flex'}>
                                             <span>Больше новостей</span>
-                                            <img src="img/icons/longarrow.svg" alt="" className={'pl-3'}/>
+                                            <img src="/img/icons/longarrow.svg" alt="" className={'pl-3'}/>
                                         </Link>
                                     </div>
                                 </div>
@@ -135,7 +135,7 @@ export default function Agency({search, mainPosts, posts, categories, resources,
                                 <div className="more-news">
                                     <Link className={'d-flex'} href={route('news.index')}>
                                         <span>Смотреть все</span>
-                                        <img src="img/icons/longarrow.svg" alt="" className={'pl-3'}/>
+                                        <img src="/img/icons/longarrow.svg" alt="" className={'pl-3'}/>
                                     </Link>
                                 </div>
                             </div>
@@ -208,14 +208,14 @@ export default function Agency({search, mainPosts, posts, categories, resources,
                         <div className="container">
                             <h3 className="section-title">Полезные ресурсы</h3>
                         </div>
-                        <div className="container d-flex justify-content-between aligh-items-center ">
+                        <div className="container d-flex justify-content-between align-items-center ">
                             {resources.map((resource) => (
                                 <div className="resource-item col-3 p-25 d-flex justify-content-between flex-column">
                                     <h3>{resource.title}</h3>
                                     <div className="d-flex justify-content-between">
                                         <Link href={resource.link}>{resource.link}</Link>
                                         <Link href="">
-                                            <img src="img/icons/external link.svg" alt=""/>
+                                            <img src="/img/icons/external link.svg" alt=""/>
                                         </Link>
                                     </div>
                                 </div>
@@ -224,7 +224,7 @@ export default function Agency({search, mainPosts, posts, categories, resources,
 
                         </div>
 
-                        <div className="container mt-40">
+                        <div className="container mt-xl-40">
                             <div className="resource-arrows d-flex align-items-center">
                                 <button><img src="../../img/icons/arrow back.svg" alt=""/></button>
                                 <button className={'pl-20'}><img src="../../img/icons/arrow next .svg" alt=""/></button>

@@ -12,7 +12,7 @@ export default function Implementation() {
     return (
         <Guest>
             <main>
-                <div className="container mt-40">
+                <div className="container mt-xl-40">
                     <h2 className={'mb-32'}>Реализация указов Президента РФ</h2>
 
                     <div className={'mt-32 implementation-lead'}>

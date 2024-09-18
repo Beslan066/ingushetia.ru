@@ -8,7 +8,7 @@ export default function SVOSupport() {
     return (
         <Guest>
             <main>
-                <div className="container mt-40">
+                <div className="container mt-xl-40">
                     <h2 className={'mb-32'}>
                         Поддержка семей военнослужащих
                     </h2>

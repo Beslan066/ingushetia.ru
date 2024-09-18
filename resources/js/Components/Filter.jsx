@@ -15,8 +15,8 @@ export default function Filter() {
 
     return(
         <div>
-            <div className="filter-items d-flex justify-content-between aligh-items-center">
-                <div className="d-flex aligh-items-center ">
+            <div className="filter-items d-flex justify-content-between align-items-center">
+                <div className="d-flex align-items-center ">
                     <button className="active">Общество</button>
                     <button>Образование</button>
                     <button>Экономика</button>
@@ -31,8 +31,8 @@ export default function Filter() {
                 </div>
             </div>
 
-            <div className={`filter-body  aligh-items-center mb-24 ${filter ? 'active' : ''}`}>
-                <div className="d-flex aligh-items-center">
+            <div className={`filter-body  align-items-center mb-24 ${filter ? 'active' : ''}`}>
+                <div className="d-flex align-items-center">
                     <select name="" id="" placeholder="Период, с" className="mr-12">
                         <option value="">Период, с</option>
                     </select>
@@ -43,7 +43,7 @@ export default function Filter() {
                         <option value="">Период, до</option>
                     </select>
                 </div>
-                <div className="d-flex aligh-items-center">
+                <div className="d-flex align-items-center">
                     <button className="mr-12">Применить</button>
                     <button>Очистить</button>
                 </div>

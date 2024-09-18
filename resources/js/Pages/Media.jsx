@@ -98,7 +98,7 @@ export default function Media({ videos, photoReportages }) {
     return (
         <Guest>
             <main>
-                <div className="container mt-40">
+                <div className="container mt-xl-40">
                     <h2 className="mb-32">Медиа</h2>
 
                     <div className="media-items-col">

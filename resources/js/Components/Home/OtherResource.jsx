@@ -31,7 +31,7 @@ export default function OtherResource({ resources }) {
             <div className="container">
                 <h3 className="section-title">Полезные ресурсы</h3>
             </div>
-            <div className="container d-flex justify-content-between align-items-center">
+            <div className="resources container">
                 {Array.isArray(resources) &&
                     visibleResources.map((resource, index) => (
                         <div key={index} className="resource-item col-3 p-25 d-flex justify-content-between flex-column">
@@ -39,7 +39,7 @@ export default function OtherResource({ resources }) {
                             <div className="d-flex justify-content-between">
                                 <Link href={resource.link}>{resource.link}</Link>
                                 <Link href="">
-                                    <img src="img/icons/external link.svg" alt=""/>
+                                    <img src="/img/icons/external link.svg" alt=""/>
                                 </Link>
                             </div>
                         </div>
@@ -47,7 +47,7 @@ export default function OtherResource({ resources }) {
                 }
             </div>
 
-            <div className="container mt-40">
+            <div className="container mt-xl-40">
                 <div className="resource-arrows d-flex align-items-center">
                     <button onClick={handlePrev}><img src="../../img/icons/arrow back.svg" alt=""/></button>
                     <button className="pl-20" onClick={handleNext}><img src="../../img/icons/arrow next .svg" alt=""/></button>
