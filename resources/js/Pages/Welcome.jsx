@@ -117,7 +117,7 @@ export default function Welcome() {
                                     {limitedPosts.map((post) => (
                                         <Fragment key={post.id}>
                                         <LimitedPosts
-                                            id={post.id}
+                                            id={post.url}
                                             title={post.title}
                                             video={post.video}
                                             reportages={post.reportage}

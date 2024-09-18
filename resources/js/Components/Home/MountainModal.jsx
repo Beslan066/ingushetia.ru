@@ -65,7 +65,7 @@ export default function MountainModal({title, image, content, mountainReportages
                     <div className="see-also d-flex flex-column">
                     <h3 className="mb-24">Смотрите также</h3>
                         <div className="agency-news">
-                            <div className="filtered-news-item">
+                            <div className="filtered-news-item сols-1 cols-md-2 cols-lg-3 cols-xl-4">
                                 <div className="news-image">
                                     <img className="w-100" src="/img/14.png" alt=""/>
                                 </div>

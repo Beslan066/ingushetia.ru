@@ -87,9 +87,11 @@ class HomeController extends Controller
 
         $openedNews = null;
         if ($request->route('id')) {
+            $type = is_int($request->route('id')) ? 'id' : 'url';
+
             $openedNews = News::query()
                 ->with('category', 'video', 'reportage')
-                ->where('id', $request->route('id'))
+                ->where($type, $request->route('id'))
                 ->first();
 
             if ($openedNews) {
