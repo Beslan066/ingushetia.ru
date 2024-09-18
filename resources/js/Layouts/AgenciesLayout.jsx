@@ -95,7 +95,7 @@ export default function Guest({ children, agency, baseUrl }) {
 
                     <div className="d-flex align-items-center justify-content-between">
                         <div className="logo d-flex align-items-center">
-                            <img src={'img/logo.svg'} alt="" className="mr-12"/>
+                            <img src={'/img/logo.svg'} alt="" className="mr-12"/>
                             <div>
                                 <h2 className="main-title">Республика Ингушетия</h2>
                                 <p className="main-desc">ОФициальный портал</p>

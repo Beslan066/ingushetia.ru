@@ -22,7 +22,7 @@ use Inertia\Inertia;
 
 class HomeController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
 
         $categories = Category::query()->take(10)->get();
@@ -85,6 +85,24 @@ class HomeController extends Controller
             return $newsItem;
         });
 
+        $openedNews = null;
+        if ($request->route('id')) {
+            $openedNews = News::query()
+                ->with('category', 'video', 'reportage')
+                ->where('id', $request->route('id'))
+                ->first();
+
+            if ($openedNews) {
+                $relatedPosts = News::query()
+                    ->with('category')  // Подгружаем категорию для связанных новостей
+                    ->where('agency_id', '!=', 5)
+                    ->where('category_id', $openedNews->category_id)
+                    ->where('id', '!=', $openedNews->id)
+                    ->take(3)
+                    ->get();
+                $openedNews->relatedPosts = $relatedPosts;
+            }
+        }
 
         return Inertia::render('Welcome', [
             'posts' => $posts,
@@ -98,6 +116,7 @@ class HomeController extends Controller
             'mountains' => $mountains,
             'agencies' => $agencies,
             'agencyNews' => $agencyNewsWithRelated,
+            'showNews' => $openedNews,
         ]);
     }
 

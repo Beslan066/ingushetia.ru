@@ -2,9 +2,9 @@ import {Link} from "@inertiajs/react";
 import {format, parseISO} from "date-fns";
 import {ru} from "date-fns/locale";
 import Modal from "@/Components/Modal.jsx";
-import React from "react";
+import React, { useEffect } from "react";
 
-export default function LimitedPosts({key, title, relatedPosts, lead, content, image, user, category, categoryId, onClick, stateValue, agency, published, video, reportages, baseUrl}) {
+export default function LimitedPosts({id, title, relatedPosts, lead, content, image, user, category, categoryId, onClick, stateValue, agency, published, video, reportages, baseUrl}) {
 
     const formattedDate = format(parseISO(published), 'HH:mm, d MMMM', { locale: ru });
     const [modal,setModal] = React.useState(false);
@@ -25,8 +25,17 @@ export default function LimitedPosts({key, title, relatedPosts, lead, content, i
             .split('","') // Разделяем строки по разделителю между путями
         : [];
 
+    useEffect(() => {
+        if (modal === true) {
+            window.history.pushState({}, '', `/news/${id}`)
+            console.log(`/news/${id}`)
+        } else {
+            window.history.pushState({}, '', '/')
+        }
+    }, [modal])
+
     return (
-        <div key={key} className="filtered-news-item cols-lg-3 cols-xl-4">
+        <div className="filtered-news-item cols-lg-3 cols-xl-4">
             <div className="news-image" onClick={() => setModal(true)}>
                 <img src={`${baseUrl}/storage/${image}`} alt=""
                      className="w-100 h-100 clean-image"/>

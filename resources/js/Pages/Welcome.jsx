@@ -22,8 +22,9 @@ import VectorItem from "@/Components/VectorItem.jsx";
 export default function Welcome() {
 
 
-    let {posts, categories, mainPosts, resources, photoReportages, relatedAgencyNews, videos, cities, districts, search, setSearch, mountains, agencies, agencyNews} = usePage().props;
+    let {posts, categories, mainPosts, resources, photoReportages, relatedAgencyNews, videos, cities, districts, search, setSearch, mountains, agencies, agencyNews, showNews} = usePage().props;
 
+    const [modal, setModal] = useState(!!showNews);
 
 // Состояние для выбранной категории
     const [selectedCategory, setSelectedCategory] = useState(null);
@@ -97,10 +98,26 @@ export default function Welcome() {
                                         ))}
                                     </div>
 
+                                    {
+                                        showNews && <Modal
+                                            title={showNews.title}
+                                            reportages={showNews.cleanSlidesString}
+                                            date={showNews.formattedDate}
+                                            category={showNews.category}
+                                            categoryId={showNews.categoryId}
+                                            relatedPosts={showNews.relatedPosts}
+                                            image={showNews?.image ?? showNews?.image_main}
+                                            content={showNews.content}
+                                            active={modal}
+                                            onClose={() => setModal(false)}
+                                        />
+                                    }
+
                                     <div className="limited-posts">
                                     {limitedPosts.map((post) => (
                                         <Fragment key={post.id}>
                                         <LimitedPosts
+                                            id={post.id}
                                             title={post.title}
                                             video={post.video}
                                             reportages={post.reportage}

@@ -68,7 +68,7 @@ export default function GalleryModal({ active, onClose, title, slides, reportage
                     <div className="modal-news-images mt-4 d-flex flex-wrap">
                         {cleanSlidesString.map((slide, i) => (
                             <div key={i} className="slide_image position-relative d-flex align-items-center justify-content-center" onClick={() => openHoverModal(i)}>
-                                <img src={'img/icons/expand.png'} className={'position-absolute expand-arrows'}/>
+                                <img src={'/img/icons/expand.png'} className={'position-absolute expand-arrows'}/>
                                 <img className="modal-news-image" src={`${baseUrl}/storage/${slide}`} alt={`Slide ${i + 1}`}/>
                             </div>
                         ))}
@@ -79,7 +79,7 @@ export default function GalleryModal({ active, onClose, title, slides, reportage
                     <span className="mb-2">Поделиться:</span>
                     <div className="share-buttons gap-2 d-flex align-items-center">
                         <a href="/" type="button">
-                            <img src={ 'img/icons/social/telegram (1).png' } alt="Telegram"/>
+                            <img src={ '/img/icons/social/telegram (1).png' } alt="Telegram"/>
                         </a>
                         <a href="/" type="button">
                             <img src="/img/icons/social/VK.png" alt="VK"/>

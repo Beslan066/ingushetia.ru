@@ -44,7 +44,7 @@ export default function NatProjects() {
                             </p>
                         </div>
                         <div className="nat-projects-logo">
-                            <img src={'img/pages/natProjects.png'} alt="Нацпроекты Ингушетия"/>
+                            <img src={'/img/pages/natProjects.png'} alt="Нацпроекты Ингушетия"/>
                         </div>
                     </div>
                     {natProjects &&
