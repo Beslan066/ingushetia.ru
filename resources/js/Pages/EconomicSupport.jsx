@@ -19,7 +19,7 @@ export default function EconomicSupport() {
                     <h2 className={'mb-32'}>Поддержка экономики и граждан</h2>
                 </div>
 
-                <div className="container d-flex flex-column-reverse gap-4 flex-xl-row w-full  col-xxl-12">
+                <div className="container d-flex flex-column gap-4 flex-xl-row w-full  col-xxl-12">
                     <div className="main-left">
                         <div className={ 'economic-support-lead mb-32' }>
                             <p>Сформирован пакет мер поддержки граждан и бизнеса в условиях санкций, который включает

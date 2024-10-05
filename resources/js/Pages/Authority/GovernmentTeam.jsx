@@ -12,7 +12,7 @@ export default function GovernmentTeam() {
                 <div className="container">
                     <h2 className={'mb-32'}>Состав правительства</h2>
                 </div>
-                <div className="container d-flex w-full  col-xxl-12 goverment-team-page">
+                <div className="container d-flex flex-column gap-4 flex-xl-row w-full  col-xxl-12 goverment-team-page">
                     <div className="main-left col-xxl-9">
                         <div className="government-head d-flex w-100 mb-32">
                             <div className="government-img">
@@ -128,7 +128,7 @@ export default function GovernmentTeam() {
 
                     </div>
 
-                    <div className="main-right  ml-32">
+                    <div className="main-right ">
                         <div className="d-flex flex-column mb-32 region-links">
                             <ul className="region-pager">
                                 <li><Link href="/pravitelstvo">Правительство</Link></li>

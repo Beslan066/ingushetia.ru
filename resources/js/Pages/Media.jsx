@@ -107,7 +107,7 @@ export default function Media({ videos, photoReportages }) {
                             onDateRangeChange={handleDateRangeChange}
                         />
 
-                        <div className="media-items d-flex justify-content-between flex-wrap">
+                        <div className="media-items d-flex flex-wrap">
                             {filteredMedia()}
                         </div>
                     </div>

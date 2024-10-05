@@ -147,7 +147,7 @@ export default function Welcome() {
                             </div>
                         </div>
                         <div className="main-right">
-                            <div className="news-sidebar">
+                            <div className="news-sidebar ">
 
                                 {posts.map((post) => {
                                     return (

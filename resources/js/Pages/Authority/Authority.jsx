@@ -8,7 +8,7 @@ export default function Authority() {
                 <div className="container">
                     <h2 className={'mb-32'}>Правительство</h2>
                 </div>
-                <div className="container d-flex w-full  col-xxl-12 authority-page">
+                <div className="container d-flex flex-column gap-4 flex-xl-row w-full col-xxl-12 authority-page">
                     <div className="main-left col-xxl-9">
                         <div className="page-head d-flex flex-column">
 
@@ -77,7 +77,7 @@ export default function Authority() {
 
                     </div>
 
-                    <div className="main-right  ml-32">
+                    <div className="main-right">
                         <div className="d-flex flex-column mb-32 region-links">
                             <ul className="region-pager">
                                 <li className="active"><Link href="/pravitelstvo">Правительство</Link></li>

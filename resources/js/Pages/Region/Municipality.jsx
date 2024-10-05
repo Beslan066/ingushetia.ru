@@ -23,7 +23,7 @@ export default function Municipality() {
                 <div className="container">
                     <h2 className="mb-32">Муниципальные образования</h2>
                 </div>
-                <div className="container d-flex flex-column-reverse gap-4 flex-xl-row w-full  col-xxl-12 municipality-page">
+                <div className="container d-flex flex-column gap-4 flex-xl-row w-full  col-xxl-12 municipality-page">
                     <div className="main-left col-xxl-9">
                         <Map />
 

@@ -3,7 +3,7 @@ import React from "react";
 
 export default function VectorItem({ image, title, profits, link }) {
     return (
-        <div className="vector-item">
+        <div className="vector-item cols-1 cols-md-2 cols-lg-2 cols-xl-4">
             <img className="w-100 vector-image" src={image} alt=""/>
             <div className="vectors-content">
                 <h3>{ title }</h3>

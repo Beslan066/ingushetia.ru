@@ -110,7 +110,7 @@ export default function Agency({search, mainPosts, posts, categories, resources,
 
                             </div>
                         </div>
-                        <div className="main-right  ml-32">
+                        <div className="main-right">
                             <div className="d-flex flex-column mb-32 news-sidebar">
 
                                 {posts.map((post) => {

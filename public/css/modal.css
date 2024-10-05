@@ -408,11 +408,14 @@ header .rightbar.open {
   font-weight: normal;
 }
 
-.submenu {
-  height: 0;
-  overflow: hidden;
-  transition: .3s ease-in-out;
+@media (max-width: 1200px) {
+  .submenu {
+    height: 0;
+    overflow: hidden;
+    transition: .3s ease-in-out;
+  }
 }
+
 
 button:has(+ .submenu) {
   display: flex;
