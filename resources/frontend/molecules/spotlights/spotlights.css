@@ -1,0 +1,18 @@
+.spotlight-sidebar {
+  margin: 0 20px;
+}
+
+.spotlight__link {
+  display: flex;
+  margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1440px) {
+  .spotlight-sidebar {
+    margin: 0;
+  }
+
+}

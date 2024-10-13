@@ -7,6 +7,7 @@ use App\Models\Agency;
 use App\Models\Anticorruption;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\Document;
 use App\Models\EconomicSupport;
 use App\Models\Implementation;
 use App\Models\MilitarySupport;
@@ -106,19 +107,34 @@ class HomeController extends Controller
             }
         }
 
-        return Inertia::render('Welcome', [
+        $documentTypes = Document::getTypes();
+        $documentTypes = collect($documentTypes)->mapWithKeys(function ($type) {
+          return [$type['id'] => $type];
+        })->all();
+        $documents = Document::query()
+          ->whereNotNull('published_at')
+          ->take(5)
+          ->get()
+          ->map(function ($document) use ($documentTypes) {
+            $document->type = $documentTypes[$document->type]['title'];
+            return $document;
+          });
+
+        return Inertia::render('Index', [
             'posts' => $posts,
             'categories' => $categories,
             'mainPosts' => $mainPosts,
             'resources' => $resources,
             'photoReportages' => $photoReportages,
             'videos' => $videos,
+            'media' => collect($photoReportages)->merge($videos)->sortByDesc('published_at'),
             'cities' => $cities,
             'districts' => $districts,
             'mountains' => $mountains,
             'agencies' => $agencies,
             'agencyNews' => $agencyNewsWithRelated,
             'showNews' => $openedNews,
+            'documents' => $documents,
         ]);
     }
 

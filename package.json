@@ -25,6 +25,9 @@
         "@inertiajs/inertia-react": "^0.8.1",
         "bootstrap": "^5.3.3",
         "date-fns": "^3.6.0",
-        "html-react-parser": "^5.1.12"
+        "html-react-parser": "^5.1.12",
+        "lodash": "^4.17.21",
+        "path": "^0.12.7",
+        "react-swipeable": "^7.0.1"
     }
 }

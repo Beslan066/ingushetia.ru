@@ -1,0 +1,21 @@
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--color-neutral-white);
+
+  background-color: var(--color-primary-medium);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover {
+    color: var(--color-primary-dark);
+  }
+}
+
+.button:active {
+  color: var(--color-primary-darkest);
+}

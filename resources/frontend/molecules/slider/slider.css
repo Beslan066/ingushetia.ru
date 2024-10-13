@@ -1,0 +1,19 @@
+.slider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  height: 400px;
+}
+
+@media (min-width: 768px) {
+  .slider {
+    height: 480px;
+  }
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out; /* Плавное перемещение слайдов */
+  height: 100%;
+  z-index: 1;
+}
