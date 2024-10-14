@@ -11,7 +11,7 @@
   font-size: var(--font-size-h4);
   line-height: var(--line-height-h4);
   color: var(--color-neutral-black);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
 }
 
 .external-resource__footer {
@@ -24,7 +24,7 @@
   font-size: var(--font-size-h4);
   line-height: var(--line-height-h4);
   color: var(--color-primary-medium);
-  font-weight: var(--font-weight-regular);
+  font-weight: var(--font-weight-semibold);
 }
 
 @media (hover: hover) and (pointer: fine) {

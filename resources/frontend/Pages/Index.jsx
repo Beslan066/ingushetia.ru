@@ -9,6 +9,7 @@ import Mountains from "#/molecules/mountains/mountains.jsx";
 import Documents from "#/organisms/documents/documents.jsx";
 import ExternalResources from "#/organisms/documents/external-resources.jsx";
 import AppFooter from "#/organisms/footer/footer.jsx";
+import AnniversaryBanner from "#/atoms/anniversary-banner/banner.jsx";
 
 export default function Index({ mainPosts: slides, categories, posts: news, cities: settlements, districts, media, mountains, documents, resources }) {
   const vectors = [
@@ -38,13 +39,23 @@ export default function Index({ mainPosts: slides, categories, posts: news, citi
     },
   ]
 
+  let anniversary = localStorage.getItem('anniversary');
+  anniversary = anniversary !== null ? JSON.parse(anniversary) : false;
+
+
+  const url = new URL(window.location.href);
+  if (url.searchParams.has('anniversary')) {
+    localStorage.setItem('anniversary', JSON.stringify(!anniversary));
+  }
+
   return (
     <>
-      <AppHeader anniversary={ false }/>
+      <AppHeader anniversary={ anniversary }/>
       <Hero categories={ categories } slides={ slides } news={ news }/>
       <Vectors vectors={ vectors }/>
       <Districts settlements={ settlements } districts={ districts }/>
       <Media media={media} />
+      { anniversary ? <AnniversaryBanner /> : '' }
       <Mountains mountains={ mountains } />
       <Documents documents={ documents } />
       <ExternalResources resources={ resources } />

@@ -20,7 +20,7 @@
 
 .link-group__title {
   font-size: var(--font-size-h4);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-h4);
   color: var(--color-neutral-medium);
   text-transform: uppercase;
@@ -61,7 +61,7 @@
   max-width: 400px;
 
   font-size: var(--font-size-h4);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
   line-height: var(--line-height-h4);
   color: var(--color-neutral-white);
 }

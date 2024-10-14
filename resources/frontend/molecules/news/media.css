@@ -35,7 +35,7 @@
   }
 
   .media__wrapper {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     max-width: 1212px;
     margin: 0 auto;
   }

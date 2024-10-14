@@ -44,7 +44,7 @@
   font-size: var(--font-size-h4);
   line-height: var(--line-height-h4);
   color: var(--color-neutral-black);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
 
   height: 52px;
   text-overflow: ellipsis;
