@@ -10,8 +10,9 @@ import Documents from "#/organisms/documents/documents.jsx";
 import ExternalResources from "#/organisms/documents/external-resources.jsx";
 import AppFooter from "#/organisms/footer/footer.jsx";
 import AnniversaryBanner from "#/atoms/anniversary-banner/banner.jsx";
+import AgencyNews from "#/molecules/news/agency-news.jsx";
 
-export default function Index({ mainPosts: slides, categories, posts: news, cities: settlements, districts, media, mountains, documents, resources }) {
+export default function Index({ mainPosts: slides, categories, posts: news, cities: settlements, districts, media, mountains, documents, resources, agencies, agencyNews }) {
   const vectors = [
     {
       image: '/img/content/vectors/image 7.png',
@@ -53,6 +54,7 @@ export default function Index({ mainPosts: slides, categories, posts: news, citi
       <AppHeader anniversary={ anniversary }/>
       <Hero categories={ categories } slides={ slides } news={ news }/>
       <Vectors vectors={ vectors }/>
+      <AgencyNews agencies={agencies} posts={agencyNews} />
       <Districts settlements={ settlements } districts={ districts }/>
       <Media media={media} />
       { anniversary ? <AnniversaryBanner /> : '' }
