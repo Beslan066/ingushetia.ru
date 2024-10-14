@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Slide from "#/atoms/slider/slide.jsx";
 import SlidePagination from "#/atoms/slider/pages.jsx";
 import { useSwipeable } from "react-swipeable";
@@ -11,7 +11,6 @@ export default function MainSlider({ slides, onPost, slideChangeInterval = 8000 
 
   const [current, setCurrent] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const slideRef = useRef(null);
 
   // Функция для показа следующего слайда
   const nextSlide = () => {
@@ -91,6 +90,17 @@ export default function MainSlider({ slides, onPost, slideChangeInterval = 8000 
         }
       </div>
       <SlidePagination count={ slides.length } current={ current } onSlide={ setSlide }/>
+      <button className="prev" onClick={ prevSlide } style={ { transform: "rotate(180deg)" } }
+      >
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 4L17 12L9 20" stroke="white" strokeWidth="2"/>
+        </svg>
+      </button>
+      <button className="next" onClick={ nextSlide }>
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 4L17 12L9 20" stroke="white" strokeWidth="2"/>
+        </svg>
+      </button>
     </div>
   )
 }
