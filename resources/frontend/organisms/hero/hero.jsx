@@ -7,7 +7,7 @@ import AppLink from "#/atoms/buttons/link.jsx";
 import Spotlights from "#/molecules/spotlights/spotlights.jsx";
 import Important from "#/atoms/important/important.jsx";
 
-export default function Hero({ categories, slides, news }) {
+export default function Hero({ categories, slides, news, handlePost }) {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const onCategorySwitch = (category) => {
@@ -19,8 +19,7 @@ export default function Hero({ categories, slides, news }) {
   return (
     <div className="hero-wrapper">
       <div className="hero__slider-wrapper">
-        <MainSlider slides={ slides } onPost={ () => {
-        } }/>
+        <MainSlider slides={ slides } onPost={ handlePost }/>
         <div className="news-wrapper">
           <Tabs tabs={ categories } onTab={ onCategorySwitch } selected={ selectedCategory }/>
           <News news={ filteredArticles }/>

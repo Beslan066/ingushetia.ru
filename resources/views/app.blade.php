@@ -18,7 +18,7 @@
         @vite(['resources/frontend/app.jsx', "resources/frontend/Pages/{$page['component']}.jsx"])
         @inertiaHead
     </head>
-    <body class="body">
+    <body class="body" style="position: relative;">
         @inertia
     </body>
 </html>

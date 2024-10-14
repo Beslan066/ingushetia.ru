@@ -1,7 +1,7 @@
 import AppHeader from "#/molecules/header/header.jsx";
 import Hero from "#/organisms/hero/hero.jsx";
 import './index.css';
-import React from "react";
+import React, { useState } from "react";
 import Vectors from "#/organisms/vectors/vectors.jsx";
 import Districts from "#/organisms/districts/districts.jsx";
 import Media from "#/molecules/news/media.jsx";
@@ -11,8 +11,13 @@ import ExternalResources from "#/organisms/documents/external-resources.jsx";
 import AppFooter from "#/organisms/footer/footer.jsx";
 import AnniversaryBanner from "#/atoms/anniversary-banner/banner.jsx";
 import AgencyNews from "#/molecules/news/agency-news.jsx";
+import Modal from "#/atoms/modal/modal.jsx";
+import PostContent from "#/atoms/modal/post-content.jsx";
 
 export default function Index({ mainPosts: slides, categories, posts: news, cities: settlements, districts, media, mountains, documents, resources, agencies, agencyNews }) {
+  const [modalOpened, setModalOpened] = useState(true);
+
+
   const vectors = [
     {
       image: '/img/content/vectors/image 7.png',
@@ -52,7 +57,9 @@ export default function Index({ mainPosts: slides, categories, posts: news, citi
   return (
     <>
       <AppHeader anniversary={ anniversary }/>
-      <Hero categories={ categories } slides={ slides } news={ news }/>
+      <Hero categories={ categories } slides={ slides } news={ news } handlePost={ () => {
+        setModalOpened(true)
+      } }/>
       <Vectors vectors={ vectors }/>
       <AgencyNews agencies={agencies} posts={agencyNews} />
       <Districts settlements={ settlements } districts={ districts }/>
@@ -62,6 +69,10 @@ export default function Index({ mainPosts: slides, categories, posts: news, citi
       <Documents documents={ documents } />
       <ExternalResources resources={ resources } />
       <AppFooter />
+
+      <Modal breadcrumbs={[{title: 'Главная'}, {title: 'Новости'}, {title: 'Новый современный спортивный комплекс появится в Ингушетии в 2025 году'}]} isOpen={ modalOpened } handleClose={ () => setModalOpened(false) }>
+        <PostContent post={ news[2] }/>
+      </Modal>
     </>
   )
 }

@@ -1,7 +1,7 @@
 .top-menu {
   position: relative;
   background-color: var(--color-neutral-lightest);
-  z-index: 9999999;
+  z-index: 10100;
   width: 100%;
 }
 
@@ -188,7 +188,7 @@
   overflow: hidden;
   height: 100vh;
   background-color: var(--color-neutral-white);
-  z-index: 999999;
+  z-index: 1000;
   transition: .3s ease;
   overflow-y: auto;
   padding: 68px 0 0;
