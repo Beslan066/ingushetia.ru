@@ -191,4 +191,14 @@
   .property__wrapper:not(.property--square, .property--founded, .property--population) {
     display: flex;
   }
+
+  .municipalities__item--active {
+    border-left: 0;
+    background-color: var(--color-neutral-light);
+    color: var(--color-neutral-black);
+  }
+
+  .municipalities__item {
+    border-left: 0;
+  }
 }
