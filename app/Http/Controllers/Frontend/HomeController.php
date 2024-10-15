@@ -37,7 +37,7 @@ class HomeController extends Controller
         $mountains = Mountain::all();
 
         $mainPosts = News::query()
-            ->with('category')
+            ->with('category', 'video', 'reportage')
             ->where('main_material', 1)
             ->where('agency_id', 5)
             ->orderBy('published_at', 'desc')

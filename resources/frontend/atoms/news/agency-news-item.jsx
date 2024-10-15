@@ -1,10 +1,9 @@
 import './agency-item.css';
-import { format, parseISO } from "date-fns";
-import { ru } from "date-fns/locale";
+import { format } from "#/utilities/date.js";
 
 export default function AgencyNewsItem({ id, date, category, title, image, onPost }) {
 
-  const formattedDate = format(parseISO(date), "HH:mm, d MMMM", { locale: ru });
+  const formattedDate = format(date);
   return (
     <a onClick={ () => onPost(id) } className="news-card">
       {

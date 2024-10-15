@@ -1,9 +1,8 @@
 import './slide.css';
-import { format, parseISO } from "date-fns";
-import { ru } from "date-fns/locale";
+import { format } from "#/utilities/date.js";
 
 export default function Slide({ title, category, date, image, id, onPost, style }) {
-  const formattedDate = format(parseISO(date), "HH:mm, d MMMM", { locale: ru });
+  const formattedDate = format(date);
   return (
     <div className="slide" style={style}>
       <img src={ `/storage/${image}` } alt={ 'Изображение новости ' + title } className="slide__image" />

@@ -340,11 +340,11 @@ button:has(svg) {
   overflow: hidden;
 }
 
-.menu-item:has(.submenu):hover > button::after {
+.top-menu__navigation .menu-item:has(.submenu):hover > button::after {
   transform: rotate(180deg);
 }
 
-.menu-item:has( > .submenu):hover > .submenu {
+.top-menu__navigation .menu-item:has( > .submenu):hover > .submenu {
   max-height: 150vh;
   padding: 16px;
 }

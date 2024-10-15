@@ -25,6 +25,7 @@
         "@inertiajs/inertia-react": "^0.8.1",
         "bootstrap": "^5.3.3",
         "date-fns": "^3.6.0",
+        "fslightbox-react": "^1.7.6",
         "html-react-parser": "^5.1.12",
         "lodash": "^4.17.21",
         "path": "^0.12.7",

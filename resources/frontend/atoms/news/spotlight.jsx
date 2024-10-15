@@ -1,13 +1,12 @@
 import './spotlight.css'
-import { format, parseISO } from "date-fns";
-import { ru } from "date-fns/locale";
 import VideoIcon from "#/atoms/icons/video.jsx";
 import AppLink from "#/atoms/buttons/link.jsx";
 import { Link } from "@inertiajs/react";
 import React from "react";
+import { format } from "#/utilities/date.js";
 
 export default function Spotlight({ id, date, category, title, onPost, hasVideo = false }) {
-  const formattedDate = format(parseISO(date), "HH:mm, d MMMM", { locale: ru });
+  const formattedDate = format(date);
   return (
     <div className="spotlight">
       <div className="spotlight__keys">

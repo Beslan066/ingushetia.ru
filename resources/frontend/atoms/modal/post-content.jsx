@@ -1,16 +1,16 @@
 import './post-content.css';
-import { format, parseISO } from "date-fns";
-import { ru } from "date-fns/locale";
 import Tag from "#/atoms/tags/tag.jsx";
 import React from "react";
 import AgencyNewsItem from "#/atoms/news/agency-news-item.jsx";
+import Gallery from "#/atoms/gallery/gallery.jsx";
+import { format } from "#/utilities/date.js";
 
 export default function PostContent({ post }) {
   if (!post) {
     return null;
   }
 
-  const formattedDate = format(parseISO(post.published_at), "HH:mm, d MMMM", { locale: ru });
+  const formattedDate = format(post.published_at);
 
   return (
     <div className="post-content">
@@ -25,7 +25,14 @@ export default function PostContent({ post }) {
           { post.image_description ? <div className="image__description">{ post.image_description }</div> : '' }
         </div>
       </div>
-      <div dangerouslySetInnerHTML={ { __html: post.content } } className="content"></div>
+      <div className="content">
+        <div dangerouslySetInnerHTML={ { __html: post.content } }></div>
+        {
+          post.reportage ? (
+            <Gallery gallery={ post.reportage.slides } />
+          ) : ''
+        }
+      </div>
       <div className="tags__wrapper">
         <div className="tags__title">Теги:</div>
         <div className="tags">

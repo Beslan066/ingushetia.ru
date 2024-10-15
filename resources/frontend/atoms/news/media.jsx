@@ -1,12 +1,11 @@
 import './media.css';
 import GalleryIcon from "#/atoms/icons/gallery.jsx";
 import Label from "#/atoms/labels/label.jsx";
-import { format, parseISO } from "date-fns";
-import { ru } from "date-fns/locale";
 import PlayIcon from "#/atoms/icons/play.jsx";
+import { format } from "#/utilities/date.js";
 
 export default function MediaNews({ type = 'gallery', image, title, date, count, id, handleOpen }) {
-  const formattedDate = format(parseISO(date), "HH:mm, d MMMM", { locale: ru });
+  const formattedDate = format(date);
   const getTypeIcon = (type) => {
     switch (type) {
       case 'gallery':
