@@ -64,9 +64,7 @@ export default function MunicipalityModal({ active, onClose, title, baseUrl, con
                             <div className="head-person-info d-flex flex-column">
                                 <h3>{supervisorName}</h3>
                                 <span>Глава г.Магас</span>
-                                <div className={'head-bio'} dangerouslySetInnerHTML={{__html: supervisorBio}}>
-
-                                </div>
+                                <div className={'head-bio'} dangerouslySetInnerHTML={{__html: supervisorBio}}></div>
                             </div>
                         </div>
                     </div>
