@@ -35,6 +35,7 @@ export default function Media({ media }) {
                               count={ slides }
                               date={ item.published_at }
                               image={ item.image_main }
+                              video={ item.video }
                               handleOpen={ () => {
                               } }/>
           })

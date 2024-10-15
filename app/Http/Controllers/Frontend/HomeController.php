@@ -34,7 +34,7 @@ class HomeController extends Controller
         $cities = Municipality::query()->with('supervisor')->where('type', 2)->get();
         $districts = Municipality::query()->with('supervisor')->where('type', 20)->get();
 
-        $mountains = Mountain::all();
+        $mountains = Mountain::with('reportage')->get();
 
         $mainPosts = News::query()
             ->with('category', 'video', 'reportage')

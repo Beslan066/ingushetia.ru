@@ -14,6 +14,7 @@ import AgencyNews from "#/molecules/news/agency-news.jsx";
 import Modal from "#/atoms/modal/modal.jsx";
 import PostContent from "#/atoms/modal/post-content.jsx";
 import ReportageContent from "#/atoms/modal/reportage-content.jsx";
+import MountainContent from "#/atoms/modal/mountain-content.jsx";
 
 export default function Index({ mainPosts: slides, categories, posts: news, cities: settlements, districts, media, mountains, documents, resources, agencies, agencyNews }) {
   const [modalOpened, setModalOpened] = useState(true);
@@ -72,7 +73,7 @@ export default function Index({ mainPosts: slides, categories, posts: news, citi
       <AppFooter />
 
       <Modal breadcrumbs={[{title: 'Главная'}, {title: 'Новости'}, {title: 'Новый современный спортивный комплекс появится в Ингушетии в 2025 году'}]} isOpen={ modalOpened } handleClose={ () => setModalOpened(false) }>
-        <ReportageContent reportage={ media[1] } />
+        <MountainContent mountain={mountains[1]}/>
       </Modal>
     </>
   )

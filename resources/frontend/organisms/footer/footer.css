@@ -39,6 +39,10 @@
   color: var(--color-neutral-white);
 }
 
+.link-group__link:visited {
+  color: var(--color-neutral-white);
+}
+
 .footer__about {
   padding: 24px 20px;
 }

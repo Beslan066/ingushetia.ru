@@ -21,6 +21,12 @@
   }
 }
 
+.top-menu ul, .top-menu li, .sidebar-menu ul, .sidebar-menu li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .top-menu__site-name {
   display: flex;
   align-items: center;
