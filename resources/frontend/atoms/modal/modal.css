@@ -43,3 +43,24 @@ body:has(.modal--opened) {
 .modal__content-wrapper {
   margin: 0 20px;
 }
+
+@media (min-width: 1366px) {
+  .modal {
+    width: 880px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .modal--opened {
+    height: calc(100vh - 120px);
+    top: 120px;
+  }
+
+  .modal__content-wrapper {
+    margin: 0 60px 60px;
+  }
+
+  .modal__header {
+    padding: 60px 60px 28px;
+  }
+}
