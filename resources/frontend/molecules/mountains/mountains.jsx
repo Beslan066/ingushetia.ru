@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import RightArrowIcon from "#/atoms/icons/right-arrow-icon.jsx";
 import LeftArrowIcon from "#/atoms/icons/left-arrow-icon.jsx";
 import { useSwipeable } from "react-swipeable";
+import Modal from "#/atoms/modal/modal.jsx";
+import MountainContent from "#/atoms/modal/mountain-content.jsx";
 
 export default function Mountains({ mountains }) {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -31,10 +33,12 @@ export default function Mountains({ mountains }) {
     }
   })
 
+  const [slide, setSlide] = useState(null);
+
   return (
     <div className="mountains__wrapper">
       <h2 className="mountains__title">Родина башен</h2>
-      <div className="mountains__slider" {...swipeHandlers}>
+      <div className="mountains__slider" { ...swipeHandlers }>
         {
           mountains.map((mountain) => {
             return (
@@ -51,7 +55,7 @@ export default function Mountains({ mountains }) {
                     <h3 className="mountain__title">{ mountain.title }</h3>
                     <div className="mountain__text" dangerouslySetInnerHTML={ { __html: mountain.lead } }></div>
                   </div>
-                  <AppLink className="mountain__link" to={ `/media/${ mountain.id }` } title="Подробнее"/>
+                  <AppLink className="mountain__link" handleClick={ () => setSlide(mountain) } title="Подробнее"/>
                 </div>
               </div>
             )
@@ -60,7 +64,7 @@ export default function Mountains({ mountains }) {
       </div>
       <div className="mountain-slider__pagination">
         <button onClick={ handlePrevious }>
-          <LeftArrowIcon color={ currentSlide === 0 ? 'neutral-medium' : 'neutral-black' } />
+          <LeftArrowIcon color={ currentSlide === 0 ? 'neutral-medium' : 'neutral-black' }/>
         </button>
         <div className="page-counter">
           <span>{ currentSlide + 1 }</span>
@@ -68,9 +72,13 @@ export default function Mountains({ mountains }) {
           <span>{ mountains.length }</span>
         </div>
         <button onClick={ handleNext }>
-          <RightArrowIcon color={ currentSlide + 1 === mountains.length ? 'neutral-medium' : 'neutral-black' } />
+          <RightArrowIcon color={ currentSlide + 1 === mountains.length ? 'neutral-medium' : 'neutral-black' }/>
         </button>
       </div>
+
+      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Родина башен' }, { title: slide?.title }] } isOpen={ slide } handleClose={ () => setSlide(null) }>
+        <MountainContent mountain={ slide }/>
+      </Modal>
     </div>
   );
 }

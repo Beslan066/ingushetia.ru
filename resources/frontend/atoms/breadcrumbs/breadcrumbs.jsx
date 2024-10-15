@@ -8,11 +8,17 @@ export default function Breadcrumbs({ breadcrumbs }) {
   return (
     <div className="breadcrumbs">
       {
-        breadcrumbs.map((item) => (
-          <div className="breadcrumb" key={ item.title }>
-            { item.title }
-          </div>
-        ))
+        breadcrumbs.map((item) => {
+          if (!item.title) {
+            return;
+          }
+
+          return (
+            <div className="breadcrumb" key={ item.title }>
+              { item.title }
+            </div>
+          )
+        })
       }
     </div>
   )

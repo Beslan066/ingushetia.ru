@@ -1,6 +1,9 @@
 import MediaNews from "#/atoms/news/media.jsx";
 import AppLink from "#/atoms/buttons/link.jsx";
 import './media.css'
+import React, { useState } from "react";
+import Modal from "#/atoms/modal/modal.jsx";
+import ReportageContent from "#/atoms/modal/reportage-content.jsx";
 
 export default function Media({ media }) {
   if (!media?.length) {
@@ -21,6 +24,8 @@ export default function Media({ media }) {
     return length + ' фото'
   }
 
+  const [slide, setSlide] = useState(null);
+
   return (
     <div className="media">
       <div className="media__wrapper">
@@ -36,12 +41,15 @@ export default function Media({ media }) {
                               date={ item.published_at }
                               image={ item.image_main }
                               video={ item.video }
-                              handleOpen={ () => {
-                              } }/>
+                              handleOpen={ () => setSlide(item) }/>
           })
         }
       </div>
       <AppLink to="/media" title="Все репортажи" className="media__details"/>
+
+      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Репортажи и видео' }, { title: slide?.title }] } isOpen={ slide } handleClose={ () => setSlide(null) }>
+        <ReportageContent reportage={ slide }/>
+      </Modal>
     </div>
   )
 }

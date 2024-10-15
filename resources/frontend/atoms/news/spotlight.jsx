@@ -1,7 +1,5 @@
 import './spotlight.css'
 import VideoIcon from "#/atoms/icons/video.jsx";
-import AppLink from "#/atoms/buttons/link.jsx";
-import { Link } from "@inertiajs/react";
 import React from "react";
 import { format } from "#/utilities/date.js";
 
@@ -14,9 +12,9 @@ export default function Spotlight({ id, date, category, title, onPost, hasVideo 
         <div className="spotlight__category">{ category }</div>
         { hasVideo ? <div className="spotlight__video"><VideoIcon/></div> : '' }
       </div>
-      <Link href={`/news/${id}`} preserveScroll={true}>
-        <h2 className="spotlight__title">{title}</h2>
-      </Link>
+      <a onClick={ () => onPost(id) }>
+        <h2 className="spotlight__title">{ title }</h2>
+      </a>
     </div>
   )
 }

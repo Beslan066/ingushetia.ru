@@ -1,7 +1,9 @@
 import './agency-news.css'
 import Tabs from "#/atoms/tabs/tabs.jsx";
-import { useState } from "react";
+import React, { useState } from "react";
 import AgencyNewsItem from "#/atoms/news/agency-news-item.jsx";
+import Modal from "#/atoms/modal/modal.jsx";
+import PostContent from "#/atoms/modal/post-content.jsx";
 
 export default function AgencyNews({ agencies, posts }) {
   const [selectedTab, setSelectedTab] = useState(null);
@@ -14,6 +16,14 @@ export default function AgencyNews({ agencies, posts }) {
   const tabs = agencies.map((agency) => {
     return { id: agency.id, title: agency.name }
   });
+
+  const [slide, setSlide] = useState(null);
+  const handlePost = (id) => {
+    const selected = posts.find((post) => post.id === id);
+    if (selected) {
+      setSlide(selected);
+    }
+  }
 
   return (
     <div className="agency-news">
@@ -30,13 +40,16 @@ export default function AgencyNews({ agencies, posts }) {
                                 image={ post?.image_main }
                                 date={ post.published_at }
                                 title={ post.title }
-                                onPost={ () => {
-                                } }/>
+                                onPost={ handlePost }/>
               )
             })
           }
         </div>
       </div>
+
+      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Новости министерств' }, { title: slide?.title }] } isOpen={ slide } handleClose={ () => setSlide(null) }>
+        <PostContent post={ slide }/>
+      </Modal>
     </div>
   )
 }

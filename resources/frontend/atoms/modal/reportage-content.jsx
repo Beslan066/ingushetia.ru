@@ -5,6 +5,7 @@ import { parseReportageSlides } from "#/utilities/slides.js";
 import FsLightbox from 'fslightbox-react';
 import Tag from "#/atoms/tags/tag.jsx";
 import AgencyNewsItem from "#/atoms/news/agency-news-item.jsx";
+import Video from "#/atoms/video/video.jsx";
 
 export default function ReportageContent({ reportage }) {
   if (!reportage) {
@@ -37,17 +38,20 @@ export default function ReportageContent({ reportage }) {
 
       <div className="reportage__gallery">
         {
-          slides.map((slide, i) => <button key={slide} className="photo-item" onClick={ () => setSlide(i)}><img src={ slide } alt={ 'Слайд + i' }/></button>)
+          slides.map((slide, i) => <button key={ slide } className="photo-item" onClick={ () => setSlide(i) }>
+            <img src={ slide } alt={ 'Слайд + i' }/></button>)
         }
       </div>
 
-      <FsLightbox toggler={ toggle } sources={ slides } slide={ current } />
+      <FsLightbox toggler={ toggle } sources={ slides } slide={ current }/>
+
+      { reportage.video && <Video video={ reportage.video } image={ reportage.image_main }/> }
 
       <div className="tags__wrapper">
         <div className="tags__title">Теги:</div>
         <div className="tags">
           {
-            (reportage?.tags ?? ['Спорт', 'Культура', 'Машины']).map((tag) => <Tag key={tag} tag={ tag }/>)
+            (reportage?.tags ?? ['Спорт', 'Культура', 'Машины']).map((tag) => <Tag key={ tag } tag={ tag }/>)
           }
         </div>
       </div>
@@ -67,7 +71,8 @@ export default function ReportageContent({ reportage }) {
             <h2 className="related__title">Смотрите также</h2>
             <div className="related__posts">
               {
-                reportage.relatedPosts.map((related) => <AgencyNewsItem title={related.title} image={related.image_main} category={related?.category?.title} id={related.id} key={related.id} date={related.published_at}/>)
+                reportage.relatedPosts.map((related) =>
+                  <AgencyNewsItem title={ related.title } image={ related.image_main } category={ related?.category?.title } id={ related.id } key={ related.id } date={ related.published_at }/>)
               }
             </div>
           </div>

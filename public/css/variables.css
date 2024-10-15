@@ -102,8 +102,8 @@ ul, ul li {
 
   margin-block-start: 1em;
   margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
   padding-inline-start: 1em;
 
   margin-bottom: 1em;
@@ -111,10 +111,11 @@ ul, ul li {
 
 a {
   color: var(--color-primary-medium);
+  cursor: pointer;
 }
 
 a:visited {
-  color: var(--color-primary-dark);
+  color: var(--color-primary-medium);
 }
 
 a:active {

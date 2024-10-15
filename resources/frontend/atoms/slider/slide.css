@@ -57,6 +57,12 @@
   line-height: var(--line-height-h4);
   color: var(--color-neutral-white);
   font-weight: var(--font-weight-semibold);
+
+  cursor: pointer;
+}
+
+.slide-info__title:hover {
+  color: var(--color-neutral-lightest);
 }
 
 @media (min-width: 768px) {

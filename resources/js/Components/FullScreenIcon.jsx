@@ -1,7 +1,6 @@
 export default function FullScreenIcon() {
   return (
     <svg fill="#07A267" height="25px" width="17px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
-         xmlns:xlink="http://www.w3.org/1999/xlink"
          viewBox="0 0 512 512" xml:space="preserve">
 <g>
 	<path d="M192,64H32C14.328,64,0,78.328,0,96v96c0,17.672,14.328,32,32,32s32-14.328,32-32v-64h128c17.672,0,32-14.328,32-32

@@ -1,7 +1,7 @@
 import './municipality.css'
 import AppLink from "#/atoms/buttons/link.jsx";
 
-export default function MunicipalityDemo({ isOpened = false, isMobile = false, title, image, properties, id }) {
+export default function MunicipalityDemo({ isOpened = false, isMobile = false, title, image, properties, id, onDetailsClick }) {
   return (
     <div className={ `municipality__detail-wrapper ${ isMobile ? 'municipality__detail-wrapper--mobile' : '' } ${isOpened ? 'municipality__detail-wrapper--opened' : ''}` }>
       <h3 className="detail__title">{ title }</h3>
@@ -11,7 +11,7 @@ export default function MunicipalityDemo({ isOpened = false, isMobile = false, t
       <div className="detail__properties-wrapper">
         <div className="properties__title-wrapper">
           <h3 className="properties__title-mobile">{ title }</h3>
-          <AppLink title="Подробнее" to={ `/settlements/${id}` } />
+          <AppLink title="Подробнее" handleClick={ () => onDetailsClick(id) } />
         </div>
         <div className="properties__list">
           {
@@ -30,7 +30,7 @@ export default function MunicipalityDemo({ isOpened = false, isMobile = false, t
           }
         </div>
         <div className="properties__more">
-          <AppLink title="Подробнее" to={ `/settlements/${id}` } />
+          <AppLink title="Подробнее" handleClick={ () => onDetailsClick(id) } />
         </div>
       </div>
     </div>

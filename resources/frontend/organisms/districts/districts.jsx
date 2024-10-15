@@ -2,6 +2,8 @@ import './districts.css';
 import React, { useState } from "react";
 import MunicipalityList from "#/molecules/municipality/municipality.jsx";
 import MunicipalityDemo from "#/atoms/municipality/demo.jsx";
+import Modal from "#/atoms/modal/modal.jsx";
+import MunicipalityContent from "#/atoms/modal/municipality-content.jsx";
 
 export default function Districts({ districts, settlements }) {
   if (!districts && !settlements) {
@@ -34,6 +36,11 @@ export default function Districts({ districts, settlements }) {
     { slug: 'supervisor', title: 'Глава адм.', value: settlement.supervisor.name },
   ]
 
+  const [slide, setSlide] = useState(null);
+  const handlePost = (item) => {
+    setSlide(item)
+  }
+
   return (
     <div className="municipalities">
       <h2 className="municipalities__title">Районы и округа</h2>
@@ -41,13 +48,17 @@ export default function Districts({ districts, settlements }) {
         <div className="municipalities__list-wrapper">
           {
             list.map((item) =>
-              <MunicipalityList selected={ selected } title={ item.title } items={ item.items } key={ item.title } onActive={ handleChange } getProperties={ getProperties }/>)
+              <MunicipalityList selected={ selected } title={ item.title } items={ item.items } key={ item.title } onActive={ handleChange } getProperties={ getProperties } onDetailsClick={ () => handlePost(item) }/>)
           }
         </div>
         <div className="municipalities__info-wrapper">
-          <MunicipalityDemo id={ currentSettlement.id } title={ currentSettlement.title } image={ currentSettlement.image_main } properties={ getProperties(currentSettlement) } isMobile={ false } isOpened={ true }/>
+          <MunicipalityDemo id={ currentSettlement.id } title={ currentSettlement.title } image={ currentSettlement.image_main } properties={ getProperties(currentSettlement) } isMobile={ false } isOpened={ true } onDetailsClick={ handlePost }/>
         </div>
       </div>
+
+      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Регионы и округа' }, { title: slide?.title }] } isOpen={ slide } handleClose={ () => setSlide(null) }>
+        <MunicipalityContent municipality={ slide }/>
+      </Modal>
     </div>
   )
 }
