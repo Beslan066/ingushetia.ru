@@ -134,9 +134,8 @@
                         @enderror
 
                         <div class="form-group w-50 mt-2">
-
                             <select class="form-control" id="exampleFormControlSelect1" name="agency_id">
-                                <option value="{{auth()->user()->agency->id}}">{{auth()->user()->agency->name}}</option>
+                                <option value="{{auth()->user()->agency?->id}}">{{auth()->user()->agency->name}}</option>
                             </select>
                         </div>
 

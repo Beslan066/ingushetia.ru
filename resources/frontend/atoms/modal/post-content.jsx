@@ -16,7 +16,7 @@ export default function PostContent({ post }) {
     <div className="post-content">
       <div className="post__meta">
         <div className="post-meta__date">{ formattedDate }</div>
-        <div className="post-meta__category">{ post?.category.title }</div>
+        <div className="post-meta__category">{ post.category?.title }</div>
       </div>
       <div className="post__header">
         <h2 className="post__title">{ post.title }</h2>

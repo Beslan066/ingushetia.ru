@@ -21,8 +21,6 @@ class NewsIngController extends Controller
      */
     public function index()
     {
-
-
         $news = NewsIng::with( 'category')->orderBy('id', 'desc')->paginate(10);
 
         return view('admin.news-ing.index', compact('news', ));

@@ -50,23 +50,21 @@ class HomeController extends Controller
             ->where('agency_id', 5)
             ->take(6)
             ->orderBy('published_at', 'desc')
-            ->get()
-            ->map(function ($post) {
-                // Получаем похожие новости для каждого поста
-                $relatedPosts = News::query()
-                    ->with('category')
-                    ->where('category_id', $post->category_id)  // Поиск по той же категории
-                    ->where('id', '!=', $post->id)  // Исключаем текущий пост
-                    ->orderBy('published_at', 'desc')
-                    ->take(3)  // Получаем три похожих поста
-                    ->get();
+            ->get();
 
-                // Добавляем relatedPosts к текущему посту
-                $post->relatedPosts = $relatedPosts;
-                return $post;
-            });
+        $postsIds = $posts->pluck('category_id');
 
+        $related = News::query()
+          ->with('category')
+          ->whereIn('category_id', $postsIds)  // Поиск по той же категории
+          ->orderBy('published_at', 'desc')
+          ->get();
 
+          $posts->map(function ($post) use($related) {
+              $filtered = $related->where('category_id', $post->category_id)->whereNotIn('id', [$post->id])->take(3);
+              $post->relatedPosts = $filtered;
+              return $post;
+          });
 
         $agencies = Agency::query()->where('id', '!=', 5)->get();
         $agencyNews = News::query()
@@ -74,15 +72,19 @@ class HomeController extends Controller
             ->with('category')  // Добавляем связку с категориями
             ->get();
 
-        $agencyNewsWithRelated = $agencyNews->map(function ($newsItem) {
-            $relatedPosts = News::query()
-                ->with('category')  // Подгружаем категорию для связанных новостей
-                ->where('agency_id', '!=', 5)
-                ->where('category_id', $newsItem->category_id)
-                ->where('id', '!=', $newsItem->id)
-                ->take(3)
-                ->get();
-            $newsItem->relatedPosts = $relatedPosts;
+        $relatedPostIds = $agencyNews->pluck('id');
+        $relatedPosts = News::query()
+          ->with('category')  // Подгружаем категорию для связанных новостей
+          ->where('agency_id', '!=', 5)
+          ->whereIn('category_id',$relatedPostIds)
+          ->get();
+
+        $agencyNewsWithRelated = $agencyNews->map(function ($newsItem) use ($relatedPosts) {
+            $posts = $relatedPosts->filter(function ($post) use ($newsItem) {
+              return $post->id !== $newsItem->id && $post->category_id = $newsItem->category_id;
+            })->take(3);
+
+            $newsItem->relatedPosts = $posts;
             return $newsItem;
         });
 
@@ -140,7 +142,6 @@ class HomeController extends Controller
 
     public function nationalProjects()
     {
-
         $natProjects = NationalProject::all();
         return Inertia::render('Home/NatProjects', [
             'natProjects' => $natProjects
@@ -149,7 +150,6 @@ class HomeController extends Controller
 
     public function svoSupport()
     {
-
         $supports = MilitarySupport::all();
 
         return Inertia::render('Home/SVOSupport', [

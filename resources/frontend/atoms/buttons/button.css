@@ -5,17 +5,30 @@
   font-size: var(--font-size-body);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-body);
-  color: var(--color-neutral-white);
+}
 
+.button--primary {
+  color: var(--color-neutral-white);
   background-color: var(--color-primary-medium);
+  border: 1px solid var(--color-primary-medium);
+}
+
+.button--secondary {
+  color: var(--color-primary-medium);
+  border: 1px solid var(--color-primary-medium);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .button:hover {
+  .button--primary:hover, .button--secondary:hover {
     background-color: var(--color-primary-dark);
+    border: 1px solid var(--color-primary-dark);
+    color: var(--color-neutral-white);
   }
 }
 
-.button:active {
+.button--primary:active, .button--secondary:active {
   background-color: var(--color-primary-darkest);
+  color: var(--color-neutral-white);
+  border: 1px solid var(--color-primary-darkest);
 }
+

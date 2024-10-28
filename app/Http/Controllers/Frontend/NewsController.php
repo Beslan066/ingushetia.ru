@@ -5,56 +5,73 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\News;
-use Illuminate\Http\Request;
+use App\Models\PhotoReportage;
+use App\Models\Video;
 use Inertia\Inertia;
 
-class NewsController extends Controller {
+class NewsController extends Controller
+{
 
-    public function index()
-    {
+  public function index()
+  {
+    $page = max(1, (int)request()->input('page', 1)) - 1;
 
-        $mainPosts = News::query()
-            ->with('category')
-            ->where('main_material', 1)
-            ->where('agency_id', 5)
-            ->take(10)
-            ->get();
-        $categories = Category::query()->take(10)->get();
+    $mainPosts = News::query()
+      ->with('category')
+      ->where('main_material', 1)
+      ->where('agency_id', 5)
+      ->take(10)
+      ->get();
+    $categories = Category::query()->take(10)->get();
 
-        $news = News::query()
-            ->with('category')
-            ->where('agency_id', 5)
-            ->orderBy('id', 'desc')
-            ->get();
+    $news = News::query()
+      ->with('category')
+      ->where('agency_id', 5)
+      ->orderBy('id', 'desc')
+      ->paginate(6);
 
-        return Inertia::render('News/News', [
-            'news' => $news,
-            'categories' => $categories,
-            'mainPosts' => $mainPosts
-        ]);
+    $spotlights = News::query()->with('category')->where('agency_id',
+      5)->whereNotNull('published_at')->orderBy('published_at')->take(8)->get();
+
+    $media = [];
+    if ($page > 0) {
+      $photoMedia = PhotoReportage::query()->orderBy('published_at', 'desc')->offset(($page - 1) * 2)->limit(2)->get();
+      $videoMedia = Video::query()->orderBy('published_at', 'desc')->offset(($page - 1) * 2)->limit(2)->get();
+      $media = collect($photoMedia)->merge($videoMedia)->sortByDesc('published_at');
     }
 
-    public function getPostsByCategory($categoryId)
-    {
-        $categories = Category::query()->take(10)->get();
+    return Inertia::render('News/News', [
+      'news' => $news->items(),
+      'categories' => $categories,
+      'mainPosts' => $mainPosts,
+      'media' => $media,
+      'spotlights' => $spotlights,
+      'page' => $page + 1,
+      'pages' => ceil($news->total() / $news->perPage())
+    ]);
+  }
 
-        $news = News::query()
-            ->with('category')
-            ->where('agency_id', 5)
-            ->where('category_id', $categoryId)
-            ->orderBy('id', 'desc')
-            ->get();
+  public function getPostsByCategory($categoryId)
+  {
+    $categories = Category::query()->take(10)->get();
 
-        // Получаем заголовок категории
-        $categoryTitle = Category::where('id', $categoryId)->value('title');
+    $news = News::query()
+      ->with('category')
+      ->where('agency_id', 5)
+      ->where('category_id', $categoryId)
+      ->orderBy('id', 'desc')
+      ->get();
 
-        return Inertia::render('News/NewsCategory', [
-            'news' => $news,
-            'categories' => $categories,
-            'categoryId' => $categoryId,
-            'categoryTitle' => $categoryTitle,
-        ]);
-    }
+    // Получаем заголовок категории
+    $categoryTitle = Category::where('id', $categoryId)->value('title');
+
+    return Inertia::render('News/NewsCategory', [
+      'news' => $news,
+      'categories' => $categories,
+      'categoryId' => $categoryId,
+      'categoryTitle' => $categoryTitle,
+    ]);
+  }
 
 
 }
