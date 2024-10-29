@@ -24,6 +24,10 @@
   line-height: var(--line-height-body);
 }
 
+.regions-nav__link + ul .regions-nav__link {
+  padding: 16px 20px 16px 40px;
+}
+
 .regions-nav__link:visited, .regions-nav__link {
   color: var(--color-neutral-black);
 }

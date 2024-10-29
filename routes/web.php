@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\ImplementationController;
 use App\Http\Controllers\Admin\SupportController;
 use App\Http\Controllers\Frontend\AgencyController;
+use App\Http\Controllers\Frontend\GovernmentController;
 use App\Http\Controllers\Frontend\HomeController;
 use App\Http\Controllers\Frontend\NewsController;
 use App\Http\Controllers\Frontend\RegionController;
@@ -24,6 +25,16 @@ Route::get('/media', [HomeController::class, 'media'])->name('media');
 Route::get('/implementations', [HomeController::class, 'implementations'])->name('implementations');
 Route::get('/anticorruptions', [HomeController::class, 'anticorruptions'])->name('anticorruptions');
 Route::get('/economic-support', [HomeController::class, 'economicSupport'])->name('economicSupport');
+
+Route::prefix('government')->group(function () {
+  Route::get('/', [GovernmentController::class, 'government'])->name('government');
+  Route::get('/structure', [GovernmentController::class, 'structure'])->name('structure');
+  Route::get('/abilities', [GovernmentController::class, 'abilities'])->name('abilities');
+  Route::get('/sessions', [GovernmentController::class, 'sessions'])->name('sessions');
+  Route::get('/plans', [GovernmentController::class, 'plan'])->name('plan');
+  Route::get('/colleagues', [GovernmentController::class, 'colleagues'])->name('colleagues');
+  Route::get('/directories', [GovernmentController::class, 'directories'])->name('directories');
+});
 
 Route::get('/region', [RegionController::class, 'index'])->name('region');
 Route::get('/economic', [RegionController::class, 'economic'])->name('economic');
