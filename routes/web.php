@@ -36,6 +36,8 @@ Route::prefix('government')->group(function () {
   Route::get('/directories', [GovernmentController::class, 'directories'])->name('directories');
 });
 
+Route::get('/documents', [HomeController::class, 'documents'])->name('documents');
+
 Route::get('/region', [RegionController::class, 'index'])->name('region');
 Route::get('/economic', [RegionController::class, 'economic'])->name('economic');
 Route::get('/social-economic-development', [RegionController::class, 'socialEconomicDevelopment'])->name('socialEconomicDevelopment');
