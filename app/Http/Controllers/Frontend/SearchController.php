@@ -69,7 +69,7 @@ class SearchController extends Controller
     public function searchPage(Request $request)
     {
         $query = strtolower($request->get('query'));
-        return Inertia::render('SearchResults', ['query' => $query]);
+        return Inertia::render('Search/Results', ['query' => $query]);
     }
 
 }
