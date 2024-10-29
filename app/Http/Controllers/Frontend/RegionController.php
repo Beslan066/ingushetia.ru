@@ -25,7 +25,7 @@ class RegionController extends Controller
 
     public function economic()
     {
-        return Inertia::render('Region/Economic');
+        return Inertia::render('Region/Economics');
     }
 
     public function history()
@@ -33,9 +33,8 @@ class RegionController extends Controller
         return Inertia::render('Region/History');
     }
 
-    public function municipality()
+    public function municipalities()
     {
-
         $cities = Municipality::query()->with('supervisor')->where('type', 2)->get();
         $districts = Municipality::query()->with('supervisor')->where('type', 20)->get();
 
@@ -47,11 +46,15 @@ class RegionController extends Controller
 
     public function socialEconomicDevelopment()
     {
-
         $socialEconomicDevelopment = SocialEconomicDevelopment::query()->orderBy('id', 'desc')->get();
 
-        return Inertia::render('Region/SocialEconomicDevelopment', [
+        return Inertia::render('Region/SocialEconomics', [
             'socialEconomicDevelopment' => $socialEconomicDevelopment
         ]);
     }
+
+  public function nationalProjects()
+  {
+    return Inertia::render('Region/NationalProjects');
+  }
 }

@@ -152,8 +152,8 @@ class HomeController extends Controller
     {
         $supports = MilitarySupport::all();
 
-        return Inertia::render('Home/SVOSupport', [
-            'supports' => $supports
+        return Inertia::render('Region/MilitarySupport', [
+            'documents' => $supports
         ]);
     }
 
@@ -171,7 +171,7 @@ class HomeController extends Controller
 
         $implementations = Implementation::query()->orderBy('id', 'desc')->get();
 
-        return Inertia::render('Implementation', [
+        return Inertia::render('Region/PresidentImplementations', [
             'implementations' => $implementations
         ]);
     }
@@ -187,13 +187,12 @@ class HomeController extends Controller
 
     public function economicSupport()
     {
-
         $economicSupports = EconomicSupport::query()->where('type', 0)->orderBy('id', 'desc')->get();
         $economicSupportsBuisness = EconomicSupport::query()->where('type', 1)->orderBy('id', 'desc')->get();
 
-        return Inertia::render('EconomicSupport', [
-            'economicSupports' => $economicSupports,
-            'economicSupportsBuisness' => $economicSupportsBuisness
+        return Inertia::render('Region/CitizenSupport', [
+            'citizenSupportPackages' => $economicSupports,
+            'businessSupportPackages' => $economicSupportsBuisness
         ]);
     }
 

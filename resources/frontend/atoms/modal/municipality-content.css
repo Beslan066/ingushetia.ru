@@ -46,13 +46,13 @@
 
 .stat-item {
   background-color: var(--color-neutral-lightest);
-  padding: 24px;
+  padding: 12px;
 }
 
 .stat-item  p {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .stat-item span {
@@ -75,9 +75,11 @@
   font-size: 20px;
 }
 
-.head-person-info span {
+.supervisor__position {
   color: #6C6C6C;
   font-size: 12px;
+  margin-bottom: 32px;
+  display: block;
 }
 
 .head-bio {
@@ -112,6 +114,19 @@
 }
 
 @media (min-width: 768px) {
+  .city-head {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    align-items: start;
+    gap: 32px;
+    padding: 24px;
+  }
+
+  .head-person-image {
+    display: flex;
+    align-items: flex-start;
+  }
+
   .municipality__body-wrapper {
     padding-bottom: 32px;
     margin-bottom: 32px;

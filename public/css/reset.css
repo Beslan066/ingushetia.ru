@@ -3,7 +3,7 @@
 /* Сброс стилей */
 
 /* Reset and base styles  */
-* {
+*:not(ul, li, ol) {
   padding: 0;
   margin: 0;
   border: none;
@@ -34,10 +34,6 @@ aside, nav, footer, header, section, main {
 h1, h2, h3, h4, h5, h6, p {
   font-size: inherit;
   font-weight: inherit;
-}
-
-ul, ul li {
-  list-style: none;
 }
 
 img {
@@ -99,12 +95,6 @@ legend {
   box-sizing: border-box;
 }
 
-/* Убираем внутренние отступы */
-ul[class],
-ol[class] {
-  padding: 0;
-}
-
 /* Убираем внешние отступы */
 body,
 h1,
@@ -112,9 +102,6 @@ h2,
 h3,
 h4,
 p,
-ul[class],
-ol[class],
-li,
 figure,
 figcaption,
 blockquote,
@@ -129,12 +116,6 @@ body {
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-}
-
-/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
-ul[class],
-ol[class] {
-  list-style: none;
 }
 
 /* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */

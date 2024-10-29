@@ -96,19 +96,6 @@ br {
   margin-bottom: var(--line-height-body);
 }
 
-ul, ul li {
-  list-style-type: disc;
-  unicode-bidi: isolate;
-
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0;
-  margin-inline-end: 0;
-  padding-inline-start: 1em;
-
-  margin-bottom: 1em;
-}
-
 a {
   color: var(--color-primary-medium);
   cursor: pointer;
@@ -126,4 +113,26 @@ a:active {
   a:hover {
     color: var(--color-primary-darkest);
   }
+}
+
+blockquote + cite {
+  margin-top: 16px;
+}
+
+cite {
+  display: block;
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  color: var(--color-neutral-black);
+  font-weight: var(--font-weight-regular);
+  font-style: normal;
+  margin-bottom: var(--line-height-body);
+}
+
+cite br {
+  margin-bottom: var(--line-height-caption);
+}
+
+hr {
+  margin: 20px 0;
 }

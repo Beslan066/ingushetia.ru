@@ -18,7 +18,7 @@ Route::get('/search', [SearchController::class, 'searchResults'])->name('search.
 
 Route::get('/search/page', [SearchController::class, 'searchPage'])->name('search.page');
 Route::get('/national-projects', [HomeController::class, 'nationalProjects'])->name('natProjects');
-Route::get('/support-svo', [HomeController::class, 'svoSupport'])->name('svoSupport');
+Route::get('/military-support', [HomeController::class, 'svoSupport'])->name('svoSupport');
 Route::get('/contacts', [HomeController::class, 'contacts'])->name('contacts');
 Route::get('/media', [HomeController::class, 'media'])->name('media');
 Route::get('/implementations', [HomeController::class, 'implementations'])->name('implementations');
@@ -37,15 +37,14 @@ Route::get('/region', function () {
     return Inertia::render('Region/Region');
 });
 Route::get('/economic', function () {
-    return Inertia::render('Region/Economic');
+    return Inertia::render('Region/Economics');
 });
 Route::get('/history', function () {
     return Inertia::render('Region/History');
 });
 
-Route::get('/municipality', function () {
-    return Inertia::render('Region/Municipality');
-});
+Route::get('/municipality', [RegionController::class, 'municipalities'])->name('municipalities');
+Route::get('/nation-projects', [RegionController::class, 'nationalProjects'])->name('nation-projects');
 Route::get('/pravitelstvo', function () {
     return Inertia::render('Authority/Authority');
 });
