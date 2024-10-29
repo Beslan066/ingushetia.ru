@@ -5,7 +5,6 @@ export default function MemberContent({ name, position, avatar, content, contact
   return (
     <div className="member-content">
       <div className="member__body-wrapper">
-
         <div className="member-modal__body">
           <div className="member__header">
             <h2 className="member__title">{ name }</h2>

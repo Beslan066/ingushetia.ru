@@ -158,8 +158,8 @@ class HomeController extends Controller
 
   public function contacts()
   {
-    $contacts = Contact::all();
-    return Inertia::render('Contacts', [
+    $contacts = Contact::where('agency_id', request()->input('agency_id', 5))->get();
+    return Inertia::render('Contacts/Contacts', [
       'contacts' => $contacts
     ]);
   }

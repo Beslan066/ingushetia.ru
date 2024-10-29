@@ -14,6 +14,10 @@
   transition: .35s ease all;
 }
 
+.modal--bs {
+  padding-top: 32px;
+}
+
 .modal--opened {
   height: 100%;
   top: 0;
@@ -34,6 +38,17 @@ body:has(.modal--opened) {
   padding: 32px 20px 28px;
 }
 
+.modal--bs .modal__header {
+  position: absolute;
+  top: 36px;
+  right: 24px;
+  padding: 0;
+}
+
+.modal--bs .breadcrumbs {
+  display: none;
+}
+
 .modal__header .actions {
   flex-shrink: 0;
   display: flex;
@@ -51,9 +66,15 @@ body:has(.modal--opened) {
     transform: translateX(-50%);
   }
 
-  .modal--opened {
+  .modal--opened.modal--default {
     height: calc(100vh - 120px);
     top: 120px;
+  }
+
+  .modal--opened.modal--bs {
+    height: 80vh;
+    top: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .modal__content-wrapper {

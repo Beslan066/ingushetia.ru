@@ -3,8 +3,13 @@ import { Link } from "@inertiajs/react";
 import AnniversaryLogoImage from "#/atoms/logos/anniversary.jsx";
 import LogoImage from "#/atoms/logos/default.jsx";
 import Button from "#/atoms/buttons/button.jsx";
+import Modal from "#/atoms/modal/modal.jsx";
+import ContactsContent from "#/atoms/modal/contacts-content.jsx";
+import React, { useState } from "react";
 
 export default function AppFooter({ anniversary = false }) {
+  const [modal, setModal] = useState(false);
+
   const groups = [
     {
       name: 'Органы власти',
@@ -74,10 +79,14 @@ export default function AppFooter({ anniversary = false }) {
             { anniversary ? <AnniversaryLogoImage/> : <LogoImage/> }
             <div className="footer__name">Официальный сайт администрации Республики Ингушетия</div>
           </div>
-          <Button text="Задать вопрос" />
+          <Button text="Задать вопрос" handleClick={ () => setModal(true) } />
         </div>
       </footer>
       <footer className="copyright">&copy; 2024, Все права защищены</footer>
+
+      <Modal isOpen={ !!modal } handleClose={ () => setModal(false) } stickyOnBottom={ false }>
+        <ContactsContent onClose={() => setModal(false)} />
+      </Modal>
     </>
   )
 }
