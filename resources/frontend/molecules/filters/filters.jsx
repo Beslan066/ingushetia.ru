@@ -7,7 +7,7 @@ export default function Filters({ isActive, onChange }) {
   const [from, setFrom] = useState('');
   const [to, setTo] = useState('');
   const handleFilter = () => {
-    onChange({from: from, to: to});
+    onChange(from, to);
   }
 
   const handleClear = () => {

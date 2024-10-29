@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -66,6 +68,24 @@ class News extends Model
     public function reportage()
     {
         return $this->belongsTo(PhotoReportage::class, 'reportage_id');
+    }
+
+    public function scopePublishedBetween(Builder $query, ?Carbon $dateFrom, ?Carbon $dateTo)
+    {
+      if ($dateFrom) {
+        $query->where('published_at', '>=', $dateFrom);
+      }
+
+      if ($dateTo) {
+        $query->where('published_at', '<=', $dateTo);
+      }
+    }
+
+    public function scopeFilterCategory(Builder $query, $category)
+    {
+      if ($category) {
+        $query->where('category_id', $category);
+      }
     }
 
 }

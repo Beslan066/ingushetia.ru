@@ -7,11 +7,26 @@ import Tabs from "#/atoms/tabs/tabs.jsx";
 import FilterButton from "#/atoms/filters/filter-button.jsx";
 import Filters from "#/molecules/filters/filters.jsx";
 import MediaCollection from "#/molecules/news/mediaCollection.jsx";
+import { router } from "@inertiajs/react";
+import { Inertia } from "@inertiajs/inertia";
 
 export default function Media({ media }) {
   const categories = [{title: 'Фоторепортажи', id: 'photo'}, {title: 'Видеорепортажи', id: 'video'}];
   const [selected, setSelected] = useState(null);
+  const [filters, setFilters] = useState({});
   const [isFiltersOpened, setFiltersOpened] = useState(false);
+
+  const onFilters = (dateFrom, dateTo, category) => {
+    console.log(dateFrom, dateTo, category)
+    router.reload({
+      method: 'get',
+      data: {category, dateFrom, dateTo},
+      onSuccess: () => {
+        setFilters({dateFrom, dateTo})
+        setSelected(category);
+      }
+    })
+  }
 
   return (
     <>
@@ -19,10 +34,10 @@ export default function Media({ media }) {
       <PageTitle title="Медиа"/>
       <div className="page-content__wrapper">
         <div className="tabs-wrapper">
-          <Tabs tabs={ categories } selected={ selected } onTab={ setSelected }/>
+          <Tabs tabs={ categories } selected={ selected } onTab={ (id) => onFilters(filters?.dateFrom, filters?.dateTo, id) }/>
           <FilterButton isActive={ isFiltersOpened } onChange={ setFiltersOpened }/>
         </div>
-        <Filters isActive={ isFiltersOpened } onClose={ () => setFiltersOpened(false) }/>
+        <Filters isActive={ isFiltersOpened } onChange={(dateFrom, dateTo) => onFilters(dateFrom, dateTo, selected)} onClose={ () => setFiltersOpened(false) }/>
         <MediaCollection media={media}/>
       </div>
       <AppFooter/>

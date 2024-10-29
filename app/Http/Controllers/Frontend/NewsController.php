@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\News;
 use App\Models\PhotoReportage;
 use App\Models\Video;
+use Carbon\Carbon;
 use Inertia\Inertia;
 
 class NewsController extends Controller
@@ -15,6 +16,8 @@ class NewsController extends Controller
   public function index()
   {
     $page = max(1, (int)request()->input('page', 1)) - 1;
+    $dateFrom = request()->input('dateFrom') ? Carbon::parse(request()->input('dateFrom')) : null;
+    $dateTo = request()->input('dateTo') ? Carbon::parse(request()->input('dateTo')) : null;
 
     $mainPosts = News::query()
       ->with('category')
@@ -27,6 +30,8 @@ class NewsController extends Controller
     $news = News::query()
       ->with('category')
       ->where('agency_id', 5)
+      ->filterCategory(request()->input('category'))
+      ->publishedBetween($dateFrom, $dateTo)
       ->orderBy('id', 'desc')
       ->paginate(6);
 
@@ -47,7 +52,12 @@ class NewsController extends Controller
       'media' => $media,
       'spotlights' => $spotlights,
       'page' => $page + 1,
-      'pages' => ceil($news->total() / $news->perPage())
+      'pages' => ceil($news->total() / $news->perPage()),
+      'filters' => [
+        'category' => request()->input('category'),
+        'dateFrom' => $dateFrom,
+        'dateTo' => $dateTo,
+      ]
     ]);
   }
 

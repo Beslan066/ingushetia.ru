@@ -40,13 +40,13 @@ const getSlidesCount = (slides) => {
   return length + ' фото'
 }
 
-// TODO: Разобраться с применением фильтрации
 // TODO: Вынести функцию getSlidesCount из всех модулей в хелпер
-export default function News({ news, categories, mainPosts: slides, media, spotlights, page: pageNumber, pages: totalPages }) {
-  const [selected, setSelected] = useState(null); // Выбранная категория. По ней, в том числе должна производиться фильтрация.
+export default function News({ news, categories, mainPosts: slides, media, spotlights, page: pageNumber, pages: totalPages, filters: initialFilters }) {
+  const [selected, setSelected] = useState(initialFilters.category); // Выбранная категория. По ней, в том числе должна производиться фильтрация.
+  const [filters, setFilters] = useState(null)
   const [isFiltersOpened, setFiltersOpened] = useState(false);
   const [slide, setSlide] = useState(undefined);
-  const [pages, usePages] = useState([{page: pageNumber, news: news, media: media}]);
+  const [pages, setPages] = useState([{page: pageNumber, news: news, media: media}]);
   const [paginator, setPaginator] = useState({ page: pageNumber, total: totalPages });
   const [reportage, setReportage] = useState(undefined);
 
@@ -57,11 +57,25 @@ export default function News({ news, categories, mainPosts: slides, media, spotl
   const onPage = (page, state) => {
     router.reload({
       method: 'get',
-      data: {page: page},
+      data: {page: page, category: selected, ...filters},
       onSuccess: ({ props: data }) => {
         setPaginator({page: data.page, total: data.pages});
         const currentPage = {page: data.page, news: data.news, media: data.media};
-        state === 'prev' ? usePages([currentPage, ...pages]) : usePages([...pages, currentPage]);
+        state === 'prev' ? setPages([currentPage, ...pages]) : setPages([...pages, currentPage]);
+      }
+    })
+  }
+
+  const onFilters = (dateFrom, dateTo, selected) => {
+    router.reload({
+      method: 'get',
+      data: {page: 1, category: selected, dateFrom, dateTo},
+      onSuccess: ({ props: data }) => {
+        setPaginator({page: data.page, total: data.pages});
+        const currentPage = {page: data.page, news: data.news, media: data.media};
+        setPages([currentPage]);
+        setFilters({dateFrom: dateFrom, dateTo: dateTo});
+        setSelected(selected);
       }
     })
   }
@@ -75,10 +89,10 @@ export default function News({ news, categories, mainPosts: slides, media, spotl
           <MainSlider slides={ slides } slideChangeInterval={ 10000 } onPost={ (id) => handleSlide(id, slides, setSlide) }/>
           <div className="news-hero__news-wrapper">
             <div className="tabs-wrapper">
-              <Tabs tabs={ categories } selected={ selected } onTab={ setSelected }/>
+              <Tabs tabs={ categories } selected={ selected } onTab={ (id) => onFilters(filters?.dateFrom, filters?.dateTo, id) }/>
               <FilterButton isActive={ isFiltersOpened } onChange={ setFiltersOpened }/>
             </div>
-            <Filters isActive={ isFiltersOpened } onClose={ () => setFiltersOpened(false) }/>
+            <Filters isActive={ isFiltersOpened } onChange={ (dateFrom, dateTo) => onFilters(dateFrom, dateTo, selected)} onClose={ () => setFiltersOpened(false) }/>
             { prevNotVisitedPage !== null && <button onClick={ () => onPage(prevNotVisitedPage, 'prev') } className="infinite-scroll-button">Показать предыдущее</button> }
             {
               pages && !!pages[0] && (

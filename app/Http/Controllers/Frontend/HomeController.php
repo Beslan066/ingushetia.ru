@@ -18,6 +18,7 @@ use App\Models\News;
 use App\Models\PhotoReportage;
 use App\Models\Resource;
 use App\Models\Video;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -195,13 +196,28 @@ class HomeController extends Controller
 
   public function media()
   {
-    $videos = Video::query()->orderBy('published_at', 'desc')->get();
-    $photoReportages = PhotoReportage::query()->orderBy('published_at', 'desc')->get();
+    $dateFrom = request()->input('dateFrom') ? Carbon::parse(request()->input('dateFrom')) : null;
+    $dateTo = request()->input('dateTo') ? Carbon::parse(request()->input('dateTo')) : null;
+
+    $videos = Video::query()->publishedBetween($dateFrom, $dateTo)->orderBy('published_at', 'desc')->get();
+    $photoReportages = PhotoReportage::query()->publishedBetween($dateFrom, $dateTo)->orderBy('published_at', 'desc')->get();
+
+    $media = [];
+    switch (request()->input('category')) {
+      case 'video':
+        $media = $videos;
+        break;
+      case 'photo':
+        $media = $photoReportages;
+        break;
+      default:
+        $media = collect($photoReportages)->merge($videos)->sortByDesc('published_at')->flatten()->toArray();
+    }
 
     return Inertia::render('Media/Media', [
       'videos' => $videos,
       'photoReportages' => $photoReportages,
-      'media' => collect($photoReportages)->merge($videos)->sortByDesc('published_at')->flatten()->toArray(),
+      'media' => $media,
     ]);
   }
 

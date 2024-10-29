@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,5 +36,16 @@ class PhotoReportage extends Model
     {
         return $this->hasOne(News::class, 'reportage_id');
     }
+
+  public function scopePublishedBetween(Builder $query, ?Carbon $dateFrom, ?Carbon $dateTo)
+  {
+    if ($dateFrom) {
+      $query->where('published_at', '>=', $dateFrom);
+    }
+
+    if ($dateTo) {
+      $query->where('published_at', '<=', $dateTo);
+    }
+  }
 
 }
