@@ -52,7 +52,7 @@ export default function Districts({ districts, settlements }) {
           }
         </div>
         <div className="municipalities__info-wrapper">
-          <MunicipalityDemo id={ currentSettlement.id } title={ currentSettlement.title } image={ currentSettlement.image_main } properties={ getProperties(currentSettlement) } isMobile={ false } isOpened={ true } onDetailsClick={ handlePost }/>
+          <MunicipalityDemo id={ currentSettlement.id } title={ currentSettlement.title } image={ currentSettlement.image_main } properties={ getProperties(currentSettlement) } isMobile={ false } isOpened={ true } onDetailsClick={ () => handlePost(currentSettlement) }/>
         </div>
       </div>
 

@@ -16,7 +16,7 @@ export default function Tab({ children }) {
   const [active, setActive] = useState(tabs[0])
 
   return (
-    <div className="tabs">
+    <div className="horizontal-tabs">
       <div className="tabs__header">
         {
           tabs && tabs.map((tab) => <button key={ tab } className={ `tab tab--${active === tab ? 'active' : 'inactive'}` } onClick={ () => setActive(tab) }>{ tab }</button>)

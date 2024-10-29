@@ -142,7 +142,7 @@ class HomeController extends Controller
   public function nationalProjects()
   {
     $natProjects = NationalProject::all();
-    return Inertia::render('Home/NatProjects', [
+    return Inertia::render('Region/NationalProjects', [
       'natProjects' => $natProjects
     ]);
   }
@@ -177,7 +177,7 @@ class HomeController extends Controller
   {
     $anticorruptions = Anticorruption::query()->orderBy('id', 'desc')->get();
 
-    return Inertia::render('Anticorruption', [
+    return Inertia::render('Region/Anticorruption', [
       'anticorruptions' => $anticorruptions
     ]);
   }

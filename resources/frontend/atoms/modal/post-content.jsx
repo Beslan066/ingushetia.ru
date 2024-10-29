@@ -52,7 +52,7 @@ export default function PostContent({ post }) {
         </div>
       </div>
       {
-        post?.relatedPosts ? (
+        post?.relatedPosts && post.relatedPosts.length && Array.isArray(post.relatedPosts) ? (
           <div className="related">
             <h2 className="related__title">Смотрите также</h2>
             <div className="related__posts">

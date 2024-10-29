@@ -20,7 +20,7 @@ export default function MemberContent({ name, position, avatar, content, contact
           <div className="member__contacts">
             {
               contacts && contacts.map((contact) => (
-                <div className="contact-item">
+                <div className="contact-item" key={ contact.title }>
                   <div className="contact__title">{ contact.title }</div>
                   <div className="contact__value">{ contact.value }</div>
                 </div>

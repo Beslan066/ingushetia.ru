@@ -38,12 +38,12 @@ export default function MunicipalityContent({ municipality }) {
 
           <div className="city-head">
             <div className="head-person-image">
-              <img src={ `/storage/${ municipality.supervisor.image_main }` } alt=""/>
+              <img src={ `/storage/${ municipality?.supervisor?.image_main }` } alt=""/>
             </div>
             <div className="head-person-info">
-              <h3>{ municipality.supervisor.name }</h3>
+              <h3>{ municipality?.supervisor?.name }</h3>
               <span className="supervisor__position">Глава г.Магас</span>
-              <div className={ 'head-bio' } dangerouslySetInnerHTML={ { __html: municipality.supervisor.bio } }></div>
+              <div className={ 'head-bio' } dangerouslySetInnerHTML={ { __html: municipality?.supervisor?.bio } }></div>
             </div>
           </div>
         </div>
