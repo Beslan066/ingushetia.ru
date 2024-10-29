@@ -7,11 +7,23 @@
   background-color: var(--color-neutral-lightest);
 }
 
+.external-resource__wrapper--inline {
+  flex-direction: row;
+}
+
 .external-resource__title {
   font-size: var(--font-size-h4);
   line-height: var(--line-height-h4);
   color: var(--color-neutral-black);
   font-weight: var(--font-weight-semibold);
+}
+
+.external-resource__highligted-description {
+  margin-top: 4px;
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  color: var(--color-primary-medium);
+  font-weight: var(--font-weight-regular);
 }
 
 .external-resource__footer {

@@ -20,7 +20,7 @@
   padding: 16px 0 0;
 }
 
-.important__link {
+.important__link, .important__link:visited {
   font-size: var(--font-size-body);
   line-height: var(--line-height-body);
   color: var(--color-neutral-black);

@@ -11,7 +11,7 @@ import AppLink from "#/atoms/buttons/link.jsx";
 import axios from "axios";
 import TimesIcon from "#/atoms/icons/times.jsx";
 
-export default function AppHeader({ anniversary }) {
+export default function AppHeader({ anniversary, logo, title }) {
   const [searchOpened, setSearchOpened] = useState(false);
   const [menuOpened, setMenuOpened] = useState(false);
   const [results, setResults] = useState([]);
@@ -47,9 +47,9 @@ export default function AppHeader({ anniversary }) {
       <header className="top-menu">
         <div className="top-menu__wrapper">
           <div className="top-menu__site-name">
-            { anniversary ? <AnniversaryLogoImage/> : <LogoImage/> }
+            { anniversary ? <AnniversaryLogoImage/> : <LogoImage logo={logo ?? "/img/logo.svg"}/> }
             <div className={ `top-menu__title ${ anniversary ? 'top-menu__title--anniversary' : '' }` }>
-              <div className="top-menu__name">Республика Ингушетия</div>
+              <div className="top-menu__name">{ title ?? 'Республика Ингушетия' }</div>
               <div className="top-menu__caption">Официальный портал</div>
             </div>
           </div>
