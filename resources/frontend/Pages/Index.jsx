@@ -4,7 +4,7 @@ import './index.css';
 import React from "react";
 import Vectors from "#/organisms/vectors/vectors.jsx";
 import Districts from "#/organisms/districts/districts.jsx";
-import Media from "#/molecules/news/media.jsx";
+import MediaCollection from "#/molecules/news/mediaCollection.jsx";
 import Mountains from "#/molecules/mountains/mountains.jsx";
 import Documents from "#/organisms/documents/documents.jsx";
 import ExternalResources from "#/organisms/documents/external-resources.jsx";
@@ -68,7 +68,7 @@ export default function Index({
       <Vectors vectors={ vectors }/>
       <AgencyNews agencies={ agencies } posts={ agencyNews }/>
       <Districts settlements={ settlements } districts={ districts }/>
-      <Media media={ media }/>
+      <MediaCollection media={ media }/>
       { anniversary ? <AnniversaryBanner/> : '' }
       <Mountains mountains={ mountains }/>
       <Documents documents={ documents }/>

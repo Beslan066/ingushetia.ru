@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Modal from "#/atoms/modal/modal.jsx";
 import ReportageContent from "#/atoms/modal/reportage-content.jsx";
 
-export default function Media({ media }) {
+export default function MediaCollection({ media }) {
   if (!media?.length) {
     return null;
   }

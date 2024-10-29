@@ -198,13 +198,13 @@ class HomeController extends Controller
 
     public function media()
     {
-
         $videos = Video::query()->orderBy('published_at', 'desc')->get();
         $photoReportages = PhotoReportage::query()->orderBy('published_at', 'desc')->get();
 
-        return Inertia::render('Media', [
+        return Inertia::render('Media/Media', [
             'videos' => $videos,
-            'photoReportages' => $photoReportages
+            'photoReportages' => $photoReportages,
+            'media' => collect($photoReportages)->merge($videos)->sortByDesc('published_at')->flatten()->toArray(),
         ]);
     }
 }
