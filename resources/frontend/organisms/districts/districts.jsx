@@ -12,7 +12,7 @@ export default function Districts({ districts, settlements }) {
   }
 
   const first = settlements.length ? settlements[0] : districts[0]
-  const [selected, isOpen, setSelected] = useModal(first.id);
+  const [selected, setSelected] = useState(first.id);
   const [currentSettlement, setCurrentSettlement] = useState(first);
 
   const list = [
@@ -37,7 +37,7 @@ export default function Districts({ districts, settlements }) {
     { slug: 'supervisor', title: 'Глава адм.', value: settlement.supervisor.name },
   ]
 
-  const [slide, setSlide] = useState(null);
+  const [slide, isOpen, setSlide] = useModal(null);
   const handlePost = (item) => {
     setSlide(item)
   }
