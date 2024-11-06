@@ -4,6 +4,7 @@ import './media.css'
 import React, { useState } from "react";
 import Modal from "#/atoms/modal/modal.jsx";
 import ReportageContent from "#/atoms/modal/reportage-content.jsx";
+import useModal from "#/hooks/useModal.js";
 
 export default function MediaCollection({ media }) {
   if (!media?.length) {
@@ -24,7 +25,7 @@ export default function MediaCollection({ media }) {
     return length + ' фото'
   }
 
-  const [slide, setSlide] = useState(null);
+  const [slide, isOpen, setSlide] = useModal(null);
 
   return (
     <div className="media">
@@ -47,7 +48,7 @@ export default function MediaCollection({ media }) {
       </div>
       <AppLink to="/media" title="Все репортажи" className="media__details"/>
 
-      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Репортажи и видео' }, { title: slide?.title }] } isOpen={ slide } handleClose={ () => setSlide(null) }>
+      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Репортажи и видео' }, { title: slide?.title }] } isOpen={ isOpen } handleClose={ () => setSlide(null) }>
         <ReportageContent reportage={ slide }/>
       </Modal>
     </div>

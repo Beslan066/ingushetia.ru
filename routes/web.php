@@ -41,7 +41,7 @@ Route::get('/documents', [HomeController::class, 'documents'])->name('documents'
 Route::get('/region', [RegionController::class, 'index'])->name('region');
 Route::get('/economic', [RegionController::class, 'economic'])->name('economic');
 Route::get('/social-economic-development', [RegionController::class, 'socialEconomicDevelopment'])->name('socialEconomicDevelopment');
-Route::get('/municipalities', [RegionController::class, 'municipality'])->name('municipality');
+Route::get('/municipalities', [RegionController::class, 'municipalities'])->name('municipality');
 Route::get('/history', [RegionController::class, 'history'])->name('history');
 
 Route::get('/agencies', [AgencyController::class, 'index'])->name('agencies.index');

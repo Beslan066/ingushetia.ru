@@ -6,9 +6,10 @@ import Button from "#/atoms/buttons/button.jsx";
 import Modal from "#/atoms/modal/modal.jsx";
 import ContactsContent from "#/atoms/modal/contacts-content.jsx";
 import React, { useState } from "react";
+import useModal from "#/hooks/useModal.js";
 
 export default function AppFooter({ anniversary = false }) {
-  const [modal, setModal] = useState(false);
+  const [modal, isOpen, setModal] = useModal(false);
 
   const groups = [
     {
@@ -84,7 +85,7 @@ export default function AppFooter({ anniversary = false }) {
       </footer>
       <footer className="copyright">&copy; 2024, Все права защищены</footer>
 
-      <Modal isOpen={ !!modal } handleClose={ () => setModal(false) } stickyOnBottom={ false }>
+      <Modal isOpen={ isOpen } handleClose={ () => setModal(false) } stickyOnBottom={ false }>
         <ContactsContent onClose={() => setModal(false)} />
       </Modal>
     </>

@@ -188,6 +188,11 @@
 }
 
 @media (min-width: 1440px) {
+  .properties__list {
+    gap: 56px;
+    flex-wrap: wrap;
+  }
+
   .property__wrapper:not(.property--square, .property--founded, .property--population) {
     display: flex;
   }

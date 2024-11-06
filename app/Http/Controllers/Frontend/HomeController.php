@@ -137,6 +137,7 @@ class HomeController extends Controller
       'agencyNews' => $agencyNewsWithRelated,
       'showNews' => $openedNews,
       'documents' => $documents,
+      'anniversary' => config('app.anniversary'),
     ]);
   }
 

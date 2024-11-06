@@ -40,6 +40,10 @@
     gap: 32px;
   }
 
+  .hero__slider-wrapper {
+    max-width: calc(100% - 280px - 32px);
+  }
+
   .hero__sidebar-wrapper {
     flex-direction: column;
     width: 280px;

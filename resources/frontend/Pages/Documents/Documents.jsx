@@ -4,6 +4,7 @@ import Downloadable from "#/atoms/downloadable/downloadable.jsx";
 import AppFooter from "#/organisms/footer/footer.jsx";
 import React from "react";
 import './documents.css';
+import DocumentsNavigation from "#/molecules/navigation/documents-navigation.jsx";
 
 export default function Documents({ documents }) {
   return (
@@ -19,7 +20,9 @@ export default function Documents({ documents }) {
             }
           </div>
         </div>
-        <div></div>
+        <div>
+          <DocumentsNavigation />
+        </div>
       </div>
       <AppFooter/>
     </>

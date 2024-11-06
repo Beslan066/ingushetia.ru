@@ -8,9 +8,10 @@ import './region.css'
 import Package from "#/atoms/citizen-support/package.jsx";
 import Modal from "#/atoms/modal/modal.jsx";
 import MilitaryContent from "#/atoms/modal/military-content.jsx";
+import useModal from "#/hooks/useModal.js";
 
 export default function CitizenSupport ({ citizenSupportPackages, businessSupportPackages }) {
-  const [modal, setModal] = useState(null);
+  const [modal, isOpen, setModal] = useModal(null);
 
   return (
     <>
@@ -44,7 +45,7 @@ export default function CitizenSupport ({ citizenSupportPackages, businessSuppor
         </div>
       </div>
       <AppFooter/>
-      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Поддержка экономики и граждан' }] } isOpen={ !!modal } handleClose={ () => setModal(null) }>
+      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Поддержка экономики и граждан' }] } isOpen={ isOpen } handleClose={ () => setModal(null) }>
         <MilitaryContent document={ modal }/>
       </Modal>
     </>

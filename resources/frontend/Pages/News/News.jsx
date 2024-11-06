@@ -15,6 +15,7 @@ import PopularSpotlights from "#/molecules/spotlights/popular-spotlights.jsx";
 import MediaNews from "#/atoms/news/media.jsx";
 import AppLink from "#/atoms/buttons/link.jsx";
 import ReportageContent from "#/atoms/modal/reportage-content.jsx";
+import useModal from "#/hooks/useModal.js";
 
 const handleSlide = (id, slides, setSlide) => {
   const cur = slides.find(s => s.id === id)
@@ -45,10 +46,10 @@ export default function News({ news, categories, mainPosts: slides, media, spotl
   const [selected, setSelected] = useState(initialFilters.category); // Выбранная категория. По ней, в том числе должна производиться фильтрация.
   const [filters, setFilters] = useState(null)
   const [isFiltersOpened, setFiltersOpened] = useState(false);
-  const [slide, setSlide] = useState(undefined);
+  const [slide, isSlideOpen, setSlide] = useModal(undefined);
   const [pages, setPages] = useState([{page: pageNumber, news: news, media: media}]);
   const [paginator, setPaginator] = useState({ page: pageNumber, total: totalPages });
-  const [reportage, setReportage] = useState(undefined);
+  const [reportage, isReportageOpen, setReportage] = useModal(undefined);
 
   const visitedPages = pages.map((page) => page.page).sort();
   const prevNotVisitedPage = Math.min(visitedPages[0] - 1, paginator.page - 1) > 0 ? Math.min(visitedPages[0] - 1, paginator.page - 1) - 1 : null;
@@ -162,10 +163,10 @@ export default function News({ news, categories, mainPosts: slides, media, spotl
               еще</button> }
         </div>
       </div>
-      <Modal breadcrumbs={ [{ title: 'Новости' }, { title: slide?.title }] } isOpen={ !!slide } handleClose={ () => setSlide(undefined) }>
+      <Modal breadcrumbs={ [{ title: 'Новости' }, { title: slide?.title }] } isOpen={ isSlideOpen } handleClose={ () => setSlide(undefined) }>
         <PostContent post={ slide }/>
       </Modal>
-      <Modal breadcrumbs={ [{ title: 'Новости' }, { title: slide?.title }] } isOpen={ !!reportage } handleClose={ () => setReportage(undefined) }>
+      <Modal breadcrumbs={ [{ title: 'Новости' }, { title: slide?.title }] } isOpen={ isReportageOpen } handleClose={ () => setReportage(undefined) }>
         <ReportageContent reportage={ reportage }/>
       </Modal>
       <AppFooter/>

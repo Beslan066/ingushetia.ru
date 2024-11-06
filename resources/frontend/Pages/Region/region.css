@@ -5,6 +5,13 @@
   gap: 40px;
 }
 
+.inline-img {
+  display: inline-block;
+  max-width: 260px;
+  float: left;
+  margin-right: 32px;
+}
+
 .page-content__content .img {
   margin-bottom: 24px;
 }
@@ -53,7 +60,7 @@
   background-color: var(--color-neutral-lightest);
 }
 
-.municipality-section__header {
+.municipality-page-section__header {
   font-size: var(--font-size-h3);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-h3);
@@ -61,7 +68,7 @@
   margin-bottom: 20px;
 }
 
-.municipalities {
+.municipality-page__municipalities {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -83,13 +90,24 @@
   margin-bottom: 32px;
 }
 
+.president__documents .downloadable {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-neutral-light);
+}
+
+.president__documents .downloadable:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
 @media (min-width: 768px) {
   .packages__contents {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
 
-  .municipality-section__header {
+  .municipality-page-section__header {
     line-height: var(--line-height-h3);
     font-size: var(--font-size-h3);
   }

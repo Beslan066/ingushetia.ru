@@ -1,17 +1,21 @@
 .modal {
   z-index: 100000;
   background-color: var(--color-neutral-white);
-  box-shadow: -10px 0 20px 20px rgba(0,0,0,0.35);
 
   position: fixed;
-  top: -100%;
   opacity: 0;
   left: 0;
+  top: 100vh;
 
   width: 100%;
-  height: 0;
   overflow-y: auto;
-  transition: .35s ease all;
+  transition: .15s ease opacity, .2s ease-in top;
+}
+
+@media (min-width: 1366px) {
+  .modal {
+    left: 27%;
+  }
 }
 
 .modal--bs {
@@ -19,9 +23,9 @@
 }
 
 .modal--opened {
-  height: 100%;
   top: 0;
   opacity: 1;
+  box-shadow: -10px 0 20px 20px rgba(0,0,0,0.35);
 }
 
 body:has(.modal--opened) {
@@ -62,8 +66,7 @@ body:has(.modal--opened) {
 @media (min-width: 1366px) {
   .modal {
     width: 880px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 27%;
   }
 
   .modal--opened.modal--default {
@@ -83,5 +86,10 @@ body:has(.modal--opened) {
 
   .modal__header {
     padding: 60px 60px 28px;
+  }
+
+  body:has(.modal--opened) {
+    height: auto;
+    overflow: auto;
   }
 }

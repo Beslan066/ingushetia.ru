@@ -8,9 +8,10 @@ import InternalTriggerLink from "#/atoms/links/internal-trigger-link.jsx";
 import MunicipalityContent from "#/atoms/modal/municipality-content.jsx";
 import Modal from "#/atoms/modal/modal.jsx";
 import MilitaryContent from "#/atoms/modal/military-content.jsx";
+import useModal from "#/hooks/useModal.js";
 
 export default function MilitarySupport({ documents }) {
-  const [modal, setModal] = useState(undefined);
+  const [modal, isOpen, setModal] = useModal(undefined);
 
   return (
     <>
@@ -48,7 +49,7 @@ export default function MilitarySupport({ documents }) {
         </div>
       </div>
       <AppFooter/>
-      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Поддержка семей военнослужащих' }] } isOpen={ !!modal } handleClose={ () => setModal(null) }>
+      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Поддержка семей военнослужащих' }] } isOpen={ isOpen } handleClose={ () => setModal(null) }>
         <MilitaryContent document={ modal }/>
       </Modal>
     </>

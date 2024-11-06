@@ -11,7 +11,7 @@ export default function Agencies({ agencies }) {
     <>
       <AppHeader anniversary={ false }/>
       <PageTitle title="Министерства и ведомства"/>
-      <div className="page-content__wrapper">
+      <div className="agency-page-content__wrapper">
         <div className="page-content__content">
           {
             agencies && agencies.map((agency) => <ExternalResourceInline key={ agency.id } title={ agency.name } highlightedDescription={ agency.supervisor.name } link={ `/agencies/${agency.slug}` }/>)

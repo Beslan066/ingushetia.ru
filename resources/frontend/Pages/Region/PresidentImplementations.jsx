@@ -14,7 +14,7 @@ export default function PresidentImplementations({implementations: documents}) {
       <div className="page-content__wrapper">
         <div className="page-content__content">
           <p className="social-economics__block-name">В мае 2012 года Президентом Российской Федерации был подписан ряд указов, закрепляющих основные направления развития России в экономике, социальной сфере, внутренней политике, международных делах и вопросах безопасности.</p>
-          <div className="social-economics__documents">
+          <div className="president__documents">
             {
               documents && documents.map((document) => <Downloadable title={ document.title } description={ `${document.document_type}, ${document.document_size}` } key={document.id} link={ `/storage/${document.document_path}` } />)
             }

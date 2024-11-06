@@ -4,6 +4,7 @@ import MunicipalityList from "#/molecules/municipality/municipality.jsx";
 import MunicipalityDemo from "#/atoms/municipality/demo.jsx";
 import Modal from "#/atoms/modal/modal.jsx";
 import MunicipalityContent from "#/atoms/modal/municipality-content.jsx";
+import useModal from "#/hooks/useModal.js";
 
 export default function Districts({ districts, settlements }) {
   if (!districts && !settlements) {
@@ -11,7 +12,7 @@ export default function Districts({ districts, settlements }) {
   }
 
   const first = settlements.length ? settlements[0] : districts[0]
-  const [selected, setSelected] = useState(first.id);
+  const [selected, isOpen, setSelected] = useModal(first.id);
   const [currentSettlement, setCurrentSettlement] = useState(first);
 
   const list = [
@@ -56,7 +57,7 @@ export default function Districts({ districts, settlements }) {
         </div>
       </div>
 
-      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Регионы и округа' }, { title: slide?.title }] } isOpen={ slide } handleClose={ () => setSlide(null) }>
+      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Регионы и округа' }, { title: slide?.title }] } isOpen={ isOpen } handleClose={ () => setSlide(null) }>
         <MunicipalityContent municipality={ slide }/>
       </Modal>
     </div>

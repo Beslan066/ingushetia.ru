@@ -2,15 +2,15 @@ import './contacts.css'
 import AppHeader from "#/molecules/header/header.jsx";
 import PageTitle from "#/atoms/texts/PageTitle.jsx";
 import AppFooter from "#/organisms/footer/footer.jsx";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GovernmentNavigation from "#/molecules/navigation/government-navigation.jsx";
 import Button from "#/atoms/buttons/button.jsx";
 import Modal from "#/atoms/modal/modal.jsx";
 import ContactsContent from "#/atoms/modal/contacts-content.jsx";
+import useModal from "#/hooks/useModal.js";
 
 export default function Contacts({ contacts }) {
-  const [modal, setModal] = useState(false);
-
+  const [modal, isOpen, setModal] = useModal(null)
 
   return (
     <>
@@ -49,7 +49,7 @@ export default function Contacts({ contacts }) {
       </div>
 
       <AppFooter/>
-      <Modal isOpen={ !!modal } handleClose={ () => setModal(false) } stickyOnBottom={ false }>
+      <Modal isOpen={ isOpen } handleClose={ () => setModal(false) } stickyOnBottom={ false }>
         <ContactsContent onClose={() => setModal(false)} />
       </Modal>
     </>

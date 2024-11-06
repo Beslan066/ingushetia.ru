@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import AgencyNewsItem from "#/atoms/news/agency-news-item.jsx";
 import Modal from "#/atoms/modal/modal.jsx";
 import PostContent from "#/atoms/modal/post-content.jsx";
+import AppLink from "#/atoms/buttons/link.jsx";
 
 export default function AgencyNews({ agencies, posts }) {
   const [selectedTab, setSelectedTab] = useState(null);
@@ -45,6 +46,7 @@ export default function AgencyNews({ agencies, posts }) {
             })
           }
         </div>
+        <AppLink title="Все новости министерств" to="/agencies" />
       </div>
 
       <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Новости министерств' }, { title: slide?.title }] } isOpen={ slide } handleClose={ () => setSlide(null) }>

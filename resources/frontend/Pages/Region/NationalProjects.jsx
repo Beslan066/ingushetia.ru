@@ -41,7 +41,7 @@ export default function NationalProjects() {
             млрд.руб.</p>
           <div className="accordion__items">
             <Accordion title="Национальный проект «Демография»">
-              <div className="img">
+              <div className="inline-img">
                 <img src="/img/pages/demography.png" alt="Национальный проект «Демография»"/>
               </div>
               <p>В национальный проект «Демография» включено 5 федеральных проектов:</p>

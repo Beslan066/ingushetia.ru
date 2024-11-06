@@ -11,6 +11,12 @@
   overflow: hidden;
 }
 
+@media (min-width: 1440px) {
+  .media__image {
+    height: 216px;
+  }
+}
+
 .media__image > img {
   min-width: 100%;
   min-height: 100%;

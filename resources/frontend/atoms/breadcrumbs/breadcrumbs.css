@@ -42,6 +42,14 @@
 }
 
 @media (min-width: 768px) {
+  .breadcrumb:nth-child(n+3) {
+    display: block;
+  }
+
+  .breadcrumb:nth-child(n+2):after {
+    display: block;
+  }
+
   .breadcrumb:nth-child(n+4) {
     display: none;
   }

@@ -23,7 +23,8 @@ export default function Index({
                                 documents,
                                 resources,
                                 agencies,
-                                agencyNews
+                                agencyNews,
+                                anniversary,
                               }) {
   const vectors = [
     {
@@ -51,10 +52,6 @@ export default function Index({
       profits: ['На 20% больше туристов', 'Более 2 новых туристических зон']
     },
   ]
-
-  let anniversary = localStorage.getItem('anniversary');
-  anniversary = anniversary !== null ? JSON.parse(anniversary) : false;
-
 
   const url = new URL(window.location.href);
   if (url.searchParams.has('anniversary')) {

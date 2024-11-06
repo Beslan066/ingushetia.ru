@@ -10,9 +10,10 @@ import GovernmentMember from "#/atoms/government/Member.jsx";
 import MemberContent from "#/atoms/modal/member-content.jsx";
 import Modal from "#/atoms/modal/modal.jsx";
 import InternalTriggerLink from "#/atoms/links/internal-trigger-link.jsx";
+import useModal from "#/hooks/useModal.js";
 
 export default function Government() {
-  const [modal, setModal] = useState(false)
+  const [modal, isOpen, setModal] = useModal(false)
   return (
     <>
       <AppHeader anniversary={ false }/>
@@ -56,7 +57,7 @@ export default function Government() {
         </div>
       </div>
       <AppFooter/>
-      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Органы власти' }] } isOpen={ !!modal } handleClose={ () => setModal(false) }>
+      <Modal breadcrumbs={ [{ title: 'Главная' }, { title: 'Органы власти' }] } isOpen={ isOpen } handleClose={ () => setModal(false) }>
         <MemberContent name="Сластенин Владимир Владимирович"
                        avatar="/img/man.png"
                        position="Председатель правительства Республики Ингушетия"

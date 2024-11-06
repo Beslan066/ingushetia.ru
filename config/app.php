@@ -123,4 +123,5 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'anniversary' => env('IS_ANNIVERSARY', false),
 ];

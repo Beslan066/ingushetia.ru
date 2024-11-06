@@ -3,7 +3,7 @@ import DocumentLink from "#/atoms/links/document-link.jsx";
 import AppLink from "#/atoms/buttons/link.jsx";
 
 export default function Documents({ documents }) {
-  if (!documents) {
+  if (!documents || !documents.length) {
     return null;
   }
 
