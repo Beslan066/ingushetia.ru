@@ -32,12 +32,11 @@
 .accordion__body {
   max-height: 0;
   overflow: hidden;
-  transition: .4s ease-in-out;
+  transition: .3s ease-in-out max-height;
 }
 
-.accordion--opened .accordion__body {
-  max-height: 1000vh;
-  margin-top: 32px;
+.accordion-body__content {
+  padding-top: 24px;
 }
 
 .accordion__body p:last-child {
