@@ -158,6 +158,10 @@
     margin: 0 auto;
   }
 
+  .news-hero__slider-wrapper {
+    max-width: calc(1212px - 280px - 32px);
+  }
+
   .news-hero__news-wrapper {
     margin: 0;
   }
