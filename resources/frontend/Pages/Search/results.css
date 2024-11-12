@@ -78,7 +78,7 @@
 @media (min-width: 1280px) {
   .results__container {
     width: 1212px;
-    margin: 0 auto;
+    margin: 0 auto 24px;
     padding: 0;
   }
 }

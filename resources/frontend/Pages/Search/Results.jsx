@@ -15,6 +15,7 @@ export default function Results() {
   const [activeFilter, setActiveFilter] = useState(null); // Активный фильтр по умолчанию 'all'
   const [visibleCount, setVisibleCount] = useState(11); // Количество отображаемых элементов по умолчанию 11
   const [isFiltersOpened, setFiltersOpened] = useState(false);
+  const [inputQuery, setInputQuery] = useState(query);
 
   useEffect(() => {
     // Загрузка результатов поиска
@@ -60,7 +61,7 @@ export default function Results() {
       <PageTitle title="Результаты поиска"/>
       <div className={ `search search--opened` }>
         <div className="search-input">
-          <input type="text" placeholder="Найти на сайте" value={ query } onChange={ (e) => setQuery(e.target.value) }/>
+          <input type="text" placeholder="Найти на сайте" value={ inputQuery } onChange={ (e) => setInputQuery(e.target.value) }/>
           <SearchIcon color="neutral-dark" size={ 24 } className="input-icon"/>
         </div>
         <Button handleClick={ () => {
@@ -73,7 +74,7 @@ export default function Results() {
       <div className="results__container">
         <Tabs selected={activeFilter} tabs={ tabs } onTab={ filterResults }/>
         <div className="results__count-wrapper">
-          <div className="results__count">Найдено { visibleCount } результатов</div>
+          <div className="results__count">Найдено { Math.min(visibleCount, (filteredResults.length ?? 0)) } результатов</div>
           <FilterButton isActive={ isFiltersOpened } onChange={ setFiltersOpened }/>
         </div>
 
