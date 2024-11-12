@@ -65,7 +65,7 @@ body:has(.modal--opened) {
 
 @media (min-width: 1366px) {
   .modal {
-    width: 880px;
+    width: 60%;
     left: 27%;
   }
 
