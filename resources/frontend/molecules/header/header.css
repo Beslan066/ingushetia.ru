@@ -200,6 +200,7 @@
   z-index: 1000;
   transition: .3s ease;
   padding: 68px 0 0;
+  overflow-y: auto;
 }
 
 @media (min-width: 768px) {
@@ -214,29 +215,36 @@ body:has(.sidebar-menu--opened) {
 }
 
 @media (min-width: 1440px) {
-  .sidebar-menu::before {
-    display: block;
-    content: '';
+  .sidebar-menu {
+    position: fixed;
+    right: 0;
+    top: 84px;
+    height: calc(100vh - 84px); /* Высота экрана минус высота хедера */
+    width: 100%;
     background: rgba(0, 0, 0, 0.5);
-    width: 100vw;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(100vw);
-    transition: .3s ease-in-out;
+    transform: translateX(100%); /* Скрыть блок за экраном */
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+    overflow-y: auto; /* Скролл для всей панели rightbar */
+    padding: 0;
+    display: flex;
+    justify-content: flex-end;
   }
 
-  .sidebar-menu {
-    padding: 82px 0 0;
+  .sidebar-menu--opened {
+    transform: translateX(0); /* Показать блок при открытии */
+    overflow-y: auto;
+  }
+
+  .sidebar-menu__container {
+    padding: 32px 0 0;
+    background-color: var(--color-neutral-white);
+    max-width: 25%;
+    min-height: 100%;
   }
 
   body:has(.sidebar-menu--opened) {
     height: auto;
-  }
-
-  .sidebar-menu--opened::before {
-    transform: translateX(-100vw);
   }
 
   .sidebar-menu--opened {
@@ -253,10 +261,6 @@ body:has(.sidebar-menu--opened) {
 }
 
 @media (min-width: 1440px) {
-  .sidebar-menu--opened {
-    width: 25%;
-  }
-
   .sidebar-menu .main-menu {
     display: none;
   }

@@ -118,29 +118,31 @@ export default function AppHeader({ anniversary, logo, title }) {
         ) : ''
       }
       <div className={ `sidebar-menu sidebar-menu--${menuOpened ? 'opened' : 'closed'}` }>
-        <ul className="menu main-menu">
-          <li className="menu-item"><Link href="/news">Новости</Link></li>
-          <li className="menu-item"><Link href="/region">Регион</Link></li>
-          <li className="menu-item">
-            <button onClick={ e => e.target.parentNode.classList.toggle('menu-item--opened') }>Органы власти</button>
-            <ul className="submenu">
-              <li className="menu-item"><Link href="/government">Глава Республики</Link></li>
-              <li className="menu-item"><Link href="/government/directories">Правительство</Link></li>
-              <li className="menu-item"><Link href="#">Федеральные органы власти</Link></li>
-              <li className="menu-item"><Link href={ route('agencies.index') }>Министерства</Link></li>
-            </ul>
-          </li>
-          <li className="menu-item"><Link href={ route('media') }>Медиа</Link></li>
-          <li className="menu-item"><Link href="/documents">Документы</Link></li>
-          <li className="menu-item"><Link href={ route('contacts') }>Контакты</Link></li>
-        </ul>
-        <ul className="menu additional-menu">
-          <li className="menu-item"><Link href="#">Резерв управленческих кадров</Link></li>
-          <li className="menu-item"><Link href="#">Конкурсы в органах исполнительной власти</Link></li>
-          <li className="menu-item"><Link href="#">Противодействие коррупции</Link></li>
-          <li className="menu-item"><Link href="#">Антинаркотическая комиссия</Link></li>
-          <li className="menu-item"><Link href="/military-support">Поддержка семей военнослужащих</Link></li>
-        </ul>
+        <div className="sidebar-menu__container">
+          <ul className="menu main-menu">
+            <li className="menu-item"><Link href="/news">Новости</Link></li>
+            <li className="menu-item"><Link href="/region">Регион</Link></li>
+            <li className="menu-item">
+              <button onClick={ e => e.target.parentNode.classList.toggle('menu-item--opened') }>Органы власти</button>
+              <ul className="submenu">
+                <li className="menu-item"><Link href="/government">Глава Республики</Link></li>
+                <li className="menu-item"><Link href="/government/directories">Правительство</Link></li>
+                <li className="menu-item"><Link href="#">Федеральные органы власти</Link></li>
+                <li className="menu-item"><Link href={ route('agencies.index') }>Министерства</Link></li>
+              </ul>
+            </li>
+            <li className="menu-item"><Link href={ route('media') }>Медиа</Link></li>
+            <li className="menu-item"><Link href="/documents">Документы</Link></li>
+            <li className="menu-item"><Link href={ route('contacts') }>Контакты</Link></li>
+          </ul>
+          <ul className="menu additional-menu">
+            <li className="menu-item"><Link href="#">Резерв управленческих кадров</Link></li>
+            <li className="menu-item"><Link href="#">Конкурсы в органах исполнительной власти</Link></li>
+            <li className="menu-item"><Link href="#">Противодействие коррупции</Link></li>
+            <li className="menu-item"><Link href="#">Антинаркотическая комиссия</Link></li>
+            <li className="menu-item"><Link href="/military-support">Поддержка семей военнослужащих</Link></li>
+          </ul>
+        </div>
       </div>
     </>
   )
