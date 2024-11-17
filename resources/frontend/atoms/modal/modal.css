@@ -27,7 +27,7 @@
 .modal--opened {
   top: 0;
   opacity: 1;
-  box-shadow: -10px 0 20px 20px rgba(0,0,0,0.35);
+  box-shadow: 12px 20px 40px 0 rgba(0,0,0,.29);
 }
 
 body:has(.modal--opened) {
@@ -89,7 +89,7 @@ body:has(.modal--opened) {
   }
 
   .modal__header {
-    padding: 60px 60px 28px;
+    padding: 60px 60px 40px;
   }
 
   body:has(.modal--opened) {
