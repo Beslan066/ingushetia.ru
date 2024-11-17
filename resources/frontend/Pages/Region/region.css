@@ -14,6 +14,11 @@
 
 .page-content__content .img {
   margin-bottom: 24px;
+  width: 100%;
+}
+
+.page-content__content .img img{
+  width: 100%;
 }
 
 .img__description {
@@ -50,6 +55,7 @@
 .page-content__content table {
   background: var(--color-neutral-light);
   margin-bottom: 28px;
+  width: 100%;
 }
 
 .page-content__content tbody tr:nth-of-type(odd) {

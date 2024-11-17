@@ -44,7 +44,7 @@
   margin-bottom: 24px;
 }
 
-.stat-item {
+.municipality-modal__properties .stat-item {
   background-color: var(--color-neutral-lightest);
   padding: 12px;
 }
@@ -94,23 +94,25 @@
 
 .city-contacts {
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .city-contacts h4 {
-  font-size: 16px;
+  font-size: var(--font-size-caption);
+  line-height: var(--line-height-caption);
+  color: var(--color-neutral-dark);
+  font-weight: var(--font-weight-regular);
+  margin-bottom: 4px;
 }
 
 .city-contacts p {
-  font-size: 16px;
-  margin-bottom: 5px;
-}
-
-.city-contacts a {
-  color: #07A267;
-}
-
-.city-contacts a:hover {
-  color: #07A267;
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-body);
+  color: var(--color-neutral-black);
+  margin-bottom: 0;
 }
 
 @media (min-width: 768px) {
@@ -144,6 +146,20 @@
   .city-head {
     flex-shrink: 0;
     flex-basis: 33%;
+  }
+}
+
+@media (min-width: 1366px) {
+  .municipality-modal__properties {
+    display: flex;
+    justify-content: stretch;
+    gap: 20px;
+    width: 100%;
+  }
+  .municipality-modal__properties .stat-item {
+    background-color: var(--color-neutral-lightest);
+    padding: 24px;
+    flex: 1 1 0;
   }
 }
 

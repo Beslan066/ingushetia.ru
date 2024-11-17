@@ -47,11 +47,32 @@ export default function MunicipalityContent({ municipality }) {
             </div>
           </div>
         </div>
+
+        {
+          <Gallery gallery={ ['/img/content/magas.webp', '/img/content/magas1', '/img/content/magas2', '/img/content/Magas3.jpg', '/img/content/magas4.jpg', '/img/Rectangle 1.png'] }/>
+        }
       </div>
 
-      {
-        <Gallery gallery={ ['/img/content/magas.webp', '/img/content/magas1', '/img/content/magas2', '/img/content/Magas3.jpg', '/img/content/magas4.jpg', '/img/Rectangle 1.png'] }/>
-      }
+      <div className="city-contacts">
+        <div className="city-contact">
+          <h4>Телефон:</h4>
+          <p>{ municipality.phone_number }</p>
+        </div>
+        {
+          !!municipality.fax_number && <div className="city-contact">
+            <h4>Факс:</h4>
+            <p>{ municipality.fax_number }</p>
+          </div>
+        }
+        <div className="city-contact">
+          <h4>Эл.почта</h4>
+          <p>{ municipality.email }</p>
+        </div>
+        <div className="city-contact">
+          <h4>Адрес</h4>
+          <p>{ municipality.address }</p>
+        </div>
+      </div>
     </div>
   )
 }

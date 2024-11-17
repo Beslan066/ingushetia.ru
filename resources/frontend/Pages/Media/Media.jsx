@@ -10,20 +10,22 @@ import MediaCollection from "#/molecules/news/mediaCollection.jsx";
 import { router } from "@inertiajs/react";
 import { Inertia } from "@inertiajs/inertia";
 
-export default function Media({ media }) {
+export default function Media({ media: mediaProps }) {
   const categories = [{title: 'Фоторепортажи', id: 'photo'}, {title: 'Видеорепортажи', id: 'video'}];
   const [selected, setSelected] = useState(null);
   const [filters, setFilters] = useState({});
   const [isFiltersOpened, setFiltersOpened] = useState(false);
+  const [media, setMedia] = useState(mediaProps)
 
   const onFilters = (dateFrom, dateTo, category) => {
     console.log(dateFrom, dateTo, category)
     router.reload({
       method: 'get',
       data: {category, dateFrom, dateTo},
-      onSuccess: () => {
+      onSuccess: ({ props }) => {
         setFilters({dateFrom, dateTo})
         setSelected(category);
+        setMedia(props.media);
       }
     })
   }
