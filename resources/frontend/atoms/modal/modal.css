@@ -15,12 +15,13 @@
 
 @media (min-width: 1366px) {
   .modal {
-    left: 27%;
+    left: calc((100vw - 60% + 10px) / 2);
   }
 }
 
 .modal--bs {
   padding-top: 32px;
+  left: 50%;
 }
 
 .modal--opened {
@@ -80,6 +81,7 @@ body:has(.modal--opened) {
     height: 80vh;
     top: 50%;
     transform: translate(-50%, -50%);
+    left: 50%;
   }
 
   .modal__content-wrapper {
