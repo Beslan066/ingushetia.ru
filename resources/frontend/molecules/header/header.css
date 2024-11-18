@@ -13,14 +13,6 @@
   padding: 12px 20px;
 }
 
-@media (min-width: 1440px) {
-  .top-menu__wrapper {
-    padding: 12px 0;
-    margin: 0 auto;
-    max-width: 1212px;
-  }
-}
-
 .top-menu ul, .top-menu li, .sidebar-menu ul, .sidebar-menu li {
   list-style-type: none;
   margin: 0;
@@ -86,6 +78,14 @@
   .top-menu__name {
     font-size: var(--font-size-h3);
     line-height: var(--line-height-h3);
+  }
+}
+
+@media (min-width: 1440px) {
+  .top-menu__wrapper {
+    padding: 12px 0;
+    margin: 0 auto;
+    max-width: 1212px;
   }
 }
 
